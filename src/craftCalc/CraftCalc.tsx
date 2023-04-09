@@ -83,23 +83,6 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
             <button onClick={() => this.craft()}>
                 Craft
             </button>
-            <button onClick={() => {
-                let testItem = findMwObject("Weeping Willow's Tears", false)
-                console.log(testItem.name)
-                console.log(testItem.price! * 100)
-            }}>
-                check number
-            </button>
-            <button onClick={() => {
-                console.log(`Resources: `, MWResource.OBJECTS)
-                console.log(`Materials: `, MWMaterial.OBJECTS)
-                console.log(`Items: `, MWItem.OBJECTS)
-                console.log(`Tools: `, Tool.OBJECTS)
-                console.log(`Artisans: `, Artisan.OBJECTS)
-                console.log(`Supplements: `, Supplement.OBJECTS)
-            }}>
-                check data
-            </button>
         </div>
         )
     }
