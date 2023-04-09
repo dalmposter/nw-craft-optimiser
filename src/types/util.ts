@@ -1,5 +1,5 @@
-import { MWItem, MWObject, MWResource } from "./item.types"
-import { MWMaterial } from "./material.types"
+import { MWItem, MWObject, MWResource } from "./item"
+import { MWMaterial } from "./material"
 
 /**
  * Find a MW object by name.
@@ -17,7 +17,6 @@ import { MWMaterial } from "./material.types"
  * @raises Error if no matching object is found and assumeResource is false.
  */
 export const findMwObject = (name: string, assumeResource: boolean = true): MWObject => {
-
     if(name.slice(-3) == " +1") {
         name = name.slice(0, -3)
     }
@@ -28,10 +27,31 @@ export const findMwObject = (name: string, assumeResource: boolean = true): MWOb
         return MWMaterial.OBJECTS.get(name)!
     }
     if(MWResource.OBJECTS.has(name)) {
-        return MWMaterial.OBJECTS.get(name)!
+        return MWResource.OBJECTS.get(name)!
     }
     if(assumeResource) {
         return new MWResource(undefined, name)
+    }
+
+    throw new Error(`No matching MW Object found for ${name}`)
+}
+
+/**
+     * 
+     * @param name 
+     * @returns 
+     * 
+     * @raises Error if no material or item matches given name,
+     */
+export const findMwItem =(name: string): MWItem => {
+    if(name.slice(-3) == " +1") {
+        name = name.slice(0, -3)
+    }
+    if(MWItem.OBJECTS.has(name)) {
+        return MWItem.OBJECTS.get(name)!
+    }
+    if(MWMaterial.OBJECTS.has(name)) {
+        return MWMaterial.OBJECTS.get(name)!
     }
 
     throw new Error(`No matching MW Object found for ${name}`)
