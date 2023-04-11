@@ -311,20 +311,27 @@ export class MWRecipe {
      * 
      * @param intput 
      */
-    static prettyPrintList(input: [MWRecipe, number][]) {
-        input[0][0].prettyPrint()
-        console.debug("-----------------------------------------------------------")
+    static prettyPrintList(input: [MWRecipe, number][]): string {
+        let stringBuilder: string[] = []
+        stringBuilder.push(
+            input[0][0].prettyPrint(),
+            "\n",
+            "-----------------------------------------------------------",
+            "\n"
+        );
         input.forEach((recipeRank: [MWRecipe, number]) => {
             let recipe = recipeRank[0];
             let cost = recipeRank[1];
-            let printString = `${Math.round(cost).toLocaleString("en-US")} AD`;
-            printString += ` (${Math.round(recipe.normalResults * 100) / 100} Normal,`;
-            printString += ` ${Math.round(recipe.highQualityResults * 100) / 100} +1):`;
+            stringBuilder.push(`\n${Math.round(cost).toLocaleString("en-US")} AD`);
+            stringBuilder.push(` (${Math.round(recipe.normalResults * 100) / 100} Normal,`);
+            stringBuilder.push(` ${Math.round(recipe.highQualityResults * 100) / 100} +1):`);
             if(recipe.artisan != undefined && recipe.supplement != undefined) {
-                printString += ` ${recipe.artisan.prettyPrint()} + ${recipe.supplement.prettyPrint()}`;
+                stringBuilder.push(
+                    ` ${recipe.artisan.prettyPrint()} + ${recipe.supplement.prettyPrint()}`
+                );
             }
-            console.debug(printString);
         });
+        return stringBuilder.join("")
     }
 
     /**
@@ -334,43 +341,45 @@ export class MWRecipe {
      * Also shows the normal:+1 result ratio and the full list of materials consumed and
      * their overall cost.
      */
-    prettyPrint() {
-        console.debug(`\n${this.result.name}${this.highQuality? " +1" : ""}`);
-        console.debug("-----------------------------------------------------------");
+    prettyPrint(): string {
+        let stringBuilder: string[] = [];
+        stringBuilder.push(`\n${this.result.name}${this.highQuality? " +1" : ""}`);
+        stringBuilder.push("-----------------------------------------------------------");
         if(this.artisan != undefined && this.supplement != undefined) { //TODO: Fix MWResource craft
-            console.debug(`${this.artisan.prettyPrint()} + ${this.supplement.prettyPrint()}`
-                        + ` : ${Math.round(this.attempts * 100) / 100} Attempts`);
+            stringBuilder.push(`${this.artisan.prettyPrint()} + ${this.supplement.prettyPrint()}`
+                             + ` : ${Math.round(this.attempts * 100) / 100} Attempts`);
         }
-        console.debug(`${Math.round(this.failures * 100) / 100} Failures, `
+        stringBuilder.push(`${Math.round(this.failures * 100) / 100} Failures, `
                     + `${Math.round(this.normalResults * 100) / 100} Normal Results, `
                     + `${Math.round(this.highQualityResults * 100) / 100} High Quality Results`);
-        console.debug("\nMaterials used:");
+        stringBuilder.push("\nMaterials used:");
         let cost = 0;
         for(var matEntry of this.materials) {
             let roundedQuantity = Math.round(matEntry[0] * 100) / 100;
-            console.debug(`  ${roundedQuantity}x ${matEntry[1]}`);
+            stringBuilder.push(`  ${roundedQuantity}x ${matEntry[1]}`);
             let matObject = findMwObject(matEntry[1]);
             if(matObject != undefined && matObject.price != undefined) {
                 cost += matEntry[0] * matObject.price;
             }
         }
-        console.debug(`Material AD cost: ${Math.round(cost).toLocaleString("en-US")}`);
-        console.debug("\nSupplements used:");
+        stringBuilder.push(`Material AD cost: ${Math.round(cost).toLocaleString("en-US")}`);
+        stringBuilder.push("\nSupplements used:");
         for(var supplementEntry of this.supplements) {
             let roundedQuantity = Math.round(supplementEntry[0] * 100) / 100;
-            console.debug(`  ${roundedQuantity}x ${supplementEntry[1]}`);
+            stringBuilder.push(`  ${roundedQuantity}x ${supplementEntry[1]}`);
         }
         let supplementCost = 0;
-        console.log("Materials consumed by supplements:");
+        stringBuilder.push("Materials consumed by supplements:");
         for(var supplementMatEntry of this.supplementMaterials) {
             let roundedQuantity = Math.round(supplementMatEntry[0] * 100) / 100;
-            console.debug(`  ${roundedQuantity}x ${supplementMatEntry[1]}`);
+            stringBuilder.push(`  ${roundedQuantity}x ${supplementMatEntry[1]}`);
             let supMatObject = findMwObject(supplementMatEntry[1]);
             if(supMatObject != undefined && supMatObject.price != undefined) {
                 supplementCost += supplementMatEntry[0] * supMatObject.price;
             }
         }
-        console.debug(`Supplement AD Cost: ${Math.round(supplementCost).toLocaleString("en-US")}`);
-        console.debug(`\nTotal AD cost: ${Math.round(cost + supplementCost).toLocaleString("en-US")}`);
+        stringBuilder.push(`Supplement AD Cost: ${Math.round(supplementCost).toLocaleString("en-US")}`);
+        stringBuilder.push(`\nTotal AD cost: ${Math.round(cost + supplementCost).toLocaleString("en-US")}`);
+        return stringBuilder.join("\n")
     }
 }

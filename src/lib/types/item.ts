@@ -1,4 +1,4 @@
-import { Lock } from "../lib/lock";
+import { Lock } from "../util/lock";
 import { Recipe, PROFESSIONS, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constants";
 import { CommissionItemType, MWItemType, MWResourceType } from "./item.types";
 import { MWMaterial } from "./material";
@@ -15,12 +15,14 @@ export abstract class MWObject {
     static OBJECTS: Map<string, MWObject> = new Map<string, MWObject>()
 
     name?: string;
+    canDabHand: boolean;
     //TODO: Remove price from MWObject and put only on MWResource
     price?: number;
 
     constructor(name?: string, price?: number) {
         this.name = name;
         this.price = price;
+        this.canDabHand = false;
     }
 
     /** Load the list of this classes objects from a CSV file. */
@@ -59,7 +61,6 @@ export class MWItem extends MWObject {
     name: string;
 
     quantity: number;
-    canDabHand: boolean;
     proficiency: number;
     focus: number;
     unlock: string;
@@ -291,8 +292,12 @@ export class MWItem extends MWObject {
         // Add meta-data to recipe
         output.attempts = expectedAttempts;
         output.failures = expectedAttempts * (1-successChance);
-        output.normalResults = expectedAttempts * (successChance * (1-highQualityChance)) * (1+dabHandChance);
-        output.highQualityResults = expectedAttempts * (successChance * highQualityChance) * (1+dabHandChance);
+        output.normalResults = expectedAttempts * (successChance * (1-highQualityChance));
+        output.highQualityResults = expectedAttempts * (successChance * highQualityChance);
+        if(output.result.canDabHand) {
+            output.normalResults *= (1+dabHandChance);
+            output.highQualityResults += (1+dabHandChance);
+        }
 
         return output;
     }

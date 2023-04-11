@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CraftCalc from './craftCalc/CraftCalc';
+import CraftCalc from './ui/CraftCalc';
 
 function App() {
 
