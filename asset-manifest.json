@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/nw-craft-optimiser/static/css/main.4a155169.css",
-    "main.js": "/nw-craft-optimiser/static/js/main.8f431851.js",
+    "main.css": "/nw-craft-optimiser/static/css/main.7efe92df.css",
+    "main.js": "/nw-craft-optimiser/static/js/main.b28e8a41.js",
     "static/js/787.6c57dc1d.chunk.js": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js",
     "static/media/brand-icons.svg": "/nw-craft-optimiser/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/nw-craft-optimiser/static/media/icons.62d9dae4e0040e81c980.svg",
@@ -20,12 +20,12 @@
     "static/media/outline-icons.woff": "/nw-craft-optimiser/static/media/outline-icons.ddae9b1ba9b0b42f5880.woff",
     "static/media/outline-icons.woff2": "/nw-craft-optimiser/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
     "index.html": "/nw-craft-optimiser/index.html",
-    "main.4a155169.css.map": "/nw-craft-optimiser/static/css/main.4a155169.css.map",
-    "main.8f431851.js.map": "/nw-craft-optimiser/static/js/main.8f431851.js.map",
+    "main.7efe92df.css.map": "/nw-craft-optimiser/static/css/main.7efe92df.css.map",
+    "main.b28e8a41.js.map": "/nw-craft-optimiser/static/js/main.b28e8a41.js.map",
     "787.6c57dc1d.chunk.js.map": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a155169.css",
-    "static/js/main.8f431851.js"
+    "static/css/main.7efe92df.css",
+    "static/js/main.b28e8a41.js"
   ]
 }
