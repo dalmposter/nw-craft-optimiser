@@ -1,0 +1,40 @@
+@import "../constants.scss";
+
+.craft-calc
+{
+    background-color: $backgroundColor;
+    text-align: center;
+    position: absolute;
+    bottom: $footerHeight + $footerBottomPadding + $footerTopPadding;
+    left: 0;
+    right: 0;
+    top: 0;
+    overflow-y: auto;
+}
+
+.Panel {
+    // The panel should take up a decent amount of the page, but have a nice border
+    // Min and max widths for consistent behaviour
+    width: 70%;
+    text-align: left;
+    max-width: $panelMaxWidth;
+    min-width: $panelMinWidth;
+    margin: auto;
+}
+
+.Panel h1
+{
+    margin: 0;
+}
+
+.Panel > h1
+{
+    text-align: center;
+}
+
+.panel-content
+{
+    flex: 0.5;
+    min-width: min-content;
+    margin-right: 18px;
+}

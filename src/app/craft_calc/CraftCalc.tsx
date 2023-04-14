@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
 import { CraftCalcProps, CraftCalcState } from "./CraftCalc.types";
-import { Artisan, MWRecipe, Supplement, Tool } from "../lib/types/recipe";
-import { CommissionItem, MWItem, MWResource } from "../lib/types/item";
-import { findMwItem, findMwObject } from "../lib/types/util";
-import { MWMaterial } from "../lib/types/material";
-import { ItemAvatar } from "./components/avatars/itemAvatar";
+import { Artisan, MWRecipe, Supplement, Tool } from "../../lib/types/recipe";
+import { CommissionItem, MWItem, MWResource } from "../../lib/types/item";
+import { findMwItem, findMwObject } from "../../lib/types/util";
+import { MWMaterial } from "../../lib/types/material";
+import { ItemAvatar } from "../components/avatars/itemAvatar";
 import { Checkbox, Dropdown } from "semantic-ui-react";
+
+import "./CraftCalc.scss"
 
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
@@ -86,37 +88,43 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
 
     render() {
         return (
-        <div className="CraftCalc" >
-            <ItemAvatar itemName={this.state.input}></ItemAvatar>
-            <Dropdown
-                placeholder='Select An Item'
-                fluid
-                search
-                selection
-                options={
-                    this.state.availableItems.map((value: string) => {
-                        return {
-                            key: value, value: value, text: value
+        <div className="craft-calc" >
+            <div className={`Panel`}>
+                <h1 style={{paddingBottom: "16px"}}>Neverwinter Masterwork Calculator</h1>
+                <div className="flexbox">
+                    <div className="panel-content">
+                    <Dropdown
+                        placeholder='Select An Item'
+                        fluid
+                        search
+                        selection
+                        options={
+                            this.state.availableItems.map((value: string) => {
+                                return {
+                                    key: value, value: value, text: value
+                                }
+                            })
                         }
-                    })
-                }
-                onChange={(event, data) => {
-                    this.setState({
-                        ...this.state,
-                        input: data.value? data.value as string : ""
-                    })}
-                }
-            />
-            <Checkbox label="High Quality?" toggle onChange={(event, data) => {
-                this.setState({
-                    ...this.state,
-                    isHighQuality: data.checked? data.checked : false
-                })
-            }} />
-            <button onClick={() => this.craft()}>
-                Craft
-            </button>
-            <textarea cols={120} rows={40} value={this.state.output} />
+                        onChange={(event, data) => {
+                            this.setState({
+                                ...this.state,
+                                input: data.value? data.value as string : ""
+                            })}
+                        }
+                    />
+                    <Checkbox label="High Quality?" toggle onChange={(event, data) => {
+                        this.setState({
+                            ...this.state,
+                            isHighQuality: data.checked? data.checked : false
+                        })
+                    }} />
+                    <button onClick={() => this.craft()}>
+                        Craft
+                    </button>
+                    <textarea cols={120} rows={35} value={this.state.output} />
+                    </div>
+                </div>
+            </div>
         </div>
         )
     }

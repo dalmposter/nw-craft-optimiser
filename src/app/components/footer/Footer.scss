@@ -1,0 +1,14 @@
+@import "../../constants.scss";
+
+.Footer {
+    padding-top: $footerTopPadding;
+    padding-bottom: $footerBottomPadding;
+    height: $footerHeight;
+    box-sizing: unset;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background-color:whitesmoke;
+    background-color: $backgroundColor;
+}

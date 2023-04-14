@@ -12,12 +12,15 @@
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.32",
     "@types/react-dom": "^18.0.11",
+    "@types/react-router-dom": "^5.3.3",
     "buffer": "^6.0.3",
     "csv-parse": "^5.3.6",
     "file-loader": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.10.0",
     "react-scripts": "^5.0.1",
+    "sass": "^1.62.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-less": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
@@ -54,6 +57,7 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "@semantic-ui-react/craco-less": "^3.0.0",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "sass": "^1.62.0"
   }
 }
