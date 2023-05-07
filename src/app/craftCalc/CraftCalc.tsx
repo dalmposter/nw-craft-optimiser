@@ -9,6 +9,7 @@ import { ItemAvatar } from "../components/avatars/itemAvatar";
 import { Checkbox, Dropdown } from "semantic-ui-react";
 
 import "./CraftCalc.scss"
+import { RecipeAvatar } from "../components/avatars/recipeAvatar";
 
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
@@ -68,10 +69,11 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
             .then(() => true);
     }
 
-    craft() {
-        let inputName = this.state.input;
-        let highQuality = this.state.isHighQuality;
-        let item = findMwItem(inputName);
+    craft(item: MWItem | undefined, highQuality: boolean) {
+        if (item === undefined) {
+            console.log("craft called with undefined item. Returning")
+            return
+        }
         let result = item.getOptimalRecipes(highQuality);
         result.then((output) => {
             console.log(MWRecipe.prettyPrintList(output));
@@ -93,35 +95,32 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                 <h1 style={{paddingBottom: "16px"}}>Neverwinter Masterwork Calculator</h1>
                 <div className="flexbox">
                     <div className="panel-content">
-                    <Dropdown
-                        placeholder='Select An Item'
-                        fluid
-                        search
-                        selection
-                        options={
-                            this.state.availableItems.map((value: string) => {
-                                return {
-                                    key: value, value: value, text: value
-                                }
-                            })
-                        }
-                        onChange={(event, data) => {
-                            this.setState({
-                                ...this.state,
-                                input: data.value? data.value as string : ""
-                            })}
-                        }
-                    />
-                    <Checkbox label="High Quality?" toggle onChange={(event, data) => {
-                        this.setState({
-                            ...this.state,
-                            isHighQuality: data.checked? data.checked : false
-                        })
-                    }} />
-                    <button onClick={() => this.craft()}>
-                        Craft
-                    </button>
-                    <textarea cols={120} rows={35} value={this.state.output} />
+                        <RecipeAvatar
+                            availableItems={this.state.availableItems}
+                            onChangeItem={(value) => {
+                                this.setState({
+                                    ...this.state,
+                                    input: value,
+                                    activeItem: value != ""? findMwItem(value) : undefined
+                                })}
+                            }
+                            updateHighQuality={(value: boolean) => {
+                                this.setState({
+                                    ...this.state,
+                                    isHighQuality: value
+                                })
+                            }}
+                            activeItem={this.state.activeItem}
+                        />
+                        <div>
+                        <button onClick={() => this.craft(this.state.activeItem, this.state.isHighQuality)}>
+                            Craft
+                        </button>
+                            <ItemAvatar itemName="Feywood Log" quantity={1} />
+                        </div>
+                        <div>
+                            <textarea cols={120} rows={35} value={this.state.output} />
+                        </div>
                     </div>
                 </div>
             </div>

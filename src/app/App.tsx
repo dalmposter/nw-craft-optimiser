@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import CraftCalc from './craft_calc/CraftCalc';
+import CraftCalc from './craftCalc/CraftCalc';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/footer/Footer';
 

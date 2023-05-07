@@ -15,7 +15,7 @@
 .Panel {
     // The panel should take up a decent amount of the page, but have a nice border
     // Min and max widths for consistent behaviour
-    width: 70%;
+    width: 60%;
     text-align: left;
     max-width: $panelMaxWidth;
     min-width: $panelMinWidth;
@@ -37,4 +37,17 @@
     flex: 0.5;
     min-width: min-content;
     margin-right: 18px;
+}
+
+.no-side-padding
+{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.vertical-align
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
