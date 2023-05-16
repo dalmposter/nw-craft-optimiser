@@ -296,7 +296,7 @@ export class MWItem extends MWObject {
         output.highQualityResults = expectedAttempts * (successChance * highQualityChance);
         if(output.result.canDabHand) {
             output.normalResults *= (1+dabHandChance);
-            output.highQualityResults += (1+dabHandChance);
+            output.highQualityResults *= (1+dabHandChance);
         }
 
         return output;

@@ -1,0 +1,13 @@
+$height: 32px;
+
+.ItemAvatar > .column
+{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.ItemAvatar > .column > *
+{
+    padding: 2px;
+    height: $height;
+}

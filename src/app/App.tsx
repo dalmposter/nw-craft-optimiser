@@ -14,7 +14,6 @@ function App() {
 						<Route path='/' element={<CraftCalc />} />
 					</Routes>
 				</BrowserRouter>
-				<Footer />
 			</div>
 		</div>
 	);

@@ -13,8 +13,8 @@ export default function Footer()
         </div>
         <div>
             <p>
-                {"Neverwinter Craft Calculator created by Dominic Cousins "}
-                <a href="https://github.com/dalmposter">@github/dalmposter</a>
+                {"Neverwinter Craft Calculator created by dalmposter"}
+                { /* <a href="https://github.com/dalmposter">@github/dalmposter</a> */ }
             </p>
         </div>
     </div>

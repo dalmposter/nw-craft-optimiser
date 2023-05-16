@@ -5,11 +5,13 @@ import { Artisan, MWRecipe, Supplement, Tool } from "../../lib/types/recipe";
 import { CommissionItem, MWItem, MWResource } from "../../lib/types/item";
 import { findMwItem, findMwObject } from "../../lib/types/util";
 import { MWMaterial } from "../../lib/types/material";
-import { ItemAvatar } from "../components/avatars/itemAvatar";
+import { ItemAvatar } from "../components/avatars/ItemAvatar";
 import { Checkbox, Dropdown } from "semantic-ui-react";
+import { RecipeAvatar } from "../components/avatars/RecipeAvatar";
+import { RecipeComboAvatar } from "../components/avatars/RecipeComboAvatar";
 
 import "./CraftCalc.scss"
-import { RecipeAvatar } from "../components/avatars/recipeAvatar";
+import Footer from "../components/footer/Footer";
 
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
@@ -20,6 +22,8 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
             input: "",
             availableItems: [],
             isHighQuality: false,
+            output: "",
+            outputList: []
         }
     }
 
@@ -77,7 +81,11 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         let result = item.getOptimalRecipes(highQuality);
         result.then((output) => {
             console.log(MWRecipe.prettyPrintList(output));
-            this.setState({...this.state, output: MWRecipe.prettyPrintList(output)})
+            this.setState({
+                ...this.state,
+                output: MWRecipe.prettyPrintList(output),
+                outputList: output
+            })
         });
     }
 
@@ -90,9 +98,10 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
 
     render() {
         return (
+        <>
         <div className="craft-calc" >
             <div className={`Panel`}>
-                <h1 style={{paddingBottom: "16px"}}>Neverwinter Masterwork Calculator</h1>
+                <h1 style={{padding: "16px"}}>Neverwinter Masterwork Calculator</h1>
                 <div className="flexbox">
                     <div className="panel-content">
                         <RecipeAvatar
@@ -113,18 +122,27 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                             activeItem={this.state.activeItem}
                         />
                         <div>
-                        <button onClick={() => this.craft(this.state.activeItem, this.state.isHighQuality)}>
-                            Craft
-                        </button>
-                            <ItemAvatar itemName="Feywood Log" quantity={1} />
+                            <button onClick={() => this.craft(this.state.activeItem, this.state.isHighQuality)}>
+                                Craft
+                            </button>
                         </div>
                         <div>
-                            <textarea cols={120} rows={35} value={this.state.output} />
+                            { /* <textarea cols={120} rows={35} value={this.state.output} /> */ }
+                            {this.state.outputList.map(
+                                (value, index) => <RecipeComboAvatar
+                                                        rank={index + 1}
+                                                        cost={value[1]}
+                                                        recipe={value[0]}
+                                                        key={`craftCalc-rcAvatar-${index}`}
+                                                    />
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
+		    <Footer />
         </div>
+        </>
         )
     }
 }

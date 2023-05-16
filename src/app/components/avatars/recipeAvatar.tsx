@@ -1,6 +1,6 @@
 import { Checkbox, Dropdown, Grid } from "semantic-ui-react";
 import { MWItem } from "../../../lib/types/item";
-import { ItemAvatar } from "./itemAvatar";
+import { ItemAvatar } from "./ItemAvatar";
 
 interface RecipeAvatarProps {
     availableItems: string[];
@@ -31,7 +31,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
             </Grid.Column>
             <Grid.Column className="no-side-padding">
                 <Checkbox 
-                    label="High Quality?"
+                    label="+1?"
                     className="vertical-align"
                     toggle
                     onChange={(event, data) => {
@@ -53,7 +53,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                 }
             </Grid.Column>
         </Grid>
-        <Grid centered columns={2}>
+        <Grid columns={2}>
             <Grid.Column>
                 {
                     props.activeItem && props.activeItem.recipe.map(

@@ -1,0 +1,12 @@
+@import "./../../constants.scss";
+
+.EntityAvatar > *
+{
+    padding: 2px;
+}
+
+.EntityAvatar > img
+{
+    height: $entityIconHeight;
+    width: $entityIconHeight;
+}
