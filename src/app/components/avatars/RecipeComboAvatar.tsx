@@ -40,7 +40,6 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
             </div>
         </Grid.Column>
         <Grid.Column width={2}>
-            <p>{`${props.recipe.attempts} Attempts`}</p>
             <Button basic color="black" style={{fontSize: "0.8rem"}} className="centered-element">
                 Expand
             </Button>

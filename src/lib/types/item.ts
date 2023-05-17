@@ -255,10 +255,11 @@ export class MWItem extends MWObject {
             expectedAttempts = expectedAttempts / highQualityChance;
         }
         // Adjust multiplier based on quantity to craft and quantity output by the recipe
-        quantityMultiplier = quantityMultiplier * quantity / this.quantity;
+        quantityMultiplier = (quantityMultiplier * quantity) / this.quantity;
+        expectedAttempts = (expectedAttempts * quantity) / this.quantity;
 
         // Start with the supplements needed for final craft
-        output.supplements = [[expectedAttempts * quantity / this.quantity, supplement.name]];
+        output.supplements = [[expectedAttempts, supplement.name]];
         // Go through all the items in the recipe and add up their costs
         for(var recipeEntry of this.recipe) {
             let recipeEntryName = recipeEntry[1]
@@ -292,8 +293,8 @@ export class MWItem extends MWObject {
         // Add meta-data to recipe
         output.attempts = expectedAttempts;
         output.failures = expectedAttempts * (1-successChance);
-        output.normalResults = expectedAttempts * (successChance * (1-highQualityChance));
-        output.highQualityResults = expectedAttempts * (successChance * highQualityChance);
+        output.normalResults = expectedAttempts * (successChance * (1-highQualityChance)) * this.quantity;
+        output.highQualityResults = expectedAttempts * (successChance * highQualityChance) * this.quantity;
         if(output.result.canDabHand) {
             output.normalResults *= (1+dabHandChance);
             output.highQualityResults *= (1+dabHandChance);
