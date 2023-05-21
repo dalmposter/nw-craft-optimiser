@@ -1,4 +1,4 @@
-@import "./../../constants.scss";
+@import "./../../../constants.scss";
 
 .EntityAvatar > *
 {
@@ -9,4 +9,9 @@
 {
     height: $entityIconHeight;
     width: $entityIconHeight;
+}
+
+.EntityAvatar p
+{
+    margin-bottom: 0;
 }

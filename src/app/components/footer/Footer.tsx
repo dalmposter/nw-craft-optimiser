@@ -9,7 +9,9 @@ export default function Footer()
     return(
     <div className="Footer">
         <div>
-            <a href="./nw-craft-optimiser">Home</a>
+            <a href={process.env.PUBLIC_URL}>Home</a>
+            {" . "}
+            <a href={process.env.PUBLIC_URL}>Home</a>
         </div>
         <div>
             <p>

@@ -16,7 +16,7 @@ import { MWMaterial } from "./material"
  * 
  * @raises Error if no matching object is found and assumeResource is false.
  */
-export const findMwObject = (name: string, assumeResource: boolean = true): MWObject => {
+export const findMwObject = (name: string, assumeResource: boolean = true): MWItem | MWResource => {
     if(name.slice(-3) == " +1") {
         name = name.slice(0, -3)
     }
@@ -75,6 +75,10 @@ export const aggregateTupleLists = (target: [number, string][], source: [number,
             target.push(sourceEntry)
         }
     }
+}
+
+export const round = (input: number, dp: number) => {
+    return Math.round(input * (Math.pow(10, dp))) / Math.pow(10, dp)
 }
 
 /** loads all the data files containing resources, recipes, artisans etc. */

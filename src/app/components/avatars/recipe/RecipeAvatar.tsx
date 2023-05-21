@@ -1,18 +1,20 @@
 import { Checkbox, Dropdown, Grid } from "semantic-ui-react";
-import { MWItem } from "../../../lib/types/item";
-import { ItemAvatar } from "./ItemAvatar";
+import { MWItem } from "../../../../lib/types/item";
+import { ItemAvatar } from "../entity/ItemAvatar";
+
+import "./RecipeAvatar.scss"
 
 interface RecipeAvatarProps {
     availableItems: string[];
     activeItem?: MWItem;
-    onChangeItem: ((value: string) => void)
-    updateHighQuality: ((value: boolean) => void)
+    onChangeItem: (value: string) => void;
+    updateHighQuality: (value: boolean) => void;
 }
 
 export function RecipeAvatar (props: RecipeAvatarProps) {
     return (
-    <div className="ItemAvatarProps">
-        <Grid centered columns={3} >
+    <div className="RecipeAvatar">
+        <Grid columns={3} >
             <Grid.Column>
                 <Dropdown
                     placeholder='Select An Item'
@@ -42,19 +44,19 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
             <Grid.Column>
                 {
                     props.activeItem &&
-                    <div className="vertical-align">
-                        <div>
-                            {props.activeItem.profession}
-                        </div>
-                        <div>
-                            {props.activeItem.commission} gold
-                        </div>
+                    <div style={{width: "100%", boxSizing: "border-box"}}>
+                        <p style={{textAlign: "right"}}>
+                            {props.activeItem.unlock}
+                        </p>
+                        <p style={{textAlign: "right"}}>
+                            Commission: {props.activeItem.commission}g
+                        </p>
                     </div>
                 }
             </Grid.Column>
         </Grid>
-        <Grid columns={2}>
-            <Grid.Column>
+        <Grid>
+            <Grid.Column width={12}>
                 {
                     props.activeItem && props.activeItem.recipe.map(
                         (value) => <ItemAvatar
@@ -63,6 +65,25 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                             quantity={value[0]}
                         />
                     )
+                }
+            </Grid.Column>
+            <Grid.Column width={4}>
+                {
+                    props.activeItem &&
+                    <div style={{width: "100%", boxSizing: "border-box"}}>
+                        <p style={{textAlign: "right"}}>
+                            Proficiency: {props.activeItem.proficiency}
+                        </p>
+                        <p style={{textAlign: "right"}}>
+                            Focus: {props.activeItem.focus}
+                        </p>
+                        <p style={{textAlign: "right"}}>
+                            Yield: {props.activeItem.quantity}
+                        </p>
+                        <p style={{textAlign: "right"}}>
+                            Can Dab Hand? {props.activeItem.canDabHand? "Yes" : "No"}
+                        </p>
+                    </div>
                 }
             </Grid.Column>
         </Grid>

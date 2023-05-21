@@ -5,13 +5,13 @@ import { Artisan, MWRecipe, Supplement, Tool } from "../../lib/types/recipe";
 import { CommissionItem, MWItem, MWResource } from "../../lib/types/item";
 import { findMwItem, findMwObject } from "../../lib/types/util";
 import { MWMaterial } from "../../lib/types/material";
-import { ItemAvatar } from "../components/avatars/ItemAvatar";
 import { Checkbox, Dropdown } from "semantic-ui-react";
-import { RecipeAvatar } from "../components/avatars/RecipeAvatar";
-import { RecipeComboAvatar } from "../components/avatars/RecipeComboAvatar";
+import { RecipeAvatar } from "../components/avatars/recipe/RecipeAvatar";
 
 import "./CraftCalc.scss"
 import Footer from "../components/footer/Footer";
+import { RecipeComboAvatar } from "../components/avatars/recipe/RecipeComboAvatar";
+import { RecipeRanking } from "../components/avatars/recipe/RecipeRanking";
 
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
@@ -70,16 +70,19 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                 })
             })
             .then(() => console.debug("All CSV loaded"))
+            // Quick hack to improve performance post-load: craft a couple of items to cache recipe results.
+            .then(() => findMwItem("Silvervine Sceptor").craft())
+            .then(() => findMwItem("Mastered Feathered Ilhuilli").craft())
             .then(() => true);
     }
 
-    craft(item: MWItem | undefined, highQuality: boolean) {
+    async craft(item: MWItem | undefined, highQuality: boolean) {
         if (item === undefined) {
             console.log("craft called with undefined item. Returning")
             return
         }
         let result = item.getOptimalRecipes(highQuality);
-        result.then((output) => {
+        return result.then((output) => {
             console.log(MWRecipe.prettyPrintList(output));
             this.setState({
                 ...this.state,
@@ -107,36 +110,42 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                         <RecipeAvatar
                             availableItems={this.state.availableItems}
                             onChangeItem={(value) => {
-                                this.setState({
-                                    ...this.state,
-                                    input: value,
-                                    activeItem: value != ""? findMwItem(value) : undefined
-                                })}
-                            }
+                                this.setState(
+                                    {
+                                        ...this.state,
+                                        input: value,
+                                        activeItem: value != ""? findMwItem(value) : undefined
+                                    },
+                                    () => this.craft(this.state.activeItem, this.state.isHighQuality)
+                                )
+                            }}
                             updateHighQuality={(value: boolean) => {
-                                this.setState({
-                                    ...this.state,
-                                    isHighQuality: value
-                                })
+                                this.setState(
+                                    {
+                                        ...this.state,
+                                        isHighQuality: value
+                                    },
+                                    () => this.craft(this.state.activeItem, this.state.isHighQuality)
+                                )
                             }}
                             activeItem={this.state.activeItem}
                         />
-                        <div>
-                            <button onClick={() => this.craft(this.state.activeItem, this.state.isHighQuality)}>
-                                Craft
-                            </button>
-                        </div>
-                        <div>
-                            { /* <textarea cols={120} rows={35} value={this.state.output} /> */ }
-                            {this.state.outputList.map(
-                                (value, index) => <RecipeComboAvatar
-                                                        rank={index + 1}
-                                                        cost={value[1]}
-                                                        recipe={value[0]}
-                                                        key={`craftCalc-rcAvatar-${index}`}
-                                                    />
-                            )}
-                        </div>
+                        { this.state.activeItem && 
+                        <p>
+                            {this.state.isHighQuality ?
+                                `Calculated cost to craft 1 ${this.state.activeItem.name} +1`
+                                + " (normal quality results are considered 'waste'). Overall cost will be"
+                                + " for 1 high quality result plus the displayed quantity of normal results."
+                                + " Showing cheapest 10 combinations of Artisan + Tool + Supplement."
+                                :
+                                `Calculated cost to craft 1 ${this.state.activeItem.name} of either quality.`
+                                + " The overall cost will be for 1 item of any quality. On average they will"
+                                + " be obtained in the displayed ratio of normal and high quality versions."
+                                + " Showing cheapest 10 combinations of Artisan + Tool + Supplement."
+                            }
+                        </p>
+                        }
+                        <RecipeRanking orderedRecipes={this.state.outputList} />
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import { Grid } from "semantic-ui-react";
 
-import emptyIcon from "../../../images/EmptyIcon.png"
+import emptyIcon from "../../../../images/EmptyIcon.png"
 
 import "./ItemAvatar.scss"
 

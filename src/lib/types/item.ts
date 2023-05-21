@@ -3,7 +3,7 @@ import { Recipe, PROFESSIONS, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constant
 import { CommissionItemType, MWItemType, MWResourceType } from "./item.types";
 import { MWMaterial } from "./material";
 import { Artisan, Tool, Supplement, MWRecipe } from "./recipe";
-import { findMwObject, aggregateTupleLists } from "./util";
+import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
 import { parse } from "csv-parse/browser/esm";
 
 /**
@@ -28,27 +28,6 @@ export abstract class MWObject {
     /** Load the list of this classes objects from a CSV file. */
     static loadCsv(file_loc: string): void {
         throw new Error("Unimplemented MWObject.loadCsv() static method used.")
-    }
-
-    /**
-     * Craft this item and it's input resource recursively.
-     * 
-     * @param artisan 
-     * @param tool 
-     * @param supplement 
-     * @param quantity 
-     * @param highQuality 
-     * @returns a recipe representing the cost to craft this item.
-     */
-    async craft(
-        artisan?: Artisan,
-        tool?: Tool,
-        supplement?: Supplement,
-        quantity?: number,
-        highQuality?: boolean,
-    ): Promise<MWRecipe> {
-        let output = new MWRecipe(this, quantity, artisan, tool, supplement, highQuality)
-        return output
     }
 }
 
@@ -226,7 +205,7 @@ export class MWItem extends MWObject {
             throw new Error(`MWItem.craft() received ${artisan} ${tool} ${supplement}`
                           + " but they must either all be provided, or none.")
         }
-        let output = await super.craft(artisan, tool, supplement, quantity, highQuality);
+        let output = new MWRecipe(this, quantity, artisan, tool, supplement, highQuality)
 
         let successChance = (artisan.proficiency + tool.proficiency + supplement.proficiency)/this.proficiency;
         let focusDifferential = this.focus - artisan.focus - tool.focus - supplement.focus;
@@ -295,6 +274,10 @@ export class MWItem extends MWObject {
         output.failures = expectedAttempts * (1-successChance);
         output.normalResults = expectedAttempts * (successChance * (1-highQualityChance)) * this.quantity;
         output.highQualityResults = expectedAttempts * (successChance * highQualityChance) * this.quantity;
+        output.totalDabHandChance = dabHandChance;
+        output.totalRecycleChance = recycleChance;
+        output.successChance = successChance;
+        output.highQualityChance = highQualityChance;
         if(output.result.canDabHand) {
             output.normalResults *= (1+dabHandChance);
             output.highQualityResults *= (1+dabHandChance);
@@ -347,7 +330,7 @@ export class MWResource extends MWObject {
         quantity: number = 1,
         highQuality: boolean = false
     ): Promise<MWRecipe> {
-        let output = await super.craft(artisan, tool, supplement, quantity, highQuality);
+        let output = new MWRecipe(this, quantity, artisan, tool, supplement, highQuality)
         // Resources are only gathered. They cannot be failed, dabbed or recycled.
         output.materials = [[quantity, this.name]];
         return output;
@@ -360,12 +343,12 @@ export class CommissionItem {
 
     name: string;
     commissionValue: number;
-    object: MWObject;
+    item: MWItem;
 
     constructor(data: CommissionItemType) {
         this.name = data.name;
         this.commissionValue = Number(data.commissionValue);
-        this.object = findMwObject(this.name);
+        this.item = findMwItem(this.name);
     }
 
     static loadCsv(csvString: string) {
@@ -386,7 +369,7 @@ export class CommissionItem {
     }
 
     async calculateRank(): Promise<[MWRecipe, number]> {
-        let recipe = await this.object.craft();
+        let recipe = await this.item.craft();
         let commissionPerAd = recipe.getCost() / this.commissionValue;
         let rank: [MWRecipe, number] = [recipe, commissionPerAd];
         return rank;

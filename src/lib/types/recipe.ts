@@ -1,6 +1,6 @@
 import { Recipe } from "./constants";
-import { MWObject } from "./item";
-import { findMwObject, aggregateTupleLists } from "./util";
+import { MWItem, MWObject, MWResource } from "./item";
+import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
 import { ToolType, SupplementType, ArtisanType } from "./recipe.types"
 import "stream-browserify"
 import { parse } from "csv-parse/browser/esm";
@@ -64,7 +64,7 @@ export class Supplement {
     focus: number;
     dabHandChance: number;
     recycleChance: number;
-    object: MWObject;
+    object: MWItem | MWResource;
 
     constructor(data: SupplementType) {
         this.highQuality = data.highQuality.toLowerCase() == "true";
@@ -207,7 +207,7 @@ export class Artisan {
  * expected, how many normal or +1 results would be made as a by-product.
  */
 export class MWRecipe {
-    result: MWObject;
+    result: MWItem | MWResource;
     quantity: number;
     artisan?: Artisan;
     tool?: Tool;
@@ -216,13 +216,17 @@ export class MWRecipe {
     supplements: Recipe;
     supplementMaterials: Recipe;
     highQuality: boolean;
-    failures: number;
-    normalResults: number;
-    highQualityResults: number;
-    attempts: number;
+    failures: number = -1;
+    normalResults: number = -1;
+    highQualityResults: number = -1;
+    attempts: number = -1;
+    totalDabHandChance: number = -1;
+    totalRecycleChance: number = -1;
+    successChance: number = -1;
+    highQualityChance: number = -1;
 
     constructor(
-        result: MWObject,
+        result: MWItem | MWResource,
         quantity?: number,
         artisan?: Artisan,
         tool?: Tool,
@@ -238,11 +242,6 @@ export class MWRecipe {
         this.supplements = [];
         this.supplementMaterials = []; //TODO: Replace this with cost of supplements
         this.highQuality = highQuality === undefined? false : highQuality;
-
-        this.failures = -1;
-        this.normalResults = -1;
-        this.highQualityResults = -1;
-        this.attempts = -1;
     }
 
     /** Calculates the total cost of this recipe. */
