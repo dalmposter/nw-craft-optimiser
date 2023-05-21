@@ -27,7 +27,7 @@ export function ItemAvatar (props: ItemAvatarProps) {
         </Grid.Column>
 
         <Grid.Column width={8} className="no-top-padding">
-            <p>{props.itemName}</p>
+            <p style={{height: "fit-content"}}>{props.itemName}</p>
         </Grid.Column>
     </Grid>
     );

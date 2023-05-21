@@ -11,7 +11,7 @@ export default function Footer()
         <div>
             <a href={process.env.PUBLIC_URL}>Home</a>
             {" . "}
-            <a href={process.env.PUBLIC_URL}>Home</a>
+            <a href={`${process.env.PUBLIC_URL}/roadmap`}>Roadmap</a>
         </div>
         <div>
             <p>

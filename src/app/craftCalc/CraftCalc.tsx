@@ -130,20 +130,29 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                             }}
                             activeItem={this.state.activeItem}
                         />
-                        { this.state.activeItem && 
-                        <p>
-                            {this.state.isHighQuality ?
-                                `Calculated cost to craft 1 ${this.state.activeItem.name} +1`
-                                + " (normal quality results are considered 'waste'). Overall cost will be"
-                                + " for 1 high quality result plus the displayed quantity of normal results."
-                                + " Showing cheapest 10 combinations of Artisan + Tool + Supplement."
-                                :
-                                `Calculated cost to craft 1 ${this.state.activeItem.name} of either quality.`
-                                + " The overall cost will be for 1 item of any quality. On average they will"
-                                + " be obtained in the displayed ratio of normal and high quality versions."
-                                + " Showing cheapest 10 combinations of Artisan + Tool + Supplement."
-                            }
-                        </p>
+                        { this.state.activeItem &&
+                        <>
+                            <p>
+                                {this.state.isHighQuality ?
+                                    `Calculated cost to craft 1 ${this.state.activeItem.name} +1`
+                                    + " (normal quality results are considered 'waste'). Overall cost will be"
+                                    + " for 1 high quality result plus the displayed quantity of normal results."
+                                    + " Showing cheapest 10 combinations of Artisan + Tool + Supplement."
+                                    :
+                                    `Calculated cost to craft 1 ${this.state.activeItem.name} of either quality.`
+                                    + " The overall cost will be for 1 item of any quality. On average they will"
+                                    + " be obtained in the displayed ratio of normal and high quality versions."
+                                    + " Showing cheapest 10 combinations of Artisan + Tool + Supplement."
+                                }
+                            </p>
+                            <p>
+                                Note that the expected attempts can be less than 1. This
+                                is correct because if the recipe yield is more than one
+                                then you only need a fraction of a success to obtain 1
+                                item. Likewise if dab hand is in play then you also need
+                                less than 1 success to obtain 1 item.
+                            </p>
+                        </>
                         }
                         <RecipeRanking orderedRecipes={this.state.outputList} />
                     </div>

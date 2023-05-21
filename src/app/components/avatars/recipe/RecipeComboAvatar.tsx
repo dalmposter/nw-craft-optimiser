@@ -26,6 +26,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
 
     return (
     <Grid className="RecipeComboAvatar">
+        <Grid.Row>
         <Grid.Column width={1}>
             <p className="centered-element">
                 {`${props.rank}.`}
@@ -41,13 +42,13 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
             <EntityAvatar size={"medium"} entity={props.recipe.supplement} />
         </Grid.Column>
         <Grid.Column width={2}>
-            <div className="centered-element" style={{width: "100%"}}>
+            <div className="centered-element" style={{width: "100%", textAlign: "center"}}>
                 <p>{`+1: ${Math.round(props.recipe.highQualityResults * 100) / 100}`}</p>
                 <p>{`Normal: ${Math.round(props.recipe.normalResults * 100) / 100}`}</p>
             </div>
         </Grid.Column>
         <Grid.Column width={2}>
-            <div className="centered-element" style={{width: "100%"}}>
+            <div className="centered-element" style={{width: "100%", textAlign: "center"}}>
                 <p>Overall Cost:</p>
                 <p>{`${Math.round(props.cost).toLocaleString("en-US")} AD`}</p>
             </div>
@@ -60,64 +61,93 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                 { props.expanded? "Hide" : "Expand" }
             </Button>
         </Grid.Column>
-        { props.expanded && 
-            <div style={{width: "100%", marginBottom: "64px", marginTop: "32px"}}>
-                <p>
+        </Grid.Row>
+        { props.expanded &&
+        <>
+            <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={7}>
+                    <h4>Combo Stats:</h4>
+                    <p>
+                        {
+                            `${totalProficiency}/${item.proficiency} Proficiency =`
+                        + ` ${round(props.recipe.successChance * 100, 2)}% chance to succeed`
+                        }
+                    </p>
+                    <p>
+                        {
+                            `${totalFocus}/${item.focus} Focus =`
+                        + ` ${round(props.recipe.highQualityChance * 100, 2)}% chance to +1`
+                        }
+                    </p>
+                    <p>
+                        {
+                            `Dab Hand chance: ${round(props.recipe.totalDabHandChance * 100, 2)}%`
+                        + ` | Recycle chance: ${round(props.recipe.totalRecycleChance * 100, 2)}%`
+                        }
+                    </p>
+                </Grid.Column>
+                <Grid.Column width={7}>
+                    <h4>Total Supplements Consumed:</h4>
                     {
-                        `${totalProficiency}/${item.proficiency} Proficiency =`
-                      + ` ${round(props.recipe.successChance * 100, 2)}% chance to succeed`
+                        props.recipe.supplements.map(value => 
+                            <ItemAvatar
+                                quantity={round(value[0], 2)}
+                                itemName={value[1]}
+                            />
+                        )
                     }
-                </p>
-                <p>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={7}>
+                    <h4>Resources Needed to Craft All Ingredients:</h4>
                     {
-                        `${totalFocus}/${item.focus} Focus =`
-                      + ` ${round(props.recipe.highQualityChance * 100, 2)}% chance to +1`
+                        props.recipe.materials.map(value => 
+                            <ItemAvatar
+                                quantity={round(value[0], 2)}
+                                itemName={value[1]}
+                            />
+                        )
                     }
-                </p>
-                <p>
+                </Grid.Column>
+                <Grid.Column width={7}>
+                    <h4>Resources Needed to Craft All Supplements:</h4>
                     {
-                        `Dab Hand chance: ${round(props.recipe.totalDabHandChance * 100, 2)}%`
-                      + ` | Recycle chance: ${round(props.recipe.totalRecycleChance * 100, 2)}%`
+                        props.recipe.supplementMaterials.map(value => 
+                            <ItemAvatar
+                                quantity={round(value[0], 2)}
+                                itemName={value[1]}
+                            />
+                        )
                     }
-                </p>
-                <p style={{marginTop: "32px"}}>
-                    {
-                        `${round(props.recipe.attempts, 2)} Attempts Needed`
-                      + ` | ${round(props.recipe.highQualityResults, 2)} High Quality Results`
-                      + ` | ${round(props.recipe.normalResults, 2)} Normal Results`
-                      + ` | ${round(props.recipe.failures, 2)} Failures`
-                      + ` | ${round(props.recipe.failures * props.recipe.totalRecycleChance, 2)} Recycles`
-                    }
-                </p>
-                <p style={{marginTop: "32px"}}>Total Base Resources Consumed:</p>
-                {
-                    props.recipe.materials.map(value => 
-                        <ItemAvatar
-                            quantity={round(value[0], 2)}
-                            itemName={value[1]}
-                        />
-                    )
-                }
-                <p style={{marginTop: "32px"}}>Total Supplements Consumed:</p>
-                {
-                    props.recipe.supplements.map(value => 
-                        <ItemAvatar
-                            quantity={round(value[0], 2)}
-                            itemName={value[1]}
-                        />
-                    )
-                }
-                <p style={{marginTop: "32px"}}>Material Cost of All Consumed Supplements:</p>
-                {
-                    props.recipe.supplementMaterials.map(value => 
-                        <ItemAvatar
-                            quantity={round(value[0], 2)}
-                            itemName={value[1]}
-                        />
-                    )
-                }
-                <p>Overall Cost: {`${Math.round(props.cost).toLocaleString("en-US")} AD`}</p>
-            </div>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+                <Grid.Column width={1} />
+                <Grid.Column width={9}>
+                    <div style={{width: "100%", textAlign: "left"}}>
+                        <p>
+                            <b>
+                                {`${round(props.recipe.attempts, 2)} Attempts:`}
+                            </b>
+                            {` ${round(props.recipe.highQualityResults, 2)} High Quality Results,`
+                            +` ${round(props.recipe.normalResults, 2)} Normal Results`}
+                        </p>
+                    </div>
+                </Grid.Column>
+                <Grid.Column width={5}>
+                    <div style={{width: "100%", textAlign: "center"}}>
+                        <p>
+                            {`${round(props.recipe.failures, 2)} Failures,`
+                            +` ${round(props.recipe.failures * props.recipe.totalRecycleChance, 2)} Recycles`
+                            }
+                        </p>
+                    </div>
+                </Grid.Column>
+            </Grid.Row>
+        </>
         }
     </Grid>
     )

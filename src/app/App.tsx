@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import CraftCalc from './craftCalc/CraftCalc';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from './components/footer/Footer';
+import Roadmap from './roadmap/Roadmap';
 
 function App() {
 
@@ -12,6 +12,7 @@ function App() {
 				<BrowserRouter basename='/nw-craft-optimiser'>
 					<Routes>
 						<Route path='/' element={<CraftCalc />} />
+						<Route path='/roadmap' element={<Roadmap />} />
 					</Routes>
 				</BrowserRouter>
 			</div>
