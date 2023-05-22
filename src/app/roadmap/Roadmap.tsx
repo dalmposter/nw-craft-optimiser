@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 import Footer from "../components/footer/Footer";
 
-export default class Roadmap extends Component {
+interface RoadmapProps {
+    changePage: (page: string) => void;
+}
+
+export default class Roadmap extends Component<RoadmapProps> {
     render() {
         return (
         <>
@@ -16,16 +20,16 @@ export default class Roadmap extends Component {
                 <h3>Do Soon</h3>
                 <ul>
                     <li>Ability to view resource prices used by the calculator</li>
-                    <li>Source icons for resources, artisans, tool, and supplements</li>
                     <li>Optimise UI for smaller screens</li>
-                </ul>
-                <h3>Do Next</h3>
-                <ul>
-                    <li>Ability to customise the resource prices used by the calculator</li>
                     <li>
                         Allow selecting of which specific Artisans/Tools/Supplements you have
                         and restrict the calculator to using only those when calculating prices
                     </li>
+                </ul>
+                <h3>Do Next</h3>
+                <ul>
+                    <li>Ability to customise the resource prices used by the calculator</li>
+                    <li>Source icons for resources, artisans, tool, and supplements</li>
                     <li>Easier selection of items (filter by class and sharandar vs chult)</li>
                     <li>Optimise UI for phones</li>
                     <li>
@@ -56,7 +60,7 @@ export default class Roadmap extends Component {
                     <li>Add 'wiki' style pages giving information about the resources</li>
                 </ul>
             </div>
-		    <Footer />
+		    <Footer changePage={this.props.changePage} />
         </div>
         </>
         )

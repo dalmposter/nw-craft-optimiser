@@ -12,6 +12,7 @@ import "./CraftCalc.scss"
 import Footer from "../components/footer/Footer";
 import { RecipeComboAvatar } from "../components/avatars/recipe/RecipeComboAvatar";
 import { RecipeRanking } from "../components/avatars/recipe/RecipeRanking";
+import Roadmap from "../roadmap/Roadmap";
 
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
@@ -23,7 +24,8 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
             availableItems: [],
             isHighQuality: false,
             output: "",
-            outputList: []
+            outputList: [],
+            page: "calculator"
         }
     }
 
@@ -100,6 +102,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
     }
 
     render() {
+        if (this.state.page == "roadmap") return <Roadmap changePage={(page: string) => this.setState({...this.state, page: page})} />
         return (
         <>
         <div className="craft-calc" >
@@ -158,7 +161,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                     </div>
                 </div>
             </div>
-		    <Footer />
+		    <Footer changePage={(page: string) => this.setState({...this.state, page: page})} />
         </div>
         </>
         )

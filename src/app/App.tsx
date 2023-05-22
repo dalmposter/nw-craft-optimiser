@@ -12,7 +12,6 @@ function App() {
 				<BrowserRouter basename='/nw-craft-optimiser'>
 					<Routes>
 						<Route path='/' element={<CraftCalc />} />
-						<Route path='/roadmap' element={<Roadmap />} />
 					</Routes>
 				</BrowserRouter>
 			</div>

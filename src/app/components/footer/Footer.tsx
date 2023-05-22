@@ -1,17 +1,21 @@
 import React from "react";
 import "./Footer.scss";
 
+interface FooterProps {
+    changePage: (page: string) => void;
+}
+
 /**
  * Footer for every page. Contains links and info
  */
-export default function Footer()
+export default function Footer(props: FooterProps)
 {
     return(
     <div className="Footer">
         <div>
-            <a href={process.env.PUBLIC_URL}>Home</a>
+            <a onClick={() => props.changePage("calculator")} style={{cursor: "pointer"}}>Home</a>
             {" . "}
-            <a href={`${process.env.PUBLIC_URL}/roadmap`}>Roadmap</a>
+            <a onClick={() => props.changePage("roadmap")} style={{cursor: "pointer"}}>Roadmap</a>
         </div>
         <div>
             <p>

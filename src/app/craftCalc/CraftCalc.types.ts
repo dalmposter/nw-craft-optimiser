@@ -13,4 +13,5 @@ export interface CraftCalcState {
     isHighQuality: boolean;
     output?: string;
     outputList: [MWRecipe, number][];
+    page: string;
 }
