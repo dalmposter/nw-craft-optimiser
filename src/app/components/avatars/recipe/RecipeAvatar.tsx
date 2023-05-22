@@ -14,8 +14,8 @@ interface RecipeAvatarProps {
 export function RecipeAvatar (props: RecipeAvatarProps) {
     return (
     <div className="RecipeAvatar">
-        <Grid columns={3} >
-            <Grid.Column>
+        <Grid>
+            <Grid.Column width={7}>
                 <Dropdown
                     placeholder='Select An Item'
                     fluid
@@ -31,7 +31,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     }}
                 />
             </Grid.Column>
-            <Grid.Column className="no-side-padding">
+            <Grid.Column className="no-side-padding" width={3}>
                 <Checkbox 
                     label="+1?"
                     className="vertical-align"
@@ -41,7 +41,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     }}
                 />
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={6}>
                 {
                     props.activeItem &&
                     <div style={{width: "100%", boxSizing: "border-box"}}>
