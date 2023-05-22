@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.scss";
 
 interface FooterProps {
-    changePage: (page: string) => void;
+    setPage: (page: string) => void;
 }
 
 /**
@@ -13,9 +13,9 @@ export default function Footer(props: FooterProps)
     return(
     <div className="Footer">
         <div>
-            <a onClick={() => props.changePage("calculator")} style={{cursor: "pointer"}}>Home</a>
+            <a onClick={() => props.setPage("calculator")} style={{cursor: "pointer"}}>Home</a>
             {" . "}
-            <a onClick={() => props.changePage("roadmap")} style={{cursor: "pointer"}}>Roadmap</a>
+            <a onClick={() => props.setPage("roadmap")} style={{cursor: "pointer"}}>Roadmap</a>
         </div>
         <div>
             <p>

@@ -3,7 +3,6 @@ import { MWRecipe } from "../../lib/types/recipe";
 
 
 export interface CraftCalcProps {
-
 }
 
 export interface CraftCalcState {
@@ -13,5 +12,4 @@ export interface CraftCalcState {
     isHighQuality: boolean;
     output?: string;
     outputList: [MWRecipe, number][];
-    page: string;
 }
