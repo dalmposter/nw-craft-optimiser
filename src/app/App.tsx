@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.scss';
 import CraftCalc from './craftCalc/CraftCalc';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Roadmap from './roadmap/Roadmap';
 import Footer from './components/footer/Footer';
+import SettingsPage from './settingsPage/SettingsPage';
 
 function App() {
 
@@ -14,7 +14,8 @@ function App() {
 			<div id="page-wrapper">
 				<div id="panel-wrapper">
 					{ page === "calculator" && <CraftCalc /> }
-					{ page === "roadmap" && <Roadmap />}
+					{ page === "roadmap" && <Roadmap /> }
+					{ page === "settings" && <SettingsPage /> }
 					<Footer setPage={setPage} />
 				</div>
 			</div>

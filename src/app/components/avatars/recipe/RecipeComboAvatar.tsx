@@ -24,6 +24,8 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
     let totalProficiency = artisan.proficiency + tool.proficiency + supplement.proficiency;
     let totalFocus = artisan.focus + tool.focus + supplement.focus;
 
+    let formattedCost = Math.round(props.cost).toLocaleString("en-US");
+
     return (
     <Grid className="RecipeComboAvatar">
         <Grid.Row>
@@ -50,7 +52,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
         <Grid.Column width={2}>
             <div className="centered-element" style={{width: "100%", textAlign: "center"}}>
                 <p>Overall Cost:</p>
-                <p>{`${Math.round(props.cost).toLocaleString("en-US")} AD`}</p>
+                <p>{`${formattedCost} AD`}</p>
             </div>
         </Grid.Column>
         <Grid.Column width={2}>
@@ -145,6 +147,12 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                             }
                         </p>
                     </div>
+                </Grid.Column>
+            </Grid.Row>
+            <Grid.Row className="no-top-padding">
+                <Grid.Column width={1} />
+                <Grid.Column width={14}>
+                    <p style={{marginBottom: "32px"}}><b>Total Cost: {formattedCost} AD</b></p>
                 </Grid.Column>
             </Grid.Row>
         </>
