@@ -5,6 +5,7 @@ import { useState } from "react";
 
 interface RecipeRankingProps extends React.HTMLAttributes<HTMLDivElement> {
     orderedRecipes: [MWRecipe, number][];
+    onItemClick: (name: string) => void;
 }
 
 export function RecipeRanking (props: RecipeRankingProps) {
@@ -23,6 +24,7 @@ export function RecipeRanking (props: RecipeRankingProps) {
                     onExpand={(value: boolean) => {
                         value? setExpandedCombo(index + 1) : setExpandedCombo(0)
                     }}
+                    onItemClick={props.onItemClick}
                 />
             }
         )}

@@ -5,6 +5,9 @@ export interface ToolType {
     focus: string;
     dabHandChance: string;
     recycleChance: string;
+    virtuosoChance: string;
+    miracleWorkerChance: string;
+    passionProjectChance: string;
 }
 
 export interface SupplementType {
@@ -14,6 +17,9 @@ export interface SupplementType {
     focus: string;
     dabHandChance: string;
     recycleChance: string;
+    virtuosoChance: string;
+    miracleWorkerChance: string;
+    passionProjectChance: string;
 }
 
 export interface ArtisanType {
@@ -22,6 +28,11 @@ export interface ArtisanType {
     rarity: string
     dabHandChance: string;
     recycleChance: string;
+    virtuosoChance: string;
+    miracleWorkerChance: string;
+    passionProjectChance: string;
     proficiency: string;
     focus: string;
+    commissionModifier: string;
+    speedModifier: string;
 }

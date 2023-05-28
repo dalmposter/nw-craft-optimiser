@@ -29,6 +29,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     onChange={(event, data) => {
                         props.onChangeItem(data.value? data.value as string : "")
                     }}
+                    value={props.activeItem?.name}
                 />
             </Grid.Column>
             <Grid.Column className="no-side-padding" width={3}>
@@ -63,6 +64,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                             key={`iAvatar-${value[1]}-${value[0]}`}
                             itemName={value[1]}
                             quantity={value[0]}
+                            onClick={props.onChangeItem}
                         />
                     )
                 }

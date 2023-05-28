@@ -110,14 +110,18 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                     <RecipeAvatar
                         availableItems={this.state.availableItems}
                         onChangeItem={(value) => {
-                            this.setState(
-                                {
-                                    ...this.state,
-                                    input: value,
-                                    activeItem: value != ""? findMwItem(value) : undefined
-                                },
-                                () => this.craft(this.state.activeItem, this.state.isHighQuality)
-                            )
+                            try {
+                                this.setState(
+                                    {
+                                        ...this.state,
+                                        input: value,
+                                        activeItem: value != ""? findMwItem(value) : undefined
+                                    },
+                                    () => this.craft(this.state.activeItem, this.state.isHighQuality)
+                                )
+                            } catch {
+                                console.log("User clicked a resource. Not updating active item.")
+                            }
                         }}
                         updateHighQuality={(value: boolean) => {
                             this.setState(
@@ -154,7 +158,19 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                         </p>
                     </>
                     }
-                    <RecipeRanking orderedRecipes={this.state.outputList} />
+                    <RecipeRanking
+                        orderedRecipes={this.state.outputList}
+                        onItemClick={(name: string) => {
+                            try {
+                                this.setState({
+                                    ...this.state,
+                                    activeItem: findMwItem(name)
+                                })
+                            } catch {
+                                console.log("User clicked on a resource. Not updating active item.")
+                            }
+                        }}
+                    />
                 </div>
             </div>
         </div>

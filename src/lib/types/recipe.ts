@@ -14,6 +14,9 @@ export class Tool {
     focus: number;
     dabHandChance: number;
     recycleChance: number;
+    virtuosoChance: number;
+    miracleWorkerChance: number;
+    passionProjectChance: number;
 
     constructor(data: ToolType) {
         this.profession = data.profession;
@@ -23,6 +26,19 @@ export class Tool {
         // Extract the special ability for this tool (if any)
         this.dabHandChance = Number(data.dabHandChance);
         this.recycleChance = Number(data.recycleChance);
+        this.virtuosoChance = Number(data.virtuosoChance);
+        this.miracleWorkerChance = Number(data.miracleWorkerChance);
+        this.passionProjectChance = Number(data.passionProjectChance);
+    }
+
+    getSkill(): [string, number] {
+        if(this.dabHandChance > 0) return ["Dab Hand", this.dabHandChance]
+        if(this.recycleChance > 0) return ["Recycle", this.recycleChance]
+        if(this.virtuosoChance > 0) return ["Virtuoso", this.virtuosoChance]
+        if(this.miracleWorkerChance > 0) return ["Miracle Worker", this.miracleWorkerChance]
+        if(this.passionProjectChance > 0) return ["Passion Project", this.passionProjectChance]
+
+        return ["None", 0]
     }
 
     static loadCsv(csvString: string) {
@@ -64,6 +80,9 @@ export class Supplement {
     focus: number;
     dabHandChance: number;
     recycleChance: number;
+    virtuosoChance: number;
+    miracleWorkerChance: number;
+    passionProjectChance: number;
     object: MWItem | MWResource;
 
     constructor(data: SupplementType) {
@@ -73,7 +92,20 @@ export class Supplement {
         this.focus = Number(data.focus);
         this.dabHandChance = Number(data.dabHandChance);
         this.recycleChance = Number(data.recycleChance);
+        this.virtuosoChance = Number(data.virtuosoChance);
+        this.miracleWorkerChance = Number(data.miracleWorkerChance);
+        this.passionProjectChance = Number(data.passionProjectChance);
         this.object = findMwObject(this.name);
+    }
+
+    getSkill(): [string, number] {
+        if(this.dabHandChance > 0) return ["Dab Hand", this.dabHandChance]
+        if(this.recycleChance > 0) return ["Recycle", this.recycleChance]
+        if(this.virtuosoChance > 0) return ["Virtuoso", this.virtuosoChance]
+        if(this.miracleWorkerChance > 0) return ["Miracle Worker", this.miracleWorkerChance]
+        if(this.passionProjectChance > 0) return ["Passion Project", this.passionProjectChance]
+
+        return ["None", 0]
     }
 
     static loadCsv(csvString: string) {
@@ -147,8 +179,13 @@ export class Artisan {
     rarity: string
     dabHandChance: number;
     recycleChance: number;
+    virtuosoChance: number;
+    miracleWorkerChance: number;
+    passionProjectChance: number;
     proficiency: number;
     focus: number;
+    commissionModifier: number;
+    speedModifier: number;
 
     constructor(data: ArtisanType) {
         this.profession = data.profession;
@@ -156,8 +193,23 @@ export class Artisan {
         this.rarity = data.rarity;
         this.dabHandChance = Number(data.dabHandChance);
         this.recycleChance = Number(data.recycleChance);
+        this.virtuosoChance = Number(data.virtuosoChance);
+        this.miracleWorkerChance = Number(data.miracleWorkerChance);
+        this.passionProjectChance = Number(data.passionProjectChance);
         this.proficiency = Number(data.proficiency);
         this.focus = Number(data.focus);
+        this.commissionModifier = Number(data.commissionModifier)
+        this.speedModifier = Number(data.speedModifier)
+    }
+
+    getSkill(): [string, number] {
+        if(this.dabHandChance > 0) return ["Dab Hand", this.dabHandChance]
+        if(this.recycleChance > 0) return ["Recycle", this.recycleChance]
+        if(this.virtuosoChance > 0) return ["Virtuoso", this.virtuosoChance]
+        if(this.miracleWorkerChance > 0) return ["Miracle Worker", this.miracleWorkerChance]
+        if(this.passionProjectChance > 0) return ["Passion Project", this.passionProjectChance]
+
+        return ["None", 0]
     }
 
     static loadCsv(csvString: string) {

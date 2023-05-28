@@ -13,6 +13,7 @@ interface RecipeComboAvatarPros {
     recipe: MWRecipe;
     expanded: boolean;
     onExpand: (value: boolean) => void;
+    onItemClick: (name: string) => void;
 }
 
 export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
@@ -96,6 +97,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                             <ItemAvatar
                                 quantity={round(value[0], 2)}
                                 itemName={value[1]}
+                                onClick={props.onItemClick}
                             />
                         )
                     }
@@ -110,6 +112,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                             <ItemAvatar
                                 quantity={round(value[0], 2)}
                                 itemName={value[1]}
+                                onClick={props.onItemClick}
                             />
                         )
                     }
@@ -121,6 +124,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                             <ItemAvatar
                                 quantity={round(value[0], 2)}
                                 itemName={value[1]}
+                                onClick={props.onItemClick}
                             />
                         )
                     }
