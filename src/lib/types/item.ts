@@ -66,6 +66,11 @@ export class MWItem extends MWObject {
         this.lock = new Lock()
     }
 
+    clearCalculations() {
+        this.optimalRecipes = undefined;
+        this.hqOptimalRecipes = undefined;
+    }
+
     static loadCsv(csvString: string) {
         MWItem.OBJECTS = new Map<string, MWItem>();
 

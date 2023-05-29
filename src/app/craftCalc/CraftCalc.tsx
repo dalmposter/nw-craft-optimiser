@@ -17,15 +17,18 @@ import Roadmap from "../roadmap/Roadmap";
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
 
+    // TODO: Move some state into App class
+    INITIAL_STATE = {
+        input: "",
+        availableItems: [],
+        isHighQuality: false,
+        output: "",
+        outputList: []
+    }
+
     constructor(props: CraftCalcProps) {
         super(props);
-        this.state = {
-            input: "",
-            availableItems: [],
-            isHighQuality: false,
-            output: "",
-            outputList: []
-        }
+        this.state = this.INITIAL_STATE;
     }
 
     async fetchCsvs(): Promise<boolean> {
@@ -91,6 +94,12 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                 outputList: output
             })
         });
+    }
+
+    resetCalculations() {
+        MWItem.OBJECTS.forEach(mwObj => mwObj.clearCalculations())
+        MWMaterial.OBJECTS.forEach(mwObj => mwObj.clearCalculations())
+        this.setState(this.INITIAL_STATE)
     }
 
     componentDidMount() {
