@@ -6,7 +6,7 @@ interface SettingsPageProps {
     resetCalculations: () => void;
 }
 
-export default class SettingsPage extends Component {
+export default class SettingsPage extends Component<SettingsPageProps> {
     render() {
         return (
         <>
@@ -22,6 +22,7 @@ export default class SettingsPage extends Component {
                             let newPrice = Number(event.target.value)
                             console.log(`Set price of ${resource.name} to ${newPrice}`)
                             findMwObject(resource.name).price = newPrice
+                            this.props.resetCalculations()
                         }}
                     />
                 </div>

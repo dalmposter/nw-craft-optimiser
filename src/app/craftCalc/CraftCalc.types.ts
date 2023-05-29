@@ -3,12 +3,12 @@ import { MWRecipe } from "../../lib/types/recipe";
 
 
 export interface CraftCalcProps {
+    availableItems: string[];
 }
 
 export interface CraftCalcState {
     input: string;
     activeItem?: MWItem;
-    availableItems: string[];
     isHighQuality: boolean;
     output?: string;
     outputList: [MWRecipe, number][];
