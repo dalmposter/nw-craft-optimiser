@@ -23,49 +23,50 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
         [skillName, skillChance] = props.entity?.getSkill();
     }
 
-    return (
-    <div className="EntityAvatar" style={{textAlign: "center"}}>
-        { props.entity ?
+    if(props.entity) {
+        return (
+        <div className="EntityAvatar" style={{textAlign: "center"}}>
             <Popup
+                className="EntityIcon"
                 trigger={<img src={props.itemIcon? props.itemIcon : emptyIcon} />}
                 flowing hoverable
             >
-                <h4>
-                    {props.entity.name}
-                    {props.entity instanceof Artisan ? ` [${props.entity.rarity}]` : ""}
-                </h4>
-                {props.entity.proficiency > 0 &&
-                    <p>+{props.entity.proficiency} proficiency</p>
-                }
-                {props.entity.focus > 0 &&
-                    <p>+{props.entity.focus} focus</p>
-                }
-                {props.entity instanceof Artisan &&
-                <>
-                    <p>
-                        {props.entity.speedModifier >= 0? "+" : ""}
-                        {props.entity.speedModifier * 100}% speed
-                    </p>
-                    <p>
-                        {props.entity.commissionModifier >= 0? "+" : ""}
-                        {props.entity.commissionModifier * 100}% comission
-                    </p>
-                </>
-                }
-                {skillName != "None" &&
-                    <p>Special Skill: {skillName} ({skillChance * 100}%)</p>
-                }
+                <div>
+                    <h4>
+                        {props.entity.name}
+                        {props.entity instanceof Artisan ? ` [${props.entity.rarity}]` : ""}
+                    </h4>
+                    {props.entity.proficiency > 0 &&
+                        <p>+{props.entity.proficiency} proficiency</p>
+                    }
+                    {props.entity.focus > 0 &&
+                        <p>+{props.entity.focus} focus</p>
+                    }
+                    {props.entity instanceof Artisan &&
+                    <>
+                        <p>
+                            {props.entity.speedModifier >= 0? "+" : ""}
+                            {props.entity.speedModifier * 100}% speed
+                        </p>
+                        <p>
+                            {props.entity.commissionModifier >= 0? "+" : ""}
+                            {props.entity.commissionModifier * 100}% comission
+                        </p>
+                    </>
+                    }
+                    {skillName != "None" &&
+                        <p>Special Skill: {skillName} ({skillChance * 100}%)</p>
+                    }
+                </div>
             </Popup>
-            :
-            <img src={props.itemIcon? props.itemIcon : emptyIcon} />
-        }
-        { props.entity &&
-            <div>
+            <div className="EntityAvatar" style={{textAlign: "center"}}>
                 <p>{props.entity.name}</p>
             </div>
-        }
-    </div>
-    );
+        </div>
+        )
+    } else {
+        return <img src={props.itemIcon? props.itemIcon : emptyIcon} />
+    }
 }
 
 export function EntityAvatarLarge (props: EntityAvatarProps) {

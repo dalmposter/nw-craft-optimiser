@@ -1,42 +1,54 @@
 import { Grid } from "semantic-ui-react";
-
-import emptyIcon from "../../../../images/EmptyIcon.png"
+import { MWItem, MWResource } from "../../../../lib/types/item";
+import React from "react";
+import { ItemIcon, ItemIconProps, ResourceIcon, ResourceIconProps } from "./ItemIcon";
 
 import "./ItemAvatar.scss"
 
 interface ItemAvatarProps {
     quantity?: number;
-    itemName: string;
+    item: MWItem | MWResource;
     itemIcon?: any;
     onClick: (name: string) => void;
 }
 
 export function ItemAvatar (props: ItemAvatarProps) {
     return (
-    <Grid className="ItemAvatar">
-        {props.quantity &&  <Grid.Column
-                                width={4}
-                                textAlign="right"
-                                className="no-top-padding"
-                            >
-                                <p>{props.quantity}x</p>
-                            </Grid.Column>
+    <Grid className={`ItemAvatar ${props.item instanceof MWResource}`}>
+        {props.quantity &&  
+            <Grid.Column
+                width={4}
+                textAlign="right"
+                className="no-top-padding"
+            >
+                <p>{props.quantity}x</p>
+            </Grid.Column>
         }
 
         <Grid.Column className="no-top-padding width-fit-content" >
-            <img
-                src={props.itemIcon? props.itemIcon : emptyIcon}
-                onClick={() => props.onClick(props.itemName)}
-            />
+            { props.item instanceof MWResource
+                ?
+                <ResourceIcon {...props as ResourceIconProps} />
+                :
+                <ItemIcon {...props as ItemIconProps} />
+            }
         </Grid.Column>
 
         <Grid.Column width={8} className="no-top-padding">
-            <p
-                style={{height: "fit-content"}}
-                onClick={() => props.onClick(props.itemName)}
-            >
-                {props.itemName}
-            </p>
+            { props.item instanceof MWResource ?
+                <p
+                    style={{height: "fit-content"}}
+                >
+                    {props.item.name}
+                </p>
+                :
+                <p
+                    style={{height: "fit-content", cursor: "pointer"}}
+                    onClick={() => props.onClick(props.item.name)}
+                >
+                    {props.item.name}
+                </p>
+            }
         </Grid.Column>
     </Grid>
     );

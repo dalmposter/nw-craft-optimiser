@@ -14,12 +14,12 @@ import { parse } from "csv-parse/browser/esm";
 export abstract class MWObject {
     static OBJECTS: Map<string, MWObject> = new Map<string, MWObject>()
 
-    name?: string;
+    name: string;
     canDabHand: boolean;
     //TODO: Remove price from MWObject and put only on MWResource
     price?: number;
 
-    constructor(name?: string, price?: number) {
+    constructor(name: string, price?: number) {
         this.name = name;
         this.price = price;
         this.canDabHand = false;
@@ -37,8 +37,6 @@ export abstract class MWObject {
 export class MWItem extends MWObject {
     static OBJECTS: Map<string, MWItem> = new Map<string, MWItem>();
 
-    name: string;
-
     quantity: number;
     proficiency: number;
     focus: number;
@@ -54,8 +52,8 @@ export class MWItem extends MWObject {
     private lock: Lock;
 
     constructor(data: MWItemType) {
-        super();
-        this.name = data.name;
+        let name = data.name;
+        super(name);
         this.quantity = Number(data.quantity);
         this.canDabHand = data.canDabHand.toLowerCase() == "true";
         this.proficiency = Number(data.proficiency);
@@ -177,6 +175,11 @@ export class MWItem extends MWObject {
         }
     }
 
+    async getPrice(highQuality: boolean = false) {
+        let optimalRecipe = await this.getOptimalRecipe(highQuality)
+        return optimalRecipe.getCost()
+    }
+
     /**
      * Craft a given quantity of this item using the given artisan, tool and supplement.
      * 
@@ -292,18 +295,19 @@ export class MWResource extends MWObject {
     static OBJECTS: Map<string, MWResource> = new Map<string, MWResource>();
 
     price: number;
-    name: string;
+    source: string;
 
     constructor(data?: MWResourceType, name?: string) {
-        super();
+        super("N/A");
         this.price = 0;
-        this.name = "N/A";
+        this.source = "-";
         if(name != undefined) {
             this.name = name;
         }
         if(data != undefined) {
             this.name = data.name;
             this.price = Number(data.price);
+            this.source = data.source
         }
     }
 

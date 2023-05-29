@@ -4,7 +4,7 @@ import "./RecipeComboAvatar.scss";
 import { MWRecipe } from "../../../../lib/types/recipe";
 import { EntityAvatar } from "../entity/EntityAvatar";
 import { MWItem } from "../../../../lib/types/item";
-import { round } from "../../../../lib/types/util";
+import { findMwObject, round } from "../../../../lib/types/util";
 import { ItemAvatar } from "../entity/ItemAvatar";
 
 interface RecipeComboAvatarPros {
@@ -96,7 +96,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                         props.recipe.supplements.map(value => 
                             <ItemAvatar
                                 quantity={round(value[0], 2)}
-                                itemName={value[1]}
+                                item={findMwObject(value[1])}
                                 onClick={props.onItemClick}
                             />
                         )
@@ -111,7 +111,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                         props.recipe.materials.map(value => 
                             <ItemAvatar
                                 quantity={round(value[0], 2)}
-                                itemName={value[1]}
+                                item={findMwObject(value[1])}
                                 onClick={props.onItemClick}
                             />
                         )
@@ -123,7 +123,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                         props.recipe.supplementMaterials.map(value => 
                             <ItemAvatar
                                 quantity={round(value[0], 2)}
-                                itemName={value[1]}
+                                item={findMwObject(value[1])}
                                 onClick={props.onItemClick}
                             />
                         )

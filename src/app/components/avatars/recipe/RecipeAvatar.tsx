@@ -3,6 +3,7 @@ import { MWItem } from "../../../../lib/types/item";
 import { ItemAvatar } from "../entity/ItemAvatar";
 
 import "./RecipeAvatar.scss"
+import { findMwObject } from "../../../../lib/types/util";
 
 interface RecipeAvatarProps {
     availableItems: string[];
@@ -62,7 +63,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     props.activeItem && props.activeItem.recipe.map(
                         (value) => <ItemAvatar
                             key={`iAvatar-${value[1]}-${value[0]}`}
-                            itemName={value[1]}
+                            item={findMwObject(value[1])}
                             quantity={value[0]}
                             onClick={props.onChangeItem}
                         />

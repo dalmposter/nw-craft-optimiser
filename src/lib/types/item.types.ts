@@ -15,6 +15,7 @@ export interface MWItemType {
 export interface MWResourceType {
     price: string;
     name: string;
+    source: string;
 }
 
 export interface CommissionItemType {
