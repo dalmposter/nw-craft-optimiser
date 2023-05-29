@@ -1,215 +1,219 @@
-name|price
-Aberrant Blood|0
-Aberrant Bone|0
-Aberrant Hide|0
-Aberrant Sinew|0
-Adamantine Ore|0
-Adder|0
-Aegwyrt|0
-Alkali|8000.0
-Allosaur Fang|0
-Animal Bone|0
-Animal Hide|0
-Animal Sinew|0
-Auroch Hide|0
-Ash Log|0
-Azurite|1000.0
-Basilisk Bone|0
-Basilisk Hide|0
-Batiri Prism|5000.0
-Bear Hide|0
-Bear Sinew|0
-Bearberry|0
-Beast Blood|0
-Beast Fang|0
-Beast Horn|0
-Beehive Chip|0
-Belladonna|0
-Blackiron Ore|0
-Blacklip Oyster|0
-Brimstone|0
-Brilliant Pinion|900.0
-Bronzewood Log|640.0
-Brown Scorpion|0
-Calf Skin|0
-Chalk|0
-Chamomile|0
-Chestnut Log|0
-Chultan Spring Water|800.0
-Chultan Tea Leaves|7000.0
-Chultan Wootz Ore|560.0
-Cinnabar|0
-Cobalt Ore|0
-Chultan Wootz|0
-Chultan Wootz Ingot|0
-Coke|3500.0
-Copper Ore|0
-Copper Sand|0
-Corpse Flower Thorn|1.0
-Cotton Boll|0
-Cupronickel Ore|0
-Cupronickel Sand|0
-Darksteel Sand|0
-Death Cap|0
-Deep Brimstone|0
-Deepwood Sap|0
-Deer Antler|0
-Deer Sinew|0
-Deer Skin|0
-Demon's Trumpet|0
-Deva's Trumpet|0
-Devil Bone|0
-Dinosaur Hide|0
-Displacer Beast's Whisker|60000.0
-Dragon Turtle Scales|0
-Drake Hide|0
-Drake Horn|0
-Drake Sinew|0
-Dream Moss|0
-Dryad Hair|5000.0
-Dubbin|0
-Dyer's Broom|2000.0
-Electrum Ore|0
-Electrum Sand|0
-Elm Log|0
-Fartouched Residuum|0
-Feywood Log|400.0
-Fieldstone|2500.0
-Fish Bones|0
-Flax|0
-Fleece|0
-Foraged Cocoon|0
-Fowl Feather|0
-Gold Sand|0
-Hardened Blight Bark|250.0
-Iron Ore|0
-Iron Rust|2200.0
-Iron Sand|0
-Jute|0
-Lakh Resin|9500.0
-Lichstone|0
-Limestone|0
-Lion Hide|0
-Livewood Sap|0
-Madder Root|2000.0
-Mainspring|0
-Maker's Bounty|2000.0
-Maker's Calm|0
-Maker's Focus|0
-Maker's Haste|0
-Maker's Keep|0.0
-Maker's Quick|0
-Manticore Hide|0
-Manticore Mane|0
-Maple Log|0
-Maple Sap|0
-Marble|3000.0
-Menga Leaves|0
-Mica|0
-Mithral Ore|0
-Mithral Sand|0
-Mote of Soulfire|0
-Mudstone|0
-Myrrh Branch|0
-Mysterious Bone|0
-Natron|0
-Nerium|0
-Nettle|0
-Nightleaf Tea|0
-Nightshade|0
-Oak Log|0
-Obsidian|16000.0
-Palm Wax|0
-Parsnip|0
-Pennyroyal|0
-Philosopher's Bounty|9000.0
-Philosopher's Calm|0
-Philosopher's Focus|0
-Philosopher's Haste|0
-Philosopher's Keep|2250.0
-Philosopher's Quick|0
-Pine Log|0
-Polar Bear Skin|3500.0
-Potash|5000.0
-Propolis|0
-Purple Beauty|0
-Putnisite|0
-Questionable Piece of Leather|8000.0
-Raw Amethyst|0
-Raw Aquamarine|0
-Raw Black Opal|0
-Raw Blood Ruby|0
-Raw Emerald|0
-Raw Peridot|0
-Raw Sapphire|0
-Red Rouge|9000.0
-Regalis Ore|0
-Regalis Sand|0
-Relic Iron Ingot|0
-Rhubarb|0
-River Trout|0
-Rock Salt|0
-Salt-Marsh Crystal|0
-Samarachan Jute|450.0
-Sandstone|0
-Senna Leaves|0
-Shade Leaves|250.0
-Shadowdemon's Eyes|550.0
-Shard of Dawn's Light|55000.0
-Shark Oil|0
-Shattered Snowflakes|1400.0
-Shimmerweed|0
-Shed Marblehorn|0
-Silkworm Cocoon|500.0
-Siltstone|0
-Silver Ore|0
-Silver Sand|0
-Silvertongue Moss|3500.0
-Slate|0
-Soot|0
-Soulfire Flies|1000.0
-Spider Silk|0
-Spring Water|0
-Sugar Beet|0
-Sweetgale|0
-Sword Coast Tea Leaves|0
-Sword Flax|0
-Tanner's Liquor|12000.0
-Tarantula|0
-Teak|0
-Tear of Ubtao|0
-Terebinth|2500.0
-Tin Ingot|0
-Tin Ore|0
-Tincal|10500.0
-Tinker's Bounty|0.0
-Tinker's Calm|0
-Tinker's Focus|0
-Tinker's Haste|0
-Tinker's Keep|0.0
-Tinker's Quick|0
-Titania|7000.0
-Toadstool|0
-Troll's Earwax Resin|2000.0
-Twisted Toadstool|0
-Volcanic Salt|0
-Walnut Log|0
-Weeping Willow's Tears|4400.0
-Well Water|0
-Whitelip Oyster|0
-Wild Mint|0
-Wintergreen Sprig|0
-Woad|2000.0
-Wolf Hide|0
-Wolf Sinew|0
-Wolfsbane|0
-Woodlily|0
-Wootz Steel Ore|0
-Worm Blood|0
-Worm Tooth|0
-Wyllowwood Lemon|0
-Wyllowwood Walnut|0
-Yew Log|0
-Zinc Ore|0
-Wintergreen Balm|0.0
-Wintergreen Tea|0.0
+name|price|source
+Aberrant Blood|0.0|Gathering
+Aberrant Bone|0.0|Gathering
+Aberrant Hide|0.0|Gathering
+Aberrant Sinew|0.0|Gathering
+Adamantine Ore|0.0|Gathering
+Adder|0.0|Gathering
+Aegwyrt|0.0|Gathering
+Alkali|4800.0|GH Vendor
+Allosaur Fang|6000.0|Allosaurs in Chult
+Animal Bone|0.0|Gathering
+Animal Hide|0.0|Gathering
+Animal Sinew|0.0|Gathering
+Auroch Hide|0.0|Gathering
+Ash Log|0.0|Gathering
+Azurite|1000.0|GH Vendor
+Basilisk Bone|0.0|Gathering
+Basilisk Hide|0.0|Gathering
+Batiri Prism|1100.0|Batiris in Chult
+Bear Hide|0.0|Gathering
+Bear Sinew|0.0|Gathering
+Bearberry|0.0|Gathering
+Beast Blood|0.0|Gathering
+Beast Fang|0.0|Gathering
+Beast Horn|0.0|Gathering
+Beehive Chip|0.0|Gathering
+Belladonna|0.0|Gathering
+Blackiron Ore|0.0|Gathering
+Blacklip Oyster|0.0|Gathering
+Brimstone|0.0|Gathering
+Brilliant Pinion|300.0|Explorer Chart: Omu
+Bronzewood Log|270.0|Explorer Chart: Soshenstar
+Brown Scorpion|0.0|Gathering
+Calf Skin|1000.0|Mysterious Merchant
+Chalk|0.0|Gathering
+Chamomile|0.0|Gathering
+Chestnut Log|0.0|Gathering
+Chultan Spring Water|1000.0|Explorer Chart: Omu
+Chultan Tea Leaves|2500.0|Explorer Chart: Soshenstar
+Chultan Wootz Ore|100.0|Explorer Chart: Omu
+Cinnabar|0.0|Gathering
+Cobalt Ore|0.0|Gathering
+Chultan Wootz|0.0|Explorer Chart: Omu
+Chultan Wootz Ingot|0.0|
+Coke|4200.0|GH Vendor
+Copper Ore|0.0|Gathering
+Copper Sand|0.0|Gathering
+Corpse Flower Thorn|350.0|
+Cotton Boll|0.0|Gathering
+Cupronickel Ore|0.0|Gathering
+Cupronickel Sand|0.0|Gathering
+Darksteel Sand|0.0|Explorer Chart: Terminus
+Death Cap|0.0|Gathering
+Deep Brimstone|0.0|Explorer Chart: Terminus
+Deepwood Sap|0.0|Explorer Chart: Wyllowwood
+Deer Antler|0.0|Gathering
+Deer Sinew|0.0|Gathering
+Deer Skin|0.0|Gathering
+Demon's Trumpet|0.0|Gathering
+Deva's Trumpet|0.0|Gathering
+Devil Bone|0.0|Gathering
+Dinosaur Hide|0.0|Chultan Dinosaurs
+Displacer Beast's Whisker|57000.0|Vault of Stars
+Dragon Turtle Scales|0.0|Fangbreaker Island
+Drake Hide|0.0|Gathering
+Drake Horn|0.0|Gathering
+Drake Sinew|0.0|Gathering
+Dream Moss|0.0|Explorer Chart: Twisted Caverns
+Dryad Hair|5000.0|Explorer Chart: The Grove
+Dubbin|0.0|Sea of Moving Ice Treasure Maps
+Dyer's Broom|2000.0|GH Vendor
+Electrum Ore|0.0|Gathering
+Electrum Sand|0.0|Gathering
+Elm Log|0.0|Gathering
+Fartouched Residuum|0.0|Master Spellplague Caverns
+Feywood Log|1100.0|Explorer Chart: The Grove
+Fieldstone|2500.0|GH Vendor
+Fish Bones|0.0|Gathering
+Flax|0.0|Gathering
+Fleece|0.0|Gathering
+Foraged Cocoon|0.0|Gathering
+Fowl Feather|0.0|Gathering
+Gold Sand|0.0|Gathering
+Hardened Blight Bark|600.0|Explorer Chart: The Grove
+Iron Ore|0.0|Gathering
+Iron Rust|2200.0|GH Vendor
+Iron Sand|0.0|Gathering
+Jute|0.0|Mysterious Merchant
+Lakh Resin|4700.0|Explorer Chart: Soshenstar
+Lichstone|400.0|Tomb of the Nine Gods
+Limestone|0.0|Gathering
+Lion Hide|5000.0|Lions in Chult
+Livewood Sap|0.0|Sea of Moving Ice Treasure Maps
+Madder Root|2000.0|GH Vendor
+Mainspring|0.0|Mysterious Merchant
+Maker's Bounty|2000.0|Lockbox
+Maker's Calm|0.0|Lockbox
+Maker's Focus|0.0|Lockbox
+Maker's Haste|0.0|Lockbox
+Maker's Keep|0.0|Lockbox
+Maker's Quick|0.0|Lockbox
+Manticore Hide|0.0|"Fangbreaker Island
+Assault on Svardborg"
+Manticore Mane|0.0|"Fangbreaker Island
+Assault on Svardborg"
+Maple Log|0.0|Gathering
+Maple Sap|0.0|Gathering
+Marble|5000.0|GH Vendor
+Menga Leaves|0.0|Chultan Blue Plant nodes
+Mica|0.0|Gathering
+Mithral Ore|0.0|Gathering
+Mithral Sand|0.0|Gathering
+Mote of Soulfire|80000.0|Tomb of the Nine Gods
+Mudstone|0.0|Gathering
+Myrrh Branch|0.0|Gathering
+Mysterious Bone|0.0|Explorer Chart: Twisted Caverns
+Natron|0.0|Gathering
+Nerium|0.0|Gathering
+Nettle|0.0|Gathering
+Nightleaf Tea|0.0|Explorer Chart: Twisted Caverns
+Nightshade|0.0|Gathering
+Oak Log|0.0|Gathering
+Obsidian|5000.0|Explorer Chart: Omu
+Palm Wax|0.0|Chultan Palm Leaves
+Parsnip|0.0|Gathering
+Pennyroyal|0.0|Gathering
+Philosopher's Bounty|13000.0|Lockbox
+Philosopher's Calm|0.0|Lockbox
+Philosopher's Focus|0.0|Lockbox
+Philosopher's Haste|0.0|Lockbox
+Philosopher's Keep|2250.0|Lockbox
+Philosopher's Quick|0.0|Lockbox
+Pine Log|0.0|Gathering
+Polar Bear Skin|3500.0|GH Vendor
+Potash|6800.0|GH Vendor
+Propolis|0.0|Chultan Skill Nodes
+Purple Beauty|0.0|Gathering
+Putnisite|0.0|Explorer Chart: Twisted Caverns
+Questionable Piece of Leather|8000.0|Festering Ranger NPC in the Mire
+Raw Amethyst|0.0|Gathering
+Raw Aquamarine|0.0|Gathering
+Raw Black Opal|0.0|Gathering
+Raw Blood Ruby|0.0|Gathering
+Raw Emerald|0.0|Gathering
+Raw Peridot|0.0|Gathering
+Raw Sapphire|0.0|Gathering
+Red Rouge|7000.0|GH Vendor
+Regalis Ore|0.0|Gathering
+Regalis Sand|0.0|Gathering
+Relic Iron Ingot|0.0|"Fangbreaker Island
+Spellplague Caverns"
+Rhubarb|0.0|Gathering
+River Trout|0.0|Gathering
+Rock Salt|0.0|Gathering
+Salt-Marsh Crystal|5000.0|
+Samarachan Jute|400.0|Explorer Chart: Omu
+Sandstone|0.0|Gathering
+Senna Leaves|0.0|Profession Flowers Soshenstar
+Shade Leaves|200.0|Explorer Chart: The Mires
+Shadowdemon's Eyes|1000.0|Explorer Chart: The Mires
+Shard of Dawn's Light|55000.0|Vault of Stars
+Shark Oil|440.0|Mysterious Merchant
+Shattered Snowflakes|1500.0|Vault of Stars
+Shimmerweed|0.0|Gathering
+Shed Marblehorn|0.0|Explorer Chart: Wyllowwood
+Silkworm Cocoon|200.0|Explorer Chart: Soshenstar
+Siltstone|0.0|Gathering
+Silver Ore|0.0|Gathering
+Silver Sand|0.0|Gathering
+Silvertongue Moss|4800.0|Explorer Chart: The Ruins
+Slate|0.0|Gathering
+Soot|0.0|Gathering
+Soulfire Flies|200.0|Explorer Chart: The Ruins
+Spider Silk|0.0|Spiders in Chult
+Spring Water|0.0|Gathering
+Sugar Beet|0.0|Gathering
+Sweetgale|0.0|Gathering
+Sword Coast Tea Leaves|0.0|Gathering
+Sword Flax|0.0|Gathering
+Tanner's Liquor|6000.0|GH Vendor
+Tarantula|0.0|Gathering
+Teak|0.0|Undead in Soshenstar
+Tear of Ubtao|14000.0|Tomb of the Nine Gods
+Terebinth|2200.0|GH Vendor
+Tin Ingot|0.0|Mysterious Merchant
+Tin Ore|0.0|Gathering
+Tincal|5200.0|GH Vendor
+Tinker's Bounty|0.0|Lockbox
+Tinker's Calm|0.0|Lockbox
+Tinker's Focus|0.0|Lockbox
+Tinker's Haste|0.0|Lockbox
+Tinker's Keep|0.0|Lockbox
+Tinker's Quick|0.0|Lockbox
+Titania|7000.0|GH Vendor
+Toadstool|0.0|Gathering
+Troll's Earwax Resin|2500.0|Explorer Chart: The Ruins
+Twisted Toadstool|0.0|Explorer Chart: Twisted Caverns
+Volcanic Salt|0.0|Gathering
+Walnut Log|0.0|Gathering
+Weeping Willow's Tears|5200.0|Explorer Chart: The Mires
+Well Water|0.0|Gathering
+Whitelip Oyster|0.0|Gathering
+Wild Mint|0.0|Gathering
+Wintergreen Sprig|0.0|Gathering
+Woad|2000.0|GH Vendor
+Wolf Hide|0.0|Gathering
+Wolf Sinew|0.0|Gathering
+Wolfsbane|0.0|Gathering
+Woodlily|0.0|Gathering
+Wootz Steel Ore|0.0|Chultan Skill Nodes
+Worm Blood|0.0|Explorer Chart: Terminus
+Worm Tooth|0.0|Explorer Chart: Terminus
+Wyllowwood Lemon|0.0|Explorer Chart: Wyllowwood
+Wyllowwood Walnut|0.0|Explorer Chart: Wyllowwood
+Yew Log|0.0|Gathering
+Zinc Ore|0.0|Gathering
+Wintergreen Balm|0.0|Alchemy, Level 19
+Wintergreen Tea|0.0|Alchemy, Level 19
+Gold|200.0|Various places
