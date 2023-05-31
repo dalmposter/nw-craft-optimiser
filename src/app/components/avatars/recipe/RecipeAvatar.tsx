@@ -1,9 +1,9 @@
 import { Checkbox, Dropdown, Grid } from "semantic-ui-react";
 import { MWItem } from "../../../../lib/types/item";
 import { ItemAvatar } from "../entity/ItemAvatar";
+import { findMwObject } from "../../../../lib/types/util";
 
 import "./RecipeAvatar.scss"
-import { findMwObject } from "../../../../lib/types/util";
 
 interface RecipeAvatarProps {
     availableItems: string[];
@@ -15,9 +15,10 @@ interface RecipeAvatarProps {
 export function RecipeAvatar (props: RecipeAvatarProps) {
     return (
     <div className="RecipeAvatar">
-        <Grid>
-            <Grid.Column width={7}>
+        <div className="flex-container">
+            <div style={{flexGrow: 1}}>
                 <Dropdown
+                    className="ItemSelector"
                     placeholder='Select An Item'
                     fluid
                     search
@@ -32,21 +33,21 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     }}
                     value={props.activeItem?.name}
                 />
-            </Grid.Column>
-            <Grid.Column className="no-side-padding" width={3}>
-                <Checkbox 
-                    label="+1?"
-                    className="vertical-align"
-                    toggle
-                    onChange={(event, data) => {
-                        props.updateHighQuality(data.checked? data.checked : false)
-                    }}
-                />
-            </Grid.Column>
-            <Grid.Column width={6}>
+            </div>
+            <div style={{flexGrow: 1}}>
+                <div>
+                    <Checkbox 
+                        label="+1?"
+                        className="vertical-align"
+                        toggle
+                        onChange={(event, data) => {
+                            props.updateHighQuality(data.checked? data.checked : false)
+                        }}
+                    />
+                </div>
                 {
                     props.activeItem &&
-                    <div style={{width: "100%", boxSizing: "border-box"}}>
+                    <div>
                         <p style={{textAlign: "right"}}>
                             {props.activeItem.unlock}
                         </p>
@@ -55,8 +56,8 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                         </p>
                     </div>
                 }
-            </Grid.Column>
-        </Grid>
+            </div>
+        </div>
         <Grid>
             <Grid.Column width={12}>
                 {
