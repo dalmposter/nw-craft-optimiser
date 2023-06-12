@@ -1,5 +1,5 @@
 import { Grid } from "semantic-ui-react";
-import { MWItem, MWResource } from "../../../../lib/types/item";
+import { CraftedMWObject, MWItem, MWResource } from "../../../../lib/types/item";
 import React from "react";
 import { ItemIcon, ItemIconProps, ResourceIcon, ResourceIconProps } from "./ItemIcon";
 
@@ -7,7 +7,7 @@ import "./ItemAvatar.scss"
 
 interface ItemAvatarProps {
     quantity?: number;
-    item: MWItem | MWResource;
+    item: CraftedMWObject | MWResource;
     itemIcon?: any;
     onClick: (name: string) => void;
 }

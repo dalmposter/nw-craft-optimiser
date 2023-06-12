@@ -1,13 +1,13 @@
 import { Checkbox, Dropdown, Grid } from "semantic-ui-react";
-import { MWItem } from "../../../../lib/types/item";
+import { CraftedMWObject, MWItem } from "../../../../lib/types/item";
 import { ItemAvatar } from "../entity/ItemAvatar";
 
 import "./RecipeAvatar.scss"
 import { findMwObject } from "../../../../lib/types/util";
 
 interface RecipeAvatarProps {
-    availableItems: string[];
-    activeItem?: MWItem;
+    availableItems: CraftedMWObject[];
+    activeItem?: CraftedMWObject;
     onChangeItem: (value: string) => void;
     updateHighQuality: (value: boolean) => void;
 }
@@ -23,8 +23,8 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     search
                     selection
                     options={
-                        props.availableItems.map((value: string) => {
-                            return { key: value, value: value, text: value }
+                        props.availableItems.map((value: CraftedMWObject) => {
+                            return { key: value.name, value: value.name, text: value.name }
                         })
                     }
                     onChange={(event, data) => {

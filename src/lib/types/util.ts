@@ -1,4 +1,4 @@
-import { MWItem, MWObject, MWResource } from "./item"
+import { CraftedMWObject, MWItem, MWObject, MWResource } from "./item"
 import { MWMaterial } from "./material"
 
 /**
@@ -16,7 +16,7 @@ import { MWMaterial } from "./material"
  * 
  * @raises Error if no matching object is found and assumeResource is false.
  */
-export const findMwObject = (name: string, assumeResource: boolean = true): MWItem | MWResource => {
+export const findMwObject = (name: string, assumeResource: boolean = true): CraftedMWObject | MWResource => {
     if(name.slice(-3) == " +1") {
         name = name.slice(0, -3)
     }
@@ -43,7 +43,7 @@ export const findMwObject = (name: string, assumeResource: boolean = true): MWIt
      * 
      * @raises Error if no material or item matches given name,
      */
-export const findMwItem =(name: string): MWItem => {
+export const findMwItem =(name: string): CraftedMWObject => {
     console.log(`Finding MW item ${name}`)
     if(name.slice(-3) == " +1") {
         name = name.slice(0, -3)
@@ -55,7 +55,7 @@ export const findMwItem =(name: string): MWItem => {
         return MWMaterial.OBJECTS.get(name)!
     }
 
-    throw new Error(`No matching MW Object found for ${name}`)
+    throw new Error(`No matching MW Item found for ${name}.`)
 }
 
 /**

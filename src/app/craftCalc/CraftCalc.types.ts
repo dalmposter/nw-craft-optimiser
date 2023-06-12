@@ -1,14 +1,14 @@
-import { MWItem } from "../../lib/types/item";
+import { CraftedMWObject } from "../../lib/types/item";
 import { MWRecipe } from "../../lib/types/recipe";
 
 
 export interface CraftCalcProps {
-    availableItems: string[];
+    availableItems: CraftedMWObject[];
 }
 
 export interface CraftCalcState {
     input: string;
-    activeItem?: MWItem;
+    activeItem?: CraftedMWObject;
     isHighQuality: boolean;
     output?: string;
     outputList: [MWRecipe, number][];

@@ -1,5 +1,5 @@
 import { Recipe } from "./constants";
-import { MWItem, MWObject, MWResource } from "./item";
+import { CraftedMWObject, MWItem, MWObject, MWResource } from "./item";
 import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
 import { ToolType, SupplementType, ArtisanType } from "./recipe.types"
 import "stream-browserify"
@@ -83,7 +83,7 @@ export class Supplement {
     virtuosoChance: number;
     miracleWorkerChance: number;
     passionProjectChance: number;
-    object: MWItem | MWResource;
+    object: CraftedMWObject | MWResource;
 
     constructor(data: SupplementType) {
         this.highQuality = data.highQuality.toLowerCase() == "true";
@@ -259,7 +259,7 @@ export class Artisan {
  * expected, how many normal or +1 results would be made as a by-product.
  */
 export class MWRecipe {
-    result: MWItem | MWResource;
+    result: CraftedMWObject | MWResource;
     quantity: number;
     artisan?: Artisan;
     tool?: Tool;
@@ -278,7 +278,7 @@ export class MWRecipe {
     highQualityChance: number = -1;
 
     constructor(
-        result: MWItem | MWResource,
+        result: CraftedMWObject | MWResource,
         quantity?: number,
         artisan?: Artisan,
         tool?: Tool,

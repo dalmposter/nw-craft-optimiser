@@ -1,9 +1,14 @@
-import { MWItem } from "./item";
+import { CraftedMWObject, MWItem } from "./item";
 import { parse } from "csv-parse/browser/esm";
-import { MWItemType } from "./item.types";
+import { MWItemType, CraftedMWObjectType } from "./item.types";
 
-export class MWMaterial extends MWItem {
+export class MWMaterial extends CraftedMWObject {
     static OBJECTS: Map<string, MWMaterial> = new Map<string, MWMaterial>();
+
+    constructor (data: CraftedMWObjectType) {
+        super(data);
+        this.type = "Material";
+    }
 
     static loadCsv(csvString: string) {
         MWMaterial.OBJECTS = new Map<string, MWItem>();
@@ -11,7 +16,7 @@ export class MWMaterial extends MWItem {
         parse(csvString, {
             delimiter: "|",
             columns: true
-        }, (error, result: MWItemType[]) => {
+        }, (error, result: CraftedMWObjectType[]) => {
             if(error) {
                 console.error(error);
             }

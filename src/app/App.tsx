@@ -4,7 +4,7 @@ import CraftCalc from './craftCalc/CraftCalc';
 import Roadmap from './roadmap/Roadmap';
 import Footer from './components/footer/Footer';
 import SettingsPage from './settingsPage/SettingsPage';
-import { MWResource, MWItem, CommissionItem } from '../lib/types/item';
+import { MWResource, MWItem, CommissionItem, CraftedMWObject } from '../lib/types/item';
 import { MWMaterial } from '../lib/types/material';
 import { Artisan, Tool, Supplement } from '../lib/types/recipe';
 import { findMwItem } from '../lib/types/util';
@@ -15,7 +15,8 @@ interface AppProps {
 
 interface AppState {
 	page: string;
-	availableItems: string[];
+	availableItemNames: string[];
+    availableItems: CraftedMWObject[];
 }
 
 export class App extends React.Component<AppProps, AppState> {
@@ -26,6 +27,7 @@ export class App extends React.Component<AppProps, AppState> {
 		this.state = {
 			page: "calculator",
 			availableItems: [],
+            availableItemNames: [],
 		}
 	}
 
@@ -34,7 +36,7 @@ export class App extends React.Component<AppProps, AppState> {
             .then(res => res.text())
                 .then(stringData => {
                     MWResource.loadCsv(stringData)
-                })
+            })
             .then(() => fetch(`${process.env.PUBLIC_URL}/input/materials.csv`))
                 .then(res => res.text())
                     .then(stringData => {
@@ -68,7 +70,8 @@ export class App extends React.Component<AppProps, AppState> {
             .then(() => {
                 this.setState({
                     ...this.state,
-                    availableItems: [...MWItem.OBJECTS.keys(), ...MWMaterial.OBJECTS.keys()]
+                    availableItemNames: [...MWItem.OBJECTS.keys(), ...MWMaterial.OBJECTS.keys()],
+                    availableItems: [...MWItem.OBJECTS.values(), ...MWMaterial.OBJECTS.values()]
                 })
             })
             .then(() => console.debug("All CSV loaded"))

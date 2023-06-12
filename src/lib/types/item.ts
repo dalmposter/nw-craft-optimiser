@@ -1,6 +1,6 @@
 import { Lock } from "../util/lock";
 import { Recipe, PROFESSIONS, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constants";
-import { CommissionItemType, MWItemType, MWResourceType } from "./item.types";
+import { CommissionItemType, CraftedMWObjectType, MWItemType, MWResourceType } from "./item.types";
 import { MWMaterial } from "./material";
 import { Artisan, Tool, Supplement, MWRecipe } from "./recipe";
 import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
@@ -34,8 +34,8 @@ export abstract class MWObject {
 /**
  * A Masterwork object that is considered a final result (not a material).
  */
-export class MWItem extends MWObject {
-    static OBJECTS: Map<string, MWItem> = new Map<string, MWItem>();
+export class CraftedMWObject extends MWObject {
+    static OBJECTS: Map<string, CraftedMWObject> = new Map<string, CraftedMWObject>();
 
     quantity: number;
     proficiency: number;
@@ -50,11 +50,14 @@ export class MWItem extends MWObject {
     /** List of the top recipes to craft this item in high quality, and their total AD cost. */
     hqOptimalRecipes?: [MWRecipe, number][];
 
+    type: string;
+
     private lock: Lock;
 
-    constructor(data: MWItemType) {
+    constructor(data: CraftedMWObjectType) {
         let name = data.name;
         super(name);
+        this.type = "unknown";
         this.quantity = Number(data.quantity);
         this.canDabHand = data.canDabHand.toLowerCase() == "true";
         this.proficiency = Number(data.proficiency);
@@ -71,23 +74,6 @@ export class MWItem extends MWObject {
     clearCalculations() {
         this.optimalRecipes = undefined;
         this.hqOptimalRecipes = undefined;
-    }
-
-    static loadCsv(csvString: string) {
-        MWItem.OBJECTS = new Map<string, MWItem>();
-
-        parse(csvString, {
-            delimiter: "|",
-            columns: true
-        }, (error, result: MWItemType[]) => {
-            if(error) {
-                console.error(error);
-            }
-            for(var itemInput of result) {
-                let newItem = new MWItem(itemInput);
-                MWItem.OBJECTS.set(newItem.name, newItem)
-            }
-        });
     }
 
     async getOptimalRecipes(highQuality: boolean): Promise<[MWRecipe, number][]> {
@@ -212,7 +198,7 @@ export class MWItem extends MWObject {
             return optimalRecipe.multiply(quantity);
         }
         if(artisan === undefined || tool === undefined || supplement === undefined) {
-            throw new Error(`MWItem.craft() received ${artisan} ${tool} ${supplement}`
+            throw new Error(`CraftedMWObject.craft() received ${artisan} ${tool} ${supplement}`
                           + " but they must either all be provided, or none.")
         }
         let output = new MWRecipe(this, quantity, artisan, tool, supplement, highQuality)
@@ -348,13 +334,47 @@ export class MWResource extends MWObject {
     }
 }
 
+export class MWItem extends CraftedMWObject {
+
+    static OBJECTS: Map<string, MWItem> = new Map<string, MWItem>();
+
+    itemType: string;
+    requiredClasses: string[];
+    itemSlot: string;
+
+    constructor(data: MWItemType) {
+        super(data)
+
+        this.itemType = data.type;
+        this.requiredClasses = data.class.split(",");
+        this.itemSlot = data.slot;
+    }
+    
+    static loadCsv(csvString: string) {
+        MWItem.OBJECTS = new Map<string, MWItem>();
+
+        parse(csvString, {
+            delimiter: "|",
+            columns: true
+        }, (error, result: MWItemType[]) => {
+            if(error) {
+                console.error(error);
+            }
+            for(var itemInput of result) {
+                let newItem = new MWItem(itemInput);
+                MWItem.OBJECTS.set(newItem.name, newItem)
+            }
+        });
+    }
+}
+
 /** A crafted item requested by Stryker Bronzepin */
 export class CommissionItem {
     static OBJECTS: Map<string, CommissionItem> = new Map<string, CommissionItem>();
 
     name: string;
     commissionValue: number;
-    item: MWItem;
+    item: CraftedMWObject;
 
     constructor(data: CommissionItemType) {
         this.name = data.name;

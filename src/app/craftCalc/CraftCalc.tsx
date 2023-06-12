@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { CraftCalcProps, CraftCalcState } from "./CraftCalc.types";
 import { Artisan, MWRecipe, Supplement, Tool } from "../../lib/types/recipe";
-import { CommissionItem, MWItem, MWResource } from "../../lib/types/item";
+import { CommissionItem, CraftedMWObject, MWItem, MWResource } from "../../lib/types/item";
 import { findMwItem } from "../../lib/types/util";
 import { MWMaterial } from "../../lib/types/material";
 import { RecipeAvatar } from "../components/avatars/recipe/RecipeAvatar";
@@ -16,7 +16,6 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
     // TODO: Move some state into App class
     INITIAL_STATE = {
         input: "",
-        availableItems: [],
         isHighQuality: false,
         output: "",
         outputList: []
@@ -27,7 +26,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         this.state = this.INITIAL_STATE;
     }
 
-    async craft(item: MWItem | undefined, highQuality: boolean) {
+    async craft(item: CraftedMWObject | undefined, highQuality: boolean) {
         if (item === undefined) {
             console.log("craft called with undefined item. Returning")
             return

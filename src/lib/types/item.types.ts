@@ -1,6 +1,6 @@
 import { Recipe } from "./constants";
 
-export interface MWItemType {
+export interface CraftedMWObjectType {
     name: string;
     quantity: string;
     canDabHand: string;
@@ -10,6 +10,13 @@ export interface MWItemType {
     profession: string;
     commission: string;
     recipe: string;
+    type: string;
+}
+
+export interface MWItemType extends CraftedMWObjectType {
+    type: string;
+    class: string;
+    slot: string;
 }
 
 export interface MWResourceType {
