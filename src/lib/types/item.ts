@@ -42,6 +42,7 @@ export class MWItem extends MWObject {
     focus: number;
     unlock: string;
     profession: string;
+    mwCategory: string;
     recipe: Recipe;
     commission: number;
     /** List of the top recipes to craft this item, and their total AD cost. */
@@ -59,6 +60,7 @@ export class MWItem extends MWObject {
         this.proficiency = Number(data.proficiency);
         this.focus = Number(data.focus);
         this.unlock = data.unlock;
+        this.mwCategory = data.unlock.split(" - ")[0];
         this.profession = data.profession
         this.recipe = eval(data.recipe)
         this.commission = Number(data.commission);
