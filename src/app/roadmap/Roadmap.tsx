@@ -12,26 +12,31 @@ export default class Roadmap extends Component {
             </p>
             <h3>Do Soon</h3>
             <ul>
-                <li>Ability to view resource prices used by the calculator</li>
-                <li>Ability to customise the resource prices used by the calculator</li>
+                <li><s>Ability to view resource prices used by the calculator</s></li>
+                <li><s>Ability to customise the resource prices used by the calculator</s></li>
+                <li>Add Menzoberranzan Masterwork Tier</li>
+                <li>Easier selection of items (filter by class and sharandar vs chult)</li>
+                <li>Prettify the settings page</li>
+                <li>Optional saving of custom prices to cookies</li>
+            </ul>
+            <h3>Do Next</h3>
+            <ul>
+                <li>Allow updating of resource prices in-line (without going to settings page)</li>
                 <li>
                     Allow selecting of which specific Artisans/Tools/Supplements you have
                     and restrict the calculator to using only those when calculating prices
                 </li>
                 <li>Optimise UI for smaller screens</li>
-            </ul>
-            <h3>Do Next</h3>
-            <ul>
                 <li>Source icons for resources, artisans, tool, and supplements</li>
-                <li>Easier selection of items (filter by class and sharandar vs chult)</li>
-                <li>Optimise UI for phones</li>
+                <li>Allow inspection of selected item and items in the dropdown (to view stats)</li>
+            </ul>
+            <h3>Do After</h3>
+            <ul>
                 <li>
                     Support for using +1 materials (from my testing, using all +1 mats
                     increases high quality chance by about 20%)
                 </li>
-            </ul>
-            <h3>Do After</h3>
-            <ul>
+                <li>Optimise UI for phones</li>
                 <li>Include gold in the list of consumed resources</li>
                 <li>Account for commission modifier and passion project in gold calculation</li>
                 <li>
