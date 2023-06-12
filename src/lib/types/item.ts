@@ -346,7 +346,7 @@ export class MWItem extends CraftedMWObject {
         super(data)
 
         this.itemType = data.type;
-        this.requiredClasses = data.class.split(",");
+        this.requiredClasses = data.class.split(", ");
         this.itemSlot = data.slot;
     }
     

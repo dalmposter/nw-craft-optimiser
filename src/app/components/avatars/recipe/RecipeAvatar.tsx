@@ -4,17 +4,58 @@ import { ItemAvatar } from "../entity/ItemAvatar";
 
 import "./RecipeAvatar.scss"
 import { findMwObject } from "../../../../lib/types/util";
+import { ItemFilter, MWCategory } from "../../../craftCalc/CraftCalc.types";
 
 interface RecipeAvatarProps {
     availableItems: CraftedMWObject[];
     activeItem?: CraftedMWObject;
+    itemFilter: ItemFilter;
     onChangeItem: (value: string) => void;
     updateHighQuality: (value: boolean) => void;
+    updateFilter: (value: ItemFilter) => void;
 }
 
 export function RecipeAvatar (props: RecipeAvatarProps) {
+    let options = props.availableItems
+        .filter((item) => {
+            if(props.itemFilter.class
+                    && item instanceof MWItem
+                    && props.itemFilter.class.length > 0
+                    && !item.requiredClasses.some((value) => props.itemFilter!.class?.includes(value))
+            ) {
+                return false
+            }
+            if(props.itemFilter.mwCategory
+                    && props.itemFilter.mwCategory.length > 0
+                    && !props.itemFilter.mwCategory.some((value) => value === item.mwCategory)
+            ) {
+                return false
+            }
+            return true
+        })
+        .map((value: CraftedMWObject) => {
+            return { key: value.name, value: value.name, text: value.name }
+        })
+
     return (
     <div className="RecipeAvatar">
+        <div style={{width: "fit-content", minWidth: "380px"}}>
+            <Dropdown
+                placeholder='Masterwork Era'
+                fluid multiple selection
+                onChange={(event, data) => {
+                    props.updateFilter({
+                        ...props.itemFilter,
+                        mwCategory: data.value as MWCategory[]
+                    })
+                }}
+                options={[
+                    { key: "Chultan Masterwork", text: "Chultan Masterwork", value: "Chultan Masterwork"},
+                    { key: "Sharandar Masterwork", text: "Sharandar Masterwork", value: "Sharandar Masterwork"},
+                    { key: "Menzoberranzan Masterwork", text: "Menzoberranzan Masterwork", value: "Menzoberranzan Masterwork"},
+                ]}
+            />
+        </div>
         <Grid>
             <Grid.Column width={7}>
                 <Dropdown
@@ -22,11 +63,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     fluid
                     search
                     selection
-                    options={
-                        props.availableItems.map((value: CraftedMWObject) => {
-                            return { key: value.name, value: value.name, text: value.name }
-                        })
-                    }
+                    options={options}
                     onChange={(event, data) => {
                         props.onChangeItem(data.value? data.value as string : "")
                     }}

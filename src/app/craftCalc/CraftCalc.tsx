@@ -18,7 +18,8 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         input: "",
         isHighQuality: false,
         output: "",
-        outputList: []
+        outputList: [],
+        itemFilter: {}
     }
 
     constructor(props: CraftCalcProps) {
@@ -51,6 +52,11 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                 <div className="panel-content">
                     <RecipeAvatar
                         availableItems={this.props.availableItems}
+                        itemFilter={this.state.itemFilter}
+                        updateFilter={(filter) => this.setState({
+                            ...this.state,
+                            itemFilter: filter
+                        })}
                         onChangeItem={(value) => {
                             try {
                                 this.setState(
