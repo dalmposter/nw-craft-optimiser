@@ -15,21 +15,48 @@ interface RecipeAvatarProps {
     updateFilter: (value: ItemFilter) => void;
 }
 
+const classes = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin",
+                 "Ranger", "Rogue", "Warlock", "Wizard"]
+
+const types = ["Commissioned Item", "Gear", "Potion", "Supplement", "Tool"]
+
+const slots = ["Armor", "Arms", "Belt", "Feet", "Head", "Main Hand",
+               "N/A", "Neck", "Off-Hand", "Ring", "Waist"]
+
 export function RecipeAvatar (props: RecipeAvatarProps) {
     let options = props.availableItems
         .filter((item) => {
-            if(props.itemFilter.class
-                    && item instanceof MWItem
-                    && props.itemFilter.class.length > 0
-                    && !item.requiredClasses.some((value) => props.itemFilter!.class?.includes(value))
-            ) {
-                return false
-            }
             if(props.itemFilter.mwCategory
                     && props.itemFilter.mwCategory.length > 0
                     && !props.itemFilter.mwCategory.some((value) => value === item.mwCategory)
             ) {
                 return false
+            }
+            if(props.itemFilter.type
+                    && props.itemFilter.type.length > 0
+                    && !props.itemFilter.type.some((value) => value === item.type)
+            ) {
+                return false
+            }
+            if(props.itemFilter.class) {
+                if(!(item instanceof MWItem)) {
+                    return false
+                }
+                else if(props.itemFilter.class.length > 0
+                        && !item.requiredClasses.some((value) => props.itemFilter!.class!.includes(value))
+                ) {
+                    return false
+                }
+            }
+            if(props.itemFilter.slot) {
+                if(!(item instanceof MWItem)) {
+                    return false
+                }
+                else if(props.itemFilter.slot.length > 0
+                    && !props.itemFilter!.slot.some((value) => value == item.itemSlot)
+                ) {
+                    return false
+                }
             }
             return true
         })
@@ -39,22 +66,69 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
 
     return (
     <div className="RecipeAvatar">
-        <div style={{width: "fit-content", minWidth: "380px"}}>
-            <Dropdown
-                placeholder='Masterwork Era'
-                fluid multiple selection
-                onChange={(event, data) => {
-                    props.updateFilter({
-                        ...props.itemFilter,
-                        mwCategory: data.value as MWCategory[]
-                    })
-                }}
-                options={[
-                    { key: "Chultan Masterwork", text: "Chultan Masterwork", value: "Chultan Masterwork"},
-                    { key: "Sharandar Masterwork", text: "Sharandar Masterwork", value: "Sharandar Masterwork"},
-                    { key: "Menzoberranzan Masterwork", text: "Menzoberranzan Masterwork", value: "Menzoberranzan Masterwork"},
-                ]}
-            />
+        <div style={{display: "flex"}}>
+            <div style={{width: "fit-content", minWidth: "380px"}}>
+                <Dropdown
+                    placeholder='Filter by Masterwork Era'
+                    fluid multiple selection
+                    onChange={(event, data) => {
+                        props.updateFilter({
+                            ...props.itemFilter,
+                            mwCategory: data.value as MWCategory[]
+                        })
+                    }}
+                    options={[
+                        { key: "Chultan Masterwork", text: "Chultan Masterwork", value: "Chultan Masterwork"},
+                        { key: "Sharandar Masterwork", text: "Sharandar Masterwork", value: "Sharandar Masterwork"},
+                        { key: "Menzoberranzan Masterwork", text: "Menzoberranzan Masterwork", value: "Menzoberranzan Masterwork"},
+                    ]}
+                />
+            </div>
+            <div style={{width: "fit-content", minWidth: "380px"}}>
+                <Dropdown
+                    placeholder='Filter by Class'
+                    fluid multiple selection
+                    onChange={(event, data) => {
+                        props.updateFilter({
+                            ...props.itemFilter,
+                            class: data.value as MWCategory[]
+                        })
+                    }}
+                    options={classes.map((value) => {
+                        return { key: value, text: value, value: value }
+                    })}
+                />
+            </div>
+            <div style={{width: "fit-content", minWidth: "380px"}}>
+                <Dropdown
+                    placeholder='Filter by Item Category'
+                    fluid multiple selection
+                    onChange={(event, data) => {
+                        props.updateFilter({
+                            ...props.itemFilter,
+                            type: data.value as string[]
+                        })
+                    }}
+                    options={types.map((value) => {
+                        return { key: value, text: value, value: value }
+                    })}
+                />
+            </div>
+            <div style={{width: "fit-content", minWidth: "380px"}}>
+                <Dropdown
+                    placeholder='Filter by Slot'
+                    fluid multiple selection
+                    onChange={(event, data) => {
+                        props.updateFilter({
+                            ...props.itemFilter,
+                            slot: data.value as string[]
+                        })
+                    }}
+                    options={slots.map((value) => {
+                        return { key: value, text: value, value: value }
+                    })}
+                />
+            </div>
         </div>
         <Grid>
             <Grid.Column width={7}>
