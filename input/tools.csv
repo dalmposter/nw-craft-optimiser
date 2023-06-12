@@ -1,3 +1,5 @@
-profession|name|proficiency|focus|dabHandChance|recycleChance|virtuosoChance|miracleWorkerChance|passionProjectChance
-Alchemy|Forgehammer of Gond|600.0|600.0|0|0|0|0|0
-Alchemy|Fey Tool|575.0|575.0|0|0.1|0|0|0
+profession|name|proficiency|focus|dabHandChance|recycleChance|virtuosoChance|miracleWorkerChance|passionProjectChance|source
+Alchemy|Forgehammer of Gond|600.0|600.0|0|0|0|0|0|Events
+Alchemy|Fey Tool|575.0|575.0|0|0.1|0|0|0|Sharandar Commissions
+Alchemy|Silvervine Tool|575.0|575.0|0|0|0.1|0|0|Sharandar Masterwork
+Alchemy|Duergar Mercenary's Tool + 1|600.0|600.0|0|0|0|0|0|Menzoberranzan Masterwork
