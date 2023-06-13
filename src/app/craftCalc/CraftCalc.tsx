@@ -43,20 +43,26 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         });
     }
 
+    arePricesViewable = (item: CraftedMWObject) => {
+        return item.mwCategory != "Menzoberranzan Masterwork" || this.props.unlocked
+    }
+
     render() {
         return (
         <>
         <div className={`Panel`} id="craft-calc">
             <h1 style={{padding: "16px"}}>Neverwinter Masterwork Calculator</h1>
-            <p style={{fontSize: "80%", color: "darkred", marginBottom: 0}}>
-                Please be aware that although I present the Menzoberranzan recipes, they are
-                not yet finalised. In addition, the recipes for intermediate materials, such
-                as Mushroom Lumber, are not actually revealed. The recipes I present are
-                extrapolations I have made based on those we do know. Also, the prices are
-                only shown for illustration purposes (and because this app would be confused
-                by all items costing 0). The items are not available yet so there is no
-                market price.
-            </p>
+            { false &&
+                <p style={{fontSize: "80%", color: "darkred", marginBottom: 0}}>
+                    Please be aware that although I present the Menzoberranzan recipes, they are
+                    not yet finalised. In addition, the recipes for intermediate materials, such
+                    as Mushroom Lumber, are not actually revealed. The recipes I present are
+                    extrapolations I have made based on those we do know. Also, the prices are
+                    only shown for illustration purposes (and because this app would be confused
+                    by all items costing 0). The items are not available yet so there is no
+                    market price.
+                </p>
+            }
             <div className="flexbox">
                 <div className="panel-content">
                     <RecipeAvatar
@@ -91,7 +97,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                         }}
                         activeItem={this.state.activeItem}
                     />
-                    { this.state.activeItem &&
+                    { this.state.activeItem && this.arePricesViewable(this.state.activeItem) &&
                     <>
                         <p>
                             {this.state.isHighQuality ?
@@ -113,21 +119,27 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                             item. Likewise if dab hand is in play then you also need
                             less than 1 success to obtain 1 item.
                         </p>
+                        <RecipeRanking
+                            orderedRecipes={this.state.outputList}
+                            onItemClick={(name: string) => {
+                                try {
+                                    this.setState({
+                                        ...this.state,
+                                        activeItem: findMwItem(name)
+                                    })
+                                } catch {
+                                    console.log("User clicked on a resource. Not updating active item.")
+                                }
+                            }}
+                        />
                     </>
                     }
-                    <RecipeRanking
-                        orderedRecipes={this.state.outputList}
-                        onItemClick={(name: string) => {
-                            try {
-                                this.setState({
-                                    ...this.state,
-                                    activeItem: findMwItem(name)
-                                })
-                            } catch {
-                                console.log("User clicked on a resource. Not updating active item.")
-                            }
-                        }}
-                    />
+                    { this.state.activeItem && !this.arePricesViewable(this.state.activeItem) &&
+                        <h3>
+                            Prices and intermediate recipes for Menzoberranzan MW are currently unknown.
+                            Enable speculative recipes on the settings page to view potentially inaccurate information
+                        </h3>
+                    }
                 </div>
             </div>
         </div>

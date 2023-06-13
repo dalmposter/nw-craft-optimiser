@@ -17,6 +17,7 @@ interface AppState {
 	page: string;
 	availableItemNames: string[];
     availableItems: CraftedMWObject[];
+    unlocked: boolean;
 }
 
 export class App extends React.Component<AppProps, AppState> {
@@ -28,6 +29,7 @@ export class App extends React.Component<AppProps, AppState> {
 			page: "calculator",
 			availableItems: [],
             availableItemNames: [],
+            unlocked: false,
 		}
 	}
 
@@ -114,13 +116,20 @@ export class App extends React.Component<AppProps, AppState> {
 			<div id="page-wrapper">
 				<div id="panel-wrapper">
 					{ this.state.page === "calculator" &&
-						<CraftCalc availableItems={this.state.availableItems} />
+						<CraftCalc
+                            availableItems={this.state.availableItems}
+                            unlocked={this.state.unlocked}
+                        />
 					}
 					{ this.state.page === "roadmap" &&
 						<Roadmap />
 					}
 					{ this.state.page === "settings" &&
-						<SettingsPage resetCalculations={this.resetCalculations} />
+						<SettingsPage
+                            unlocked={this.state.unlocked}
+                            resetCalculations={this.resetCalculations}
+                            setUnlocked={(unlocked: boolean) => this.setState({...this.state, unlocked: unlocked})}
+                        />
 					}
 					<Footer setPage={(page: string) => this.setState({...this.state, page: page})} />
 				</div>

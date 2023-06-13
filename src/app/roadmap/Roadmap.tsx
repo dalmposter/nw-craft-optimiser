@@ -36,6 +36,7 @@ export default class Roadmap extends Component {
             </ul>
             <h3>Do After</h3>
             <ul>
+                <li>Improve performance of initial data load</li>
                 <li>
                     Support for using +1 materials (from my testing, using all +1 mats
                     increases high quality chance by about 20%)
@@ -50,6 +51,7 @@ export default class Roadmap extends Component {
             </ul>
             <h3>Do Later</h3>
             <ul>
+                <li>Improve performance of calculations</li>
                 <li>Allow ability to include morale cost in the calculations</li>
                 <li>Account for miracle worker in the morale calculation</li>
                 <li>
