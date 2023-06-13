@@ -15,6 +15,7 @@ interface RecipeAvatarProps {
     updateFilter: (value: ItemFilter) => void;
 }
 
+//TODO: Move these somewhere else
 const classes = ["Barbarian", "Bard", "Cleric", "Fighter", "Paladin",
                  "Ranger", "Rogue", "Warlock", "Wizard"]
 
@@ -66,8 +67,9 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
 
     return (
     <div className="RecipeAvatar">
-        <div style={{display: "flex"}}>
-            <div style={{width: "fit-content", minWidth: "380px"}}>
+        <div style={{display: "flex", flexFlow: "row wrap"}}>
+            { /* TODO: Extract this style into css */ }
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
                 <Dropdown
                     placeholder='Filter by Masterwork Era'
                     fluid multiple selection
@@ -84,7 +86,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     ]}
                 />
             </div>
-            <div style={{width: "fit-content", minWidth: "380px"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
                 <Dropdown
                     placeholder='Filter by Class'
                     fluid multiple selection
@@ -99,7 +101,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     })}
                 />
             </div>
-            <div style={{width: "fit-content", minWidth: "380px"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
                 <Dropdown
                     placeholder='Filter by Item Category'
                     fluid multiple selection
@@ -114,7 +116,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     })}
                 />
             </div>
-            <div style={{width: "fit-content", minWidth: "380px"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
                 <Dropdown
                     placeholder='Filter by Slot'
                     fluid multiple selection

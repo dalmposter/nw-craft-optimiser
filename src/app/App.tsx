@@ -37,12 +37,27 @@ export class App extends React.Component<AppProps, AppState> {
                 .then(stringData => {
                     MWResource.loadCsv(stringData)
             })
+            .then(() => fetch(`${process.env.PUBLIC_URL}/input/menzoberranzan/resources.csv`))
+                .then(res => res.text())
+                    .then(stringData => {
+                        MWResource.loadCsv(stringData)
+                    })
             .then(() => fetch(`${process.env.PUBLIC_URL}/input/materials.csv`))
                 .then(res => res.text())
                     .then(stringData => {
                         MWMaterial.loadCsv(stringData)
                     })
+            .then(() => fetch(`${process.env.PUBLIC_URL}/input/menzoberranzan/materials.csv`))
+                .then(res => res.text())
+                    .then(stringData => {
+                        MWMaterial.loadCsv(stringData)
+                    })
             .then(() => fetch(`${process.env.PUBLIC_URL}/input/items.csv`))
+                .then(res => res.text())
+                    .then(stringData => {
+                        MWItem.loadCsv(stringData)
+                    })
+            .then(() => fetch(`${process.env.PUBLIC_URL}/input/menzoberranzan/items.csv`))
                 .then(res => res.text())
                     .then(stringData => {
                         MWItem.loadCsv(stringData)
@@ -76,8 +91,8 @@ export class App extends React.Component<AppProps, AppState> {
             })
             .then(() => console.debug("All CSV loaded"))
             // Quick hack to improve performance post-load: craft a couple of items to cache recipe results.
-            .then(() => findMwItem("Silvervine Sceptor").craft())
-            .then(() => findMwItem("Mastered Feathered Ilhuilli").craft())
+            //.then(() => findMwItem("Silvervine Sceptor").craft())
+            //.then(() => findMwItem("Mastered Feathered Ilhuilli").craft())
             .then(() => true);
     }
 

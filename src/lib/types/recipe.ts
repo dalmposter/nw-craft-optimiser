@@ -42,8 +42,6 @@ export class Tool {
     }
 
     static loadCsv(csvString: string) {
-        Tool.OBJECTS = new Map<string, Tool>();
-
         parse(csvString, {
             delimiter: "|",
             columns: true
@@ -109,8 +107,6 @@ export class Supplement {
     }
 
     static loadCsv(csvString: string) {
-        Supplement.OBJECTS = new Map<string, Supplement>();
-
         parse(csvString, {
             delimiter: "|",
             columns: true
@@ -213,8 +209,6 @@ export class Artisan {
     }
 
     static loadCsv(csvString: string) {
-        Artisan.OBJECTS = new Map<string, Artisan[]>();
-
         parse(csvString, {
             delimiter: "|",
             columns: true

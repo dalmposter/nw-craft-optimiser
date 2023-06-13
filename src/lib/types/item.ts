@@ -305,7 +305,6 @@ export class MWResource extends MWObject {
     }
 
     static loadCsv(csvString: string) {
-        MWResource.OBJECTS = new Map<string, MWResource>();
         parse(csvString, {
             delimiter: "|",
             columns: true
@@ -351,8 +350,6 @@ export class MWItem extends CraftedMWObject {
     }
     
     static loadCsv(csvString: string) {
-        MWItem.OBJECTS = new Map<string, MWItem>();
-
         parse(csvString, {
             delimiter: "|",
             columns: true
@@ -383,8 +380,6 @@ export class CommissionItem {
     }
 
     static loadCsv(csvString: string) {
-        CommissionItem.OBJECTS = new Map<string, CommissionItem>();
-
         parse(csvString, {
             delimiter: "|",
             columns: true

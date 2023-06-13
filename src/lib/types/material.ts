@@ -11,8 +11,6 @@ export class MWMaterial extends CraftedMWObject {
     }
 
     static loadCsv(csvString: string) {
-        MWMaterial.OBJECTS = new Map<string, MWItem>();
-
         parse(csvString, {
             delimiter: "|",
             columns: true
