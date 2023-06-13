@@ -80,7 +80,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                     <p>
                         {
                             `${totalFocus}/${item.focus} Focus =`
-                        + ` ${round(props.recipe.highQualityChance * 100, 2)}% chance to +1`
+                        + ` ${round(props.recipe.highQualityChance * 100, 2)}% chance to obtain +1`
                         }
                     </p>
                     <p>

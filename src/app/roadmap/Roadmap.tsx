@@ -23,6 +23,7 @@ export default class Roadmap extends Component {
                 <li>Prettify the settings page</li>
                 <li>Optional saving of custom prices to cookies</li>
                 <li>Allow updating of resource prices in-line (without going to settings page)</li>
+                <li>Improve filters (allow clearing, allow hiding)</li>
             </ul>
             <h3>Do Next</h3>
             <ul>

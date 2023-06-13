@@ -69,7 +69,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
     <div className="RecipeAvatar">
         <div style={{display: "flex", flexFlow: "row wrap"}}>
             { /* TODO: Extract this style into css */ }
-            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "48%", margin: "4px"}}>
                 <Dropdown
                     placeholder='Filter by Masterwork Era'
                     fluid multiple selection
@@ -86,7 +86,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     ]}
                 />
             </div>
-            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "48%", margin: "4px"}}>
                 <Dropdown
                     placeholder='Filter by Class'
                     fluid multiple selection
@@ -101,7 +101,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     })}
                 />
             </div>
-            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "48%", margin: "4px"}}>
                 <Dropdown
                     placeholder='Filter by Item Category'
                     fluid multiple selection
@@ -116,7 +116,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     })}
                 />
             </div>
-            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "50%"}}>
+            <div style={{width: "fit-content", fontSize: "75%", minWidth: "320px", maxWidth: "48%", margin: "4px"}}>
                 <Dropdown
                     placeholder='Filter by Slot'
                     fluid multiple selection
