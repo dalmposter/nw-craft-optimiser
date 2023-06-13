@@ -10,25 +10,28 @@ export default class Roadmap extends Component {
                 All is subject to change at my whim, and progress could be delayed for
                 any reason. This is just a pet project for me.
             </p>
-            <h3>Do Soon</h3>
+            <h3>Done :)</h3>
             <ul>
                 <li><s>Ability to view resource prices used by the calculator</s></li>
                 <li><s>Ability to customise the resource prices used by the calculator</s></li>
-                <li>Add Menzoberranzan Masterwork Tier</li>
-                <li>Easier selection of items (filter by class and sharandar vs chult)</li>
+                <li><s>Add Menzoberranzan Masterwork Tier</s> (Current recipes are part speculation)</li>
+                <li><s>Easier selection of items (filter by class and sharandar vs chult)</s></li>
+            </ul>
+            <h3>Do Soon</h3>
+            <ul>
+                <li>Allow inspection of selected item and items in the dropdown (to view stats)</li>
                 <li>Prettify the settings page</li>
                 <li>Optional saving of custom prices to cookies</li>
+                <li>Allow updating of resource prices in-line (without going to settings page)</li>
             </ul>
             <h3>Do Next</h3>
             <ul>
-                <li>Allow updating of resource prices in-line (without going to settings page)</li>
                 <li>
                     Allow selecting of which specific Artisans/Tools/Supplements you have
                     and restrict the calculator to using only those when calculating prices
                 </li>
                 <li>Optimise UI for smaller screens</li>
                 <li>Source icons for resources, artisans, tool, and supplements</li>
-                <li>Allow inspection of selected item and items in the dropdown (to view stats)</li>
             </ul>
             <h3>Do After</h3>
             <ul>
@@ -53,7 +56,6 @@ export default class Roadmap extends Component {
                     artisans, tools and supplements and see the calculations for that combo
                 </li>
                 <li>Dark mode</li>
-                <li>Show stats of the crafted gear</li>
                 <li>Add 'wiki' style pages explaining the mechanics of crafting</li>
                 <li>Add 'wiki' style pages giving information about the resources</li>
             </ul>
