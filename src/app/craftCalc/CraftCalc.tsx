@@ -52,7 +52,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         <>
         <div className={`Panel`} id="craft-calc">
             <h1 style={{padding: "16px"}}>Neverwinter Masterwork Calculator</h1>
-            { false &&
+            { this.props.unlocked &&
                 <p style={{fontSize: "80%", color: "darkred", marginBottom: 0}}>
                     Please be aware that although I present the Menzoberranzan recipes, they are
                     not yet finalised. In addition, the recipes for intermediate materials, such

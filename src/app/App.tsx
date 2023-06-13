@@ -29,7 +29,7 @@ export class App extends React.Component<AppProps, AppState> {
 			page: "calculator",
 			availableItems: [],
             availableItemNames: [],
-            unlocked: false,
+            unlocked: true, //TODO: Default to true, for now
 		}
 	}
 

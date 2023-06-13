@@ -45,7 +45,7 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                     General Settings
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 0}>
-                    <div style={{marginBottom: "16px"}}>
+                    <div>
                         <Checkbox
                             label="Enable speculative recipes"
                             onChange={(e, data) => this.props.setUnlocked(!!data.checked)}
