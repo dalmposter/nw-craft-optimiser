@@ -58,6 +58,7 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "@semantic-ui-react/craco-less": "^3.0.0",
+    "@types/webpack-env": "^1.18.1",
     "gh-pages": "^5.0.0",
     "sass": "^1.62.0"
   }

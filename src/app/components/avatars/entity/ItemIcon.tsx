@@ -1,12 +1,11 @@
 import { Popup } from "semantic-ui-react";
 import { MWItem, MWResource } from "../../../../lib/types/item";
-import emptyIcon from "../../../../images/EmptyIcon.png"
 import React from "react";
 
 import "./ItemIcon.scss"
+import { Icon } from "../icon";
 
 export interface ItemIconProps {
-    itemIcon?: any;
     item: MWItem;
     onClick: (name: string) => void;
 }
@@ -35,10 +34,9 @@ export class ItemIcon extends React.Component<ItemIconProps, ItemIconState> {
         <Popup
             className="ItemIcon"
             flowing
-            trigger={<img
-                        src={this.props.itemIcon? this.props.itemIcon : emptyIcon}
+            trigger={<Icon
+                        name={this.props.item.name}
                         onClick={() => this.props.onClick(this.props.item.name)}
-                        style={{cursor: "pointer"}}
                     />}
         >
             <h4>{this.props.item.name} [Material]</h4>
@@ -50,7 +48,6 @@ export class ItemIcon extends React.Component<ItemIconProps, ItemIconState> {
 }
 
 export interface ResourceIconProps {
-    itemIcon?: any;
     item: MWResource;
 }
 
@@ -59,7 +56,7 @@ export function ResourceIcon (props: ResourceIconProps) {
     <Popup
         className="ResourceIcon"
         flowing
-        trigger={<img src={props.itemIcon? props.itemIcon : emptyIcon} />}
+        trigger={<Icon name={props.item.name} />}
     >
         <h4>{props.item.name} [Resource]</h4>
         <p>Source: {props.item.source}</p>
