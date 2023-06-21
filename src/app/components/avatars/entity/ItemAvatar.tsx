@@ -9,7 +9,7 @@ interface ItemAvatarProps {
     quantity?: number;
     item: CraftedMWObject | MWResource;
     itemIcon?: any;
-    onClick: (name: string) => void;
+    onClick?: (name: string) => void;
 }
 
 export function ItemAvatar (props: ItemAvatarProps) {
@@ -44,7 +44,7 @@ export function ItemAvatar (props: ItemAvatarProps) {
                 :
                 <p
                     style={{height: "fit-content", cursor: "pointer"}}
-                    onClick={() => props.onClick(props.item.name)}
+                    onClick={props.onClick? () => props.onClick!(props.item.name) : undefined}
                 >
                     {props.item.name}
                 </p>

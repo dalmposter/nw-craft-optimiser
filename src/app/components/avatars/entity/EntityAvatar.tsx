@@ -3,6 +3,7 @@ import { Grid, Popup } from "semantic-ui-react";
 import emptyIcon from "../../../../images/EmptyIcon.png"
 import "./EntityAvatar.scss"
 import { Artisan, Supplement, Tool } from "../../../../lib/types/recipe";
+import { images } from "../icon";
 
 interface EntityAvatarProps {
     entity?: Artisan | Tool | Supplement;
