@@ -1,5 +1,4 @@
 /** Module for getting item icon images. */
-import React from "react";
 
 function importAll(r: __WebpackModuleApi.RequireContext) {
     return new Map(r.keys().map((fileName: string) => ([
@@ -8,7 +7,8 @@ function importAll(r: __WebpackModuleApi.RequireContext) {
 	])))
 }
 
-export function getFileName(itemName: string) {
+export function getFileName(itemName?: string) {
+    if(itemName === undefined) return "EmptyIcon.png"
     let fileName = itemName.replace(/[^a-zA-Z0-9 ]/g, "").replaceAll(" ", "-").toLowerCase();
     console.log(`Transformed ${itemName} into ${fileName}`)
     return fileName + ".png"

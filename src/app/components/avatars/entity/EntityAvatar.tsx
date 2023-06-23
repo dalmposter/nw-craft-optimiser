@@ -3,11 +3,10 @@ import { Grid, Popup } from "semantic-ui-react";
 import emptyIcon from "../../../../images/EmptyIcon.png"
 import "./EntityAvatar.scss"
 import { Artisan, Supplement, Tool } from "../../../../lib/types/recipe";
-import { images } from "../icon";
+import { getFileName, images } from "../icon";
 
 interface EntityAvatarProps {
     entity?: Artisan | Tool | Supplement;
-    itemIcon?: any;
     size: "small" | "medium" | "large";
 }
 
@@ -25,11 +24,15 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
     }
 
     if(props.entity) {
+        
+        let fileName = getFileName(props.entity.name);
+        let itemIcon = images.get(fileName);
+        
         return (
         <div className="EntityAvatar" style={{textAlign: "center"}}>
             <Popup
                 className="EntityIcon"
-                trigger={<img src={props.itemIcon? props.itemIcon : emptyIcon} />}
+                trigger={<img src={itemIcon? itemIcon : emptyIcon} />}
                 flowing hoverable
             >
                 <div>
@@ -66,14 +69,18 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
         </div>
         )
     } else {
-        return <img src={props.itemIcon? props.itemIcon : emptyIcon} />
+        return <img src={emptyIcon} />
     }
 }
 
 export function EntityAvatarLarge (props: EntityAvatarProps) {
+
+    let fileName = getFileName(props.entity?.name);
+    let itemIcon = images.get(fileName);
+
     return (
     <div className="EntityAvatar" style={{textAlign: "center"}}>
-        <img src={props.itemIcon? props.itemIcon : emptyIcon} />
+        <img src={itemIcon? itemIcon : emptyIcon} />
         { props.entity &&
             <div>
                 <p style={{marginBottom: "12px"}}>

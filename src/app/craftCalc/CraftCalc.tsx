@@ -55,12 +55,9 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
             { this.props.unlocked &&
                 <p style={{fontSize: "80%", color: "darkred", marginBottom: 0}}>
                     Please be aware that although I present the Menzoberranzan recipes, they are
-                    not yet finalised. In addition, the recipes for intermediate materials, such
-                    as Mushroom Lumber, are not actually revealed. The recipes I present are
-                    extrapolations I have made based on those we do know. Also, the prices are
-                    only shown for illustration purposes (and because this app would be confused
-                    by all items costing 0). The items are not available yet so there is no
-                    market price.
+                    not yet finalised. Also, the prices are only shown for illustration purposes
+                    (and because this app would be confused by all items costing 0). The items
+                    are not available yet so there is no market price.
                 </p>
             }
             <div className="flexbox">
