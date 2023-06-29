@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/nw-craft-optimiser/static/css/main.13007c7d.css",
-    "main.js": "/nw-craft-optimiser/static/js/main.1bca93d3.js",
+    "main.css": "/nw-craft-optimiser/static/css/main.cbecd8ae.css",
+    "main.js": "/nw-craft-optimiser/static/js/main.e8dff124.js",
     "static/js/787.6c57dc1d.chunk.js": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js",
     "static/media/brand-icons.svg": "/nw-craft-optimiser/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/nw-craft-optimiser/static/media/icons.62d9dae4e0040e81c980.svg",
+    "static/media/high-quality-flair.png": "/nw-craft-optimiser/static/media/high-quality-flair.2a33c847f46d79cba816.png",
     "static/media/outline-icons.svg": "/nw-craft-optimiser/static/media/outline-icons.9c4845b4b41ef40a22fa.svg",
     "static/media/icons.eot": "/nw-craft-optimiser/static/media/icons.a01e3f2d6c83dc3aee17.eot",
     "static/media/icons.ttf": "/nw-craft-optimiser/static/media/icons.c656b8caa454ed19b9a2.ttf",
@@ -23,12 +24,12 @@
     "static/media/adloquium.png": "/nw-craft-optimiser/static/media/adloquium.d89bfbfbe20864b4f5e8.png",
     "static/media/mavi-jubbani.png": "/nw-craft-optimiser/static/media/mavi-jubbani.6f4d0188330e3b90a8c0.png",
     "index.html": "/nw-craft-optimiser/index.html",
-    "main.13007c7d.css.map": "/nw-craft-optimiser/static/css/main.13007c7d.css.map",
-    "main.1bca93d3.js.map": "/nw-craft-optimiser/static/js/main.1bca93d3.js.map",
+    "main.cbecd8ae.css.map": "/nw-craft-optimiser/static/css/main.cbecd8ae.css.map",
+    "main.e8dff124.js.map": "/nw-craft-optimiser/static/js/main.e8dff124.js.map",
     "787.6c57dc1d.chunk.js.map": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.13007c7d.css",
-    "static/js/main.1bca93d3.js"
+    "static/css/main.cbecd8ae.css",
+    "static/js/main.e8dff124.js"
   ]
 }
