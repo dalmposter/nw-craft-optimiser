@@ -59,7 +59,7 @@ export class CraftedMWObject extends MWObject {
         super(name);
         this.type = "unknown";
         this.quantity = Number(data.quantity);
-        this.canDabHand = data.canDabHand.toLowerCase() == "true";
+        this.canDabHand = data.canDabHand.toLowerCase() === "true";
         this.proficiency = Number(data.proficiency);
         this.focus = Number(data.focus);
         this.unlock = data.unlock;
@@ -79,10 +79,10 @@ export class CraftedMWObject extends MWObject {
     async getOptimalRecipes(highQuality: boolean): Promise<[MWRecipe, number][]> {
         const RECIPE_QUANTITY = 10;
 
-        if(highQuality && this.hqOptimalRecipes != undefined) {
+        if(highQuality && this.hqOptimalRecipes !== undefined) {
             return this.hqOptimalRecipes.slice(0, RECIPE_QUANTITY);
         }
-        if(!highQuality && this.optimalRecipes != undefined) {
+        if(!highQuality && this.optimalRecipes !== undefined) {
             return this.optimalRecipes.slice(0, RECIPE_QUANTITY);
         } else {
             await this.getOptimalRecipe(highQuality);
@@ -108,10 +108,10 @@ export class CraftedMWObject extends MWObject {
         await this.lock.acquire()
         // First check if we already calculated the optimal recipes for this item.
         // This prevents massive runtimes by caching the best recipes once calculated.
-        if(highQuality && this.hqOptimalRecipes != undefined) {
+        if(highQuality && this.hqOptimalRecipes !== undefined) {
             await this.lock.release()
             return this.hqOptimalRecipes[0][0];
-        } else if(!highQuality && this.optimalRecipes != undefined) {
+        } else if(!highQuality && this.optimalRecipes !== undefined) {
             await this.lock.release()
             return this.optimalRecipes[0][0];
         } else {
@@ -140,7 +140,7 @@ export class CraftedMWObject extends MWObject {
             for(var artisan of artisans) {
                 for(var [toolKey, tool] of Tool.OBJECTS) {
                     for(var [supKey, supplement] of Supplement.OBJECTS) {
-                        if(supplement.name == this.name) {
+                        if(supplement.name === this.name) {
                             continue;
                         }
                         let thread = addCraftToList(artisan, tool, supplement, 1, highQuality);
@@ -294,10 +294,10 @@ export class MWResource extends MWObject {
         super("N/A");
         this.price = 0;
         this.source = "-";
-        if(name != undefined) {
+        if(name !== undefined) {
             this.name = name;
         }
-        if(data != undefined) {
+        if(data !== undefined) {
             this.name = data.name;
             this.price = Number(data.price);
             this.source = data.source

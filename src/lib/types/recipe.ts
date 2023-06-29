@@ -84,7 +84,7 @@ export class Supplement {
     object: CraftedMWObject | MWResource;
 
     constructor(data: SupplementType) {
-        this.highQuality = data.highQuality.toLowerCase() == "true";
+        this.highQuality = data.highQuality.toLowerCase() === "true";
         this.name = data.name;
         this.proficiency = Number(data.proficiency);
         this.focus = Number(data.focus);
@@ -146,7 +146,7 @@ export class Supplement {
         // TODO: do we want to use wintergreen tea +1? balm?
         if(this.supplementRecipe === undefined) {
             this.supplementRecipe = await this.object.craft(
-                Artisan.OBJECTS.get("Alchemist")!.filter((value: Artisan) => value.name == "Beatrice")[0],
+                Artisan.OBJECTS.get("Alchemist")!.filter((value: Artisan) => value.name === "Beatrice")[0],
                 Tool.OBJECTS.get("Forgehammer of Gond"),
                 Supplement.OBJECTS.get("Wintergreen Tea +1"),
                 1,
@@ -218,7 +218,7 @@ export class Artisan {
             }
             for(var artisanInput of result) {
                 let newArtisan = new Artisan(artisanInput);
-                if(newArtisan.profession == "Any") {
+                if(newArtisan.profession === "Any") {
                     for(var key in Artisan.OBJECTS) {
                         Artisan.OBJECTS.get(key)!.push(newArtisan)
                     }
@@ -280,7 +280,7 @@ export class MWRecipe {
         highQuality?: boolean
     ) {
         this.result = result;
-        this.quantity = quantity == undefined? 1 : quantity;
+        this.quantity = quantity === undefined? 1 : quantity;
         this.artisan = artisan;
         this.tool = tool;
         this.supplement = supplement;
@@ -295,7 +295,7 @@ export class MWRecipe {
         let cost: number = 0;
         for(var entry of this.materials) {
             let matObject = findMwObject(entry[1]);
-            if(matObject != undefined && matObject.price != undefined) {
+            if(matObject !== undefined && matObject.price !== undefined) {
                 cost += entry[0] * matObject.price;
             } else {
                 console.debug(`Failed to find price of mw object for ${entry[1]}`);
@@ -303,7 +303,7 @@ export class MWRecipe {
         }
         for(var supplementMatEntry of this.supplementMaterials) {
             let supObject = findMwObject(supplementMatEntry[1]);
-            if(supObject != undefined && supObject.price != undefined) {
+            if(supObject !== undefined && supObject.price !== undefined) {
                 cost += supplementMatEntry[0] * supObject.price;
             } else {
                 console.debug(`Failed to find price of supplement for ${supplementMatEntry[1]}`);
@@ -370,7 +370,7 @@ export class MWRecipe {
             stringBuilder.push(`\n${Math.round(cost).toLocaleString("en-US")} AD`);
             stringBuilder.push(` (${Math.round(recipe.normalResults * 100) / 100} Normal,`);
             stringBuilder.push(` ${Math.round(recipe.highQualityResults * 100) / 100} +1):`);
-            if(recipe.artisan != undefined && recipe.supplement != undefined) {
+            if(recipe.artisan !== undefined && recipe.supplement !== undefined) {
                 stringBuilder.push(
                     ` ${recipe.artisan.prettyPrint()} + ${recipe.supplement.prettyPrint()}`
                 );
@@ -390,7 +390,7 @@ export class MWRecipe {
         let stringBuilder: string[] = [];
         stringBuilder.push(`\n${this.result.name}${this.highQuality? " +1" : ""}`);
         stringBuilder.push("-----------------------------------------------------------");
-        if(this.artisan != undefined && this.supplement != undefined) { //TODO: Fix MWResource craft
+        if(this.artisan !== undefined && this.supplement !== undefined) { //TODO: Fix MWResource craft
             stringBuilder.push(`${this.artisan.prettyPrint()} + ${this.supplement.prettyPrint()}`
                              + ` : ${Math.round(this.attempts * 100) / 100} Attempts`);
         }
@@ -403,7 +403,7 @@ export class MWRecipe {
             let roundedQuantity = Math.round(matEntry[0] * 100) / 100;
             stringBuilder.push(`  ${roundedQuantity}x ${matEntry[1]}`);
             let matObject = findMwObject(matEntry[1]);
-            if(matObject != undefined && matObject.price != undefined) {
+            if(matObject !== undefined && matObject.price !== undefined) {
                 cost += matEntry[0] * matObject.price;
             }
         }
@@ -419,7 +419,7 @@ export class MWRecipe {
             let roundedQuantity = Math.round(supplementMatEntry[0] * 100) / 100;
             stringBuilder.push(`  ${roundedQuantity}x ${supplementMatEntry[1]}`);
             let supMatObject = findMwObject(supplementMatEntry[1]);
-            if(supMatObject != undefined && supMatObject.price != undefined) {
+            if(supMatObject !== undefined && supMatObject.price !== undefined) {
                 supplementCost += supplementMatEntry[0] * supMatObject.price;
             }
         }

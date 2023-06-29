@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
 import { CraftCalcProps, CraftCalcState } from "./CraftCalc.types";
-import { Artisan, MWRecipe, Supplement, Tool } from "../../lib/types/recipe";
-import { CommissionItem, CraftedMWObject, MWItem, MWResource } from "../../lib/types/item";
+import { MWRecipe } from "../../lib/types/recipe";
+import { CraftedMWObject } from "../../lib/types/item";
 import { findMwItem } from "../../lib/types/util";
-import { MWMaterial } from "../../lib/types/material";
 import { RecipeAvatar } from "../components/avatars/recipe/RecipeAvatar";
 import { RecipeRanking } from "../components/avatars/recipe/RecipeRanking";
 
@@ -44,7 +43,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
     }
 
     arePricesViewable = (item: CraftedMWObject) => {
-        return item.mwCategory != "Menzoberranzan Masterwork" || this.props.unlocked
+        return item.mwCategory !== "Menzoberranzan Masterwork" || this.props.unlocked
     }
 
     render() {
@@ -75,7 +74,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                                     {
                                         ...this.state,
                                         input: value,
-                                        activeItem: value != ""? findMwItem(value) : undefined
+                                        activeItem: value !== ""? findMwItem(value) : undefined
                                     },
                                     () => this.craft(this.state.activeItem, this.state.isHighQuality)
                                 )

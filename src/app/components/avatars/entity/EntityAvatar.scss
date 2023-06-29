@@ -2,10 +2,10 @@
 
 .EntityAvatar > *
 {
-    padding: 2px;
+    margin: 2px;
 }
 
-.EntityAvatar > img
+.EntityAvatar > div > img
 {
     height: $entityIconHeight;
     width: $entityIconHeight;
@@ -26,4 +26,11 @@
 {
     margin-bottom: 12px;
     margin-top: 0;
+}
+
+.EntityAvatar
+{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }

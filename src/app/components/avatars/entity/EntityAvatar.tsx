@@ -11,8 +11,8 @@ interface EntityAvatarProps {
 }
 
 export function EntityAvatar (props: EntityAvatarProps) {
-    if (props.size == "large") return EntityAvatarLarge(props);
-    if (props.size == "medium") return EntityAvatarMedium(props);
+    if (props.size === "large") return EntityAvatarLarge(props);
+    if (props.size === "medium") return EntityAvatarMedium(props);
     else return EntityAvatarMedium(props)
 }
 
@@ -27,12 +27,31 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
         
         let fileName = getFileName(props.entity.name);
         let itemIcon = images.get(fileName);
+        let highQualityFlair = images.get("high-quality-flair.png")
         
         return (
-        <div className="EntityAvatar" style={{textAlign: "center"}}>
+        <div className="EntityAvatar">
             <Popup
                 className="EntityIcon"
-                trigger={<img src={itemIcon? itemIcon : emptyIcon} />}
+                trigger={
+                    <div style={{width: "fit-content", position: "relative"}}>
+                        { props.entity.name.split("+1").length > 1 &&
+                            <img style={
+                                    {
+                                        width: "25%",
+                                        height: "25%",
+                                        position: "absolute",
+                                        left: "12.5%",
+                                        top: "12.5%"
+                                    }
+                                }
+                                src={highQualityFlair? highQualityFlair : emptyIcon}
+                                alt="+1 Flair"
+                            />
+                        }
+                        <img src={itemIcon? itemIcon : emptyIcon} alt={`${props.entity.name} Icon`}/>
+                    </div>
+                }
                 flowing hoverable
             >
                 <div>
@@ -58,7 +77,7 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
                         </p>
                     </>
                     }
-                    {skillName != "None" &&
+                    {skillName !== "None" &&
                         <p>Special Skill: {skillName} ({skillChance * 100}%)</p>
                     }
                 </div>

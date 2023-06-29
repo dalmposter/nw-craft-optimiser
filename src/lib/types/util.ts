@@ -17,7 +17,7 @@ import { MWMaterial } from "./material"
  * @raises Error if no matching object is found and assumeResource is false.
  */
 export const findMwObject = (name: string, assumeResource: boolean = true): CraftedMWObject | MWResource => {
-    if(name.slice(-3) == " +1") {
+    if(name.slice(-3) === " +1") {
         name = name.slice(0, -3)
     }
     if(MWItem.OBJECTS.has(name)) {
@@ -45,7 +45,7 @@ export const findMwObject = (name: string, assumeResource: boolean = true): Craf
      */
 export const findMwItem =(name: string): CraftedMWObject => {
     console.log(`Finding MW item ${name}`)
-    if(name.slice(-3) == " +1") {
+    if(name.slice(-3) === " +1") {
         name = name.slice(0, -3)
     }
     if(MWItem.OBJECTS.has(name)) {
@@ -68,7 +68,7 @@ export const findMwItem =(name: string): CraftedMWObject => {
 export const aggregateTupleLists = (target: [number, string][], source: [number, string][]) => {
 
     for(var sourceEntry of source) {
-        let matches = target.filter((value: [number, string]) => value[1] == sourceEntry[1])
+        let matches = target.filter((value: [number, string]) => value[1] === sourceEntry[1])
         if(matches.length > 0) {
             matches[0][0] += sourceEntry[0]
         } else {

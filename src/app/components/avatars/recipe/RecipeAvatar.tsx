@@ -54,7 +54,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
                     return false
                 }
                 else if(props.itemFilter.slot.length > 0
-                    && !props.itemFilter!.slot.some((value) => value == item.itemSlot)
+                    && !props.itemFilter!.slot.some((value) => value === item.itemSlot)
                 ) {
                     return false
                 }

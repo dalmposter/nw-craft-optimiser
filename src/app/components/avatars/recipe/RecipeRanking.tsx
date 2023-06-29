@@ -20,7 +20,7 @@ export function RecipeRanking (props: RecipeRankingProps) {
                     cost={value[1]}
                     recipe={value[0]}
                     key={`craftCalc-rcAvatar-${index}`}
-                    expanded={index + 1 == expandedCombo}
+                    expanded={index + 1 === expandedCombo}
                     onExpand={(value: boolean) => {
                         value? setExpandedCombo(index + 1) : setExpandedCombo(0)
                     }}
