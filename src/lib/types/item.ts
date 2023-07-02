@@ -153,7 +153,8 @@ export class CraftedMWObject extends MWObject {
             // Wait for all the threads
             await Promise.all(threads).then((value: [MWRecipe, number][]) => {
                 rankingList = value;
-                rankingList.sort((a, b) => a[1] - b[1]);
+                // Sort by price, with a tiebreaker on +1 chance
+                rankingList.sort((a, b) => a[1] - b[1] || b[0].highQualityChance - a[0].highQualityChance);
             });
 
             if(highQuality) {

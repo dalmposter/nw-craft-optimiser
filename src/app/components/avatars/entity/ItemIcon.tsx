@@ -47,6 +47,7 @@ export class ItemIcon extends React.Component<ItemIconProps, ItemIconState> {
             flowing hoverable
             trigger={
                 <img
+                    className="Icon"
                     src={itemIcon? itemIcon : images.get("EmptyIcon.png")}
                     onClick={onClick}
                     style={style}
@@ -76,6 +77,7 @@ export function ResourceIcon (props: ResourceIconProps) {
         flowing hoverable
         trigger={
             <img
+                className="Icon"
                 src={itemIcon? itemIcon : images.get("EmptyIcon.png")}
             />
         }

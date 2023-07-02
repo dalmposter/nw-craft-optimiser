@@ -6,8 +6,8 @@ Aberrant Sinew|0.0|Gathering
 Adamantine Ore|0.0|Gathering
 Adder|0.0|Gathering
 Aegwyrt|0.0|Gathering
-Alkali|4800.0|GH Vendor
-Allosaur Fang|6000.0|Allosaurs in Chult
+Alkali|4000.0|GH Vendor
+Allosaur Fang|3500.0|Allosaurs in Chult
 Animal Bone|0.0|Gathering
 Animal Hide|0.0|Gathering
 Animal Sinew|0.0|Gathering
@@ -28,21 +28,21 @@ Belladonna|0.0|Gathering
 Blackiron Ore|0.0|Gathering
 Blacklip Oyster|0.0|Gathering
 Brimstone|0.0|Gathering
-Brilliant Pinion|300.0|Explorer Chart: Omu
-Bronzewood Log|270.0|Explorer Chart: Soshenstar
+Brilliant Pinion|380.0|Explorer Chart: Omu
+Bronzewood Log|225.0|Explorer Chart: Soshenstar
 Brown Scorpion|0.0|Gathering
 Calf Skin|1000.0|Mysterious Merchant
 Chalk|0.0|Gathering
 Chamomile|0.0|Gathering
 Chestnut Log|0.0|Gathering
-Chultan Spring Water|160.0|Explorer Chart: Omu
-Chultan Tea Leaves|2500.0|Explorer Chart: Soshenstar
+Chultan Spring Water|700.0|Explorer Chart: Omu
+Chultan Tea Leaves|2200.0|Explorer Chart: Soshenstar
 Chultan Wootz Ore|100.0|Explorer Chart: Omu
 Cinnabar|0.0|Gathering
 Cobalt Ore|0.0|Gathering
 Chultan Wootz|0.0|Explorer Chart: Omu
 Chultan Wootz Ingot|0.0|
-Coke|4200.0|GH Vendor
+Coke|3700.0|GH Vendor
 Copper Ore|0.0|Gathering
 Copper Sand|0.0|Gathering
 Corpse Flower Thorn|800.0|
@@ -86,7 +86,7 @@ Iron Ore|0.0|Gathering
 Iron Rust|2200.0|GH Vendor
 Iron Sand|0.0|Gathering
 Jute|0.0|Mysterious Merchant
-Lakh Resin|4700.0|Explorer Chart: Soshenstar
+Lakh Resin|3000.0|Explorer Chart: Soshenstar
 Lichstone|400.0|Tomb of the Nine Gods
 Limestone|0.0|Gathering
 Lion Hide|5000.0|Lions in Chult
@@ -120,15 +120,15 @@ Nettle|0.0|Gathering
 Nightleaf Tea|0.0|Explorer Chart: Twisted Caverns
 Nightshade|0.0|Gathering
 Oak Log|0.0|Gathering
-Obsidian|5000.0|Explorer Chart: Omu
+Obsidian|4400.0|Explorer Chart: Omu
 Palm Wax|0.0|Chultan Palm Leaves
 Parsnip|0.0|Gathering
 Pennyroyal|0.0|Gathering
-Philosopher's Bounty|13000.0|Lockbox
+Philosopher's Bounty|12500.0|Lockbox
 Philosopher's Calm|0.0|Lockbox
 Philosopher's Focus|0.0|Lockbox
 Philosopher's Haste|0.0|Lockbox
-Philosopher's Keep|2250.0|Lockbox
+Philosopher's Keep|2600.0|Lockbox
 Philosopher's Quick|0.0|Lockbox
 Pine Log|0.0|Gathering
 Polar Bear Skin|3500.0|GH Vendor
@@ -144,7 +144,7 @@ Raw Blood Ruby|0.0|Gathering
 Raw Emerald|0.0|Gathering
 Raw Peridot|0.0|Gathering
 Raw Sapphire|0.0|Gathering
-Red Rouge|7000.0|GH Vendor
+Red Rouge|3500.0|GH Vendor
 Regalis Ore|0.0|Gathering
 Regalis Sand|0.0|Gathering
 Relic Iron Ingot|0.0|"Fangbreaker Island
@@ -153,7 +153,7 @@ Rhubarb|0.0|Gathering
 River Trout|0.0|Gathering
 Rock Salt|0.0|Gathering
 Salt-Marsh Crystal|5000.0|
-Samarachan Jute|400.0|Explorer Chart: Omu
+Samarachan Jute|500.0|Explorer Chart: Omu
 Sandstone|0.0|Gathering
 Senna Leaves|0.0|Profession Flowers Soshenstar
 Shade Leaves|40.0|Explorer Chart: The Mires
@@ -163,7 +163,7 @@ Shark Oil|440.0|Mysterious Merchant
 Shattered Snowflakes|1000.0|Vault of Stars
 Shimmerweed|0.0|Gathering
 Shed Marblehorn|0.0|Explorer Chart: Wyllowwood
-Silkworm Cocoon|200.0|Explorer Chart: Soshenstar
+Silkworm Cocoon|150.0|Explorer Chart: Soshenstar
 Siltstone|0.0|Gathering
 Silver Ore|0.0|Gathering
 Silver Sand|0.0|Gathering
@@ -181,10 +181,10 @@ Tanner's Liquor|6000.0|GH Vendor
 Tarantula|0.0|Gathering
 Teak|0.0|Undead in Soshenstar
 Tear of Ubtao|14000.0|Tomb of the Nine Gods
-Terebinth|2200.0|GH Vendor
+Terebinth|3800.0|GH Vendor
 Tin Ingot|0.0|Mysterious Merchant
 Tin Ore|0.0|Gathering
-Tincal|5200.0|GH Vendor
+Tincal|4200.0|GH Vendor
 Tinker's Bounty|0.0|Lockbox
 Tinker's Calm|0.0|Lockbox
 Tinker's Focus|0.0|Lockbox

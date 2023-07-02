@@ -49,7 +49,11 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
                                 alt="+1 Flair"
                             />
                         }
-                        <img src={itemIcon? itemIcon : emptyIcon} alt={`${props.entity.name} Icon`}/>
+                        <img
+                            className="Icon"
+                            src={itemIcon? itemIcon : emptyIcon}
+                            alt={`${props.entity.name} Icon`}
+                        />
                     </div>
                 }
                 flowing hoverable
@@ -88,7 +92,7 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
         </div>
         )
     } else {
-        return <img src={emptyIcon} />
+        return <img className="Icon" src={emptyIcon} />
     }
 }
 
@@ -99,7 +103,7 @@ export function EntityAvatarLarge (props: EntityAvatarProps) {
 
     return (
     <div className="EntityAvatar" style={{textAlign: "center"}}>
-        <img src={itemIcon? itemIcon : emptyIcon} />
+        <img src={itemIcon? itemIcon : emptyIcon} className="Icon" />
         { props.entity &&
             <div>
                 <p style={{marginBottom: "12px"}}>
