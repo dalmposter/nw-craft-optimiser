@@ -148,7 +148,7 @@ export class Supplement {
             this.supplementRecipe = await this.object.craft(
                 Artisan.OBJECTS.get("Alchemist")!.filter((value: Artisan) => value.name === "Beatrice")[0],
                 Tool.OBJECTS.get("Forgehammer of Gond"),
-                Supplement.OBJECTS.get("Wintergreen Tea +1"),
+                Supplement.OBJECTS.get("Wintergreen Balm +1"),
                 1,
                 this.highQuality
             )
