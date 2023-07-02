@@ -27,6 +27,7 @@ export default class Roadmap extends Component {
             </ul>
             <h3>Do Next</h3>
             <ul>
+                <li>Allow displaying of more results than the top 10 (pages or select quantity)</li>
                 <li>
                     Allow selecting of which specific Artisans/Tools/Supplements you have
                     and restrict the calculator to using only those when calculating prices

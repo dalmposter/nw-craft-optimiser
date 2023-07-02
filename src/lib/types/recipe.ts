@@ -143,12 +143,47 @@ export class Supplement {
      * @param quantity 
      */
     async craft(quantity: number = 1): Promise<MWRecipe> {
+        // Supplements made out of crafted materials return hard-coded result when crafted
+        // in the context of being used as a supplement. This prevents infinite recursion in
+        // crafting, while still allowing the results to be based on market prices.
+        if(this.name === "Workman's Incense") {
+            let out = new MWRecipe(this.object, 1);
+            out.supplementMaterials = [];
+            out.materials = [[15, "Bronzewood Log"], [1.25, "Tincal"]];
+            out.highQuality = false;
+            out = out.multiply(quantity);
+            return out
+        }
+        if(this.name === "Workman's Incense +1") {
+            let out = new MWRecipe(this.object, 1);
+            out.supplementMaterials = [];
+            out.materials = [[37.5, "Bronzewood Log"], [3.625, "Tincal"]];
+            out.highQuality = true;
+            out = out.multiply(quantity);
+            return out
+        }
+        if(this.name === "Hermit's Incense") {
+            let out = new MWRecipe(this.object, 1);
+            out.supplementMaterials = [];
+            out.materials = [[4.85, "Hardened Blight Bark"], [4.85, "Troll's Earwax Resin"], [15, "Feywood Log"], [1.25, "Soulfire Flies"]];
+            out.highQuality = false;
+            out = out.multiply(quantity);
+            return out
+        }
+        if(this.name === "Hermit's Incense +1") {
+            let out = new MWRecipe(this.object, 1);
+            out.supplementMaterials = [];
+            out.materials = [[12.125, "Hardened Blight Bark"], [12.125, "Troll's Earwax Resin"], [37.5, "Feywood Log"], [3.625, "Soulfire Flies"]];
+            out.highQuality = false;
+            out = out.multiply(quantity);
+            return out
+        }
         // TODO: do we want to use wintergreen tea +1? balm?
         if(this.supplementRecipe === undefined) {
             this.supplementRecipe = await this.object.craft(
                 Artisan.OBJECTS.get("Alchemist")!.filter((value: Artisan) => value.name === "Beatrice")[0],
                 Tool.OBJECTS.get("Forgehammer of Gond"),
-                Supplement.OBJECTS.get("Wintergreen Balm +1"),
+                Supplement.OBJECTS.get(this.highQuality? "Wintergreen Tea +1" : "Wintergreen Balm +1"),
                 1,
                 this.highQuality
             )
