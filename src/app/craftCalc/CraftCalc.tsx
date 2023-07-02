@@ -46,6 +46,22 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         return item.mwCategory !== "Menzoberranzan Masterwork" || this.props.unlocked
     }
 
+    changeItem = (value: string) => {
+        try {
+            console.debug(`Changed input to ${value} from user click.`)
+            this.setState(
+                {
+                    ...this.state,
+                    input: value,
+                    activeItem: value !== ""? findMwItem(value) : undefined
+                },
+                () => this.craft(this.state.activeItem, this.state.isHighQuality)
+            )
+        } catch {
+            console.log("User clicked a resource. Not updating active item.")
+        }
+    }
+
     render() {
         return (
         <>
@@ -68,20 +84,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                             ...this.state,
                             itemFilter: filter
                         })}
-                        onChangeItem={(value) => {
-                            try {
-                                this.setState(
-                                    {
-                                        ...this.state,
-                                        input: value,
-                                        activeItem: value !== ""? findMwItem(value) : undefined
-                                    },
-                                    () => this.craft(this.state.activeItem, this.state.isHighQuality)
-                                )
-                            } catch {
-                                console.log("User clicked a resource. Not updating active item.")
-                            }
-                        }}
+                        onChangeItem={(...args) => this.changeItem(...args)}
                         updateHighQuality={(value: boolean) => {
                             this.setState(
                                 {
@@ -117,16 +120,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                         </p>
                         <RecipeRanking
                             orderedRecipes={this.state.outputList}
-                            onItemClick={(name: string) => {
-                                try {
-                                    this.setState({
-                                        ...this.state,
-                                        activeItem: findMwItem(name)
-                                    })
-                                } catch {
-                                    console.log("User clicked on a resource. Not updating active item.")
-                                }
-                            }}
+                            onItemClick={(...args) => this.changeItem(...args)}
                         />
                     </>
                     }

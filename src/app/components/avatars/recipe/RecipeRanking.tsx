@@ -1,4 +1,3 @@
-import { DividerProps } from "semantic-ui-react";
 import { MWRecipe } from "../../../../lib/types/recipe"
 import { RecipeComboAvatar } from "./RecipeComboAvatar"
 import { useState } from "react";

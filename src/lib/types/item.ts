@@ -1,7 +1,6 @@
 import { Lock } from "../util/lock";
-import { Recipe, PROFESSIONS, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constants";
+import { Recipe, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constants";
 import { CommissionItemType, CraftedMWObjectType, MWItemType, MWResourceType } from "./item.types";
-import { MWMaterial } from "./material";
 import { Artisan, Tool, Supplement, MWRecipe } from "./recipe";
 import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
 import { parse } from "csv-parse/browser/esm";

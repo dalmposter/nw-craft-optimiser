@@ -1,4 +1,4 @@
-import { CraftedMWObject, MWItem, MWObject, MWResource } from "./item"
+import { CraftedMWObject, MWItem, MWResource } from "./item"
 import { MWMaterial } from "./material"
 
 /**
@@ -44,7 +44,7 @@ export const findMwObject = (name: string, assumeResource: boolean = true): Craf
      * @raises Error if no material or item matches given name,
      */
 export const findMwItem =(name: string): CraftedMWObject => {
-    console.log(`Finding MW item ${name}`)
+    console.debug(`Finding MW item ${name}`)
     if(name.slice(-3) === " +1") {
         name = name.slice(0, -3)
     }
@@ -68,6 +68,7 @@ export const findMwItem =(name: string): CraftedMWObject => {
 export const aggregateTupleLists = (target: [number, string][], source: [number, string][]) => {
 
     for(var sourceEntry of source) {
+        // eslint-disable-next-line no-loop-func
         let matches = target.filter((value: [number, string]) => value[1] === sourceEntry[1])
         if(matches.length > 0) {
             matches[0][0] += sourceEntry[0]

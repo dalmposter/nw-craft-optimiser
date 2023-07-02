@@ -1,5 +1,5 @@
 import { Grid } from "semantic-ui-react";
-import { CraftedMWObject, MWItem, MWResource } from "../../../../lib/types/item";
+import { CraftedMWObject, MWResource } from "../../../../lib/types/item";
 import React from "react";
 import { ItemIcon, ItemIconProps, ResourceIcon, ResourceIconProps } from "./ItemIcon";
 

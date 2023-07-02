@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import CraftCalc from './craftCalc/CraftCalc';
 import Roadmap from './roadmap/Roadmap';
@@ -7,7 +7,6 @@ import SettingsPage from './settingsPage/SettingsPage';
 import { MWResource, MWItem, CommissionItem, CraftedMWObject } from '../lib/types/item';
 import { MWMaterial } from '../lib/types/material';
 import { Artisan, Tool, Supplement } from '../lib/types/recipe';
-import { findMwItem } from '../lib/types/util';
 
 interface AppProps {
 

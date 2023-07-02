@@ -1,4 +1,4 @@
-import { Grid, Popup } from "semantic-ui-react";
+import { Popup } from "semantic-ui-react";
 
 import emptyIcon from "../../../../images/EmptyIcon.png"
 import "./EntityAvatar.scss"
@@ -24,7 +24,6 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
     }
 
     if(props.entity) {
-        
         let fileName = getFileName(props.entity.name);
         let itemIcon = images.get(fileName);
         let highQualityFlair = images.get("high-quality-flair.png")
@@ -92,7 +91,7 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
         </div>
         )
     } else {
-        return <img className="Icon" src={emptyIcon} />
+        return <img className="Icon" src={emptyIcon} alt="unknown item" />
     }
 }
 
@@ -103,7 +102,7 @@ export function EntityAvatarLarge (props: EntityAvatarProps) {
 
     return (
     <div className="EntityAvatar" style={{textAlign: "center"}}>
-        <img src={itemIcon? itemIcon : emptyIcon} className="Icon" />
+        <img src={itemIcon? itemIcon : emptyIcon} className="Icon" alt={`${props.entity?.name}`} />
         { props.entity &&
             <div>
                 <p style={{marginBottom: "12px"}}>

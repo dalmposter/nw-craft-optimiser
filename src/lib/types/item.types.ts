@@ -1,5 +1,3 @@
-import { Recipe } from "./constants";
-
 export interface CraftedMWObjectType {
     name: string;
     quantity: string;

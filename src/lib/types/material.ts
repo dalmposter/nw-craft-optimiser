@@ -1,6 +1,6 @@
-import { CraftedMWObject, MWItem } from "./item";
+import { CraftedMWObject } from "./item";
 import { parse } from "csv-parse/browser/esm";
-import { MWItemType, CraftedMWObjectType } from "./item.types";
+import { CraftedMWObjectType } from "./item.types";
 
 export class MWMaterial extends CraftedMWObject {
     static OBJECTS: Map<string, MWMaterial> = new Map<string, MWMaterial>();

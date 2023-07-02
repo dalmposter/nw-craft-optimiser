@@ -51,6 +51,7 @@ export class ItemIcon extends React.Component<ItemIconProps, ItemIconState> {
                     src={itemIcon? itemIcon : images.get("EmptyIcon.png")}
                     onClick={onClick}
                     style={style}
+                    alt={`${this.props.item.name}`}
                 />
             }
         >
@@ -79,6 +80,7 @@ export function ResourceIcon (props: ResourceIconProps) {
             <img
                 className="Icon"
                 src={itemIcon? itemIcon : images.get("EmptyIcon.png")}
+                alt={`${props.item.name}`}
             />
         }
     >

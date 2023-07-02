@@ -1,6 +1,6 @@
 import { Recipe } from "./constants";
-import { CraftedMWObject, MWItem, MWObject, MWResource } from "./item";
-import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
+import { CraftedMWObject, MWResource } from "./item";
+import { findMwObject, aggregateTupleLists } from "./util";
 import { ToolType, SupplementType, ArtisanType } from "./recipe.types"
 import "stream-browserify"
 import { parse } from "csv-parse/browser/esm";

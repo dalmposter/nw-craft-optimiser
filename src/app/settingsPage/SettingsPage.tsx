@@ -3,6 +3,8 @@ import { MWResource } from "../../lib/types/item";
 import { findMwObject } from "../../lib/types/util";
 import { Accordion, AccordionTitleProps, Checkbox, Icon, Input } from "semantic-ui-react";
 
+import "./settings.scss";
+
 interface SettingsPageProps {
     unlocked: boolean;
     resetCalculations: () => void;
@@ -11,6 +13,7 @@ interface SettingsPageProps {
 
 interface SettingsPageState {
     activeIndex: number;
+    renders: number;
 }
 
 export default class SettingsPage extends Component<SettingsPageProps, SettingsPageState> {
@@ -18,7 +21,8 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
     constructor(props: SettingsPageProps) {
         super(props)
         this.state = {
-            activeIndex: 0
+            activeIndex: 1,
+            renders: 0
         }
     }
 
@@ -63,18 +67,22 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 1}>
                     {[...MWResource.OBJECTS.values()].map(resource =>
-                        <div style={{display: "flex"}}>
-                            <p style={{marginRight: "24px"}}>{resource.name}: </p>
+                        <div style={{display: "flex", marginBottom: "12px"}}>
                             <Input
+                                className="setting"
                                 focus
                                 value={resource.price}
                                 onChange={(event) => {
                                     let newPrice = Number(event.target.value)
                                     console.log(`Set price of ${resource.name} to ${newPrice}`)
                                     findMwObject(resource.name).price = newPrice
+                                    // Hack to force this component to re-render with the new price
+                                    this.setState({...this.state, renders: this.state.renders+1})
                                     this.props.resetCalculations()
                                 }}
                             />
+                            <p style={{margin: "2px"}}>AD:</p>
+                            <p style={{margin: "2px", marginLeft: "16px"}}>{resource.name}</p>
                         </div>
                     )}
                 </Accordion.Content>
