@@ -150,7 +150,8 @@ export class Supplement {
                 Tool.OBJECTS.get("Forgehammer of Gond"),
                 Supplement.OBJECTS.get("Wintergreen Balm +1"),
                 1,
-                this.highQuality
+                this.highQuality,
+                true
             )
         }
         let out = this.supplementRecipe!.multiply(quantity/this.supplementRecipe!.quantity);

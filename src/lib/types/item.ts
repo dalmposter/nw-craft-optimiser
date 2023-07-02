@@ -49,10 +49,22 @@ export class CraftedMWObject extends MWObject {
     optimalRecipes?: [MWRecipe, number][];
     /** List of the top recipes to craft this item in high quality, and their total AD cost. */
     hqOptimalRecipes?: [MWRecipe, number][];
+    
+    /**
+     * List of the top recipes to craft this item using only balm and tea,
+     * and their total AD cost.
+     */
+    optimalSimpleRecipes?: [MWRecipe, number][];
+    /**
+     * List of the top recipes to craft this item in high quality using only balm and tea,
+     * and their total AD cost.
+     */
+    hqOptimalSimpleRecipes?: [MWRecipe, number][];
 
     type: string;
 
     private lock: Lock;
+    private simpleLock: Lock;
 
     constructor(data: CraftedMWObjectType) {
         let name = data.name;
@@ -68,16 +80,19 @@ export class CraftedMWObject extends MWObject {
         this.recipe = eval(data.recipe)
         this.commission = Number(data.commission);
 
-        this.lock = new Lock()
+        this.lock = new Lock();
+        this.simpleLock = new Lock();
     }
 
     clearCalculations() {
         this.optimalRecipes = undefined;
         this.hqOptimalRecipes = undefined;
+        this.optimalSimpleRecipes = undefined;
+        this.hqOptimalSimpleRecipes = undefined;
     }
 
     async getOptimalRecipes(highQuality: boolean): Promise<[MWRecipe, number][]> {
-        const RECIPE_QUANTITY = 10;
+        const RECIPE_QUANTITY = 200;
 
         if(highQuality && this.hqOptimalRecipes !== undefined) {
             return this.hqOptimalRecipes.slice(0, RECIPE_QUANTITY);
@@ -90,6 +105,90 @@ export class CraftedMWObject extends MWObject {
                 return this.hqOptimalRecipes!.slice(0, RECIPE_QUANTITY);
             } else {
                 return this.optimalRecipes!.slice(0, RECIPE_QUANTITY);    
+            }
+        }
+    }
+
+    /**
+     * Calculate the most cost effective setup for crafting this item using only balm and
+     * tea. Attempt to craft this item with every known combination of artisan and tool,
+     * but only wintergreen balm/tea as supplements. Then rank the results by lowest cost.
+     * In the process it will also calculate the optimal recipe for all required
+     * materials, and use the best one in calculating this recipe.
+     * @param highQuality whether to craft a high quality result or a normal.
+     * 
+     * @raises Error if this item does not belong to a known profession.
+     */
+    async getOptimalSimpleRecipe(highQuality: boolean): Promise<MWRecipe> {
+        await this.simpleLock.acquire()
+        // First check if we already calculated the optimal recipes for this item.
+        // This prevents massive runtimes by caching the best recipes once calculated.
+        if(highQuality && this.hqOptimalSimpleRecipes !== undefined) {
+            await this.simpleLock.release();
+            return this.hqOptimalSimpleRecipes[0][0];
+        } else if(!highQuality && this.optimalSimpleRecipes !== undefined) {
+            await this.simpleLock.release();
+            return this.optimalSimpleRecipes[0][0];
+        } else {
+            console.debug(`Calculating optimal simple recipe for ${this.name}`);
+            // Determine the best artisan, tool and supplement to use
+            let artisanType = ARTISAN_TYPES.get(this.profession)
+            if(artisanType === undefined) {
+                throw new Error(`Tried to craft ${this.name} belonging to unkown profession ${this.profession}`);
+            }
+            let artisans = Artisan.OBJECTS.get(artisanType)!;
+
+            // Generate a thread for each combination of artisan, tool and supplement
+            let threads = [];
+            // Define function for threads to execute
+            /** Craft this item with the given setup and append to the output list. */
+            let addCraftToList = async (
+                artisan: Artisan,
+                tool: Tool,
+                supplement: Supplement,
+                quantity: number,
+                hq: boolean
+            ): Promise<[MWRecipe, number]> =>
+                this.craft(artisan, tool, supplement, quantity, hq, true)
+                    .then((value: MWRecipe) =>[value, value.getCost()])
+
+            for(var artisan of artisans) {
+                for(var [toolKey, tool] of Tool.OBJECTS) {
+                    let threadBalm = addCraftToList(
+                        artisan,
+                        tool,
+                        Supplement.OBJECTS.get("Wintergreen Balm +1")!,
+                        1,
+                        highQuality
+                    );
+                    threads.push(threadBalm);
+                    
+                    let threadTea = addCraftToList(
+                        artisan,
+                        tool,
+                        Supplement.OBJECTS.get("Wintergreen Tea +1")!,
+                        1,
+                        highQuality
+                    );
+                    threads.push(threadTea);
+                }
+            }
+
+            let rankingList: [MWRecipe, number][] = [];
+            // Wait for all the threads
+            await Promise.all(threads).then((value: [MWRecipe, number][]) => {
+                rankingList = value;
+                rankingList.sort((a, b) => a[1] - b[1]);
+            });
+
+            if(highQuality) {
+                this.hqOptimalRecipes = rankingList;
+                await this.simpleLock.release()
+                return rankingList[0][0];
+            } else {
+                this.optimalRecipes = rankingList;
+                await this.simpleLock.release()
+                return rankingList[0][0];
             }
         }
     }
@@ -191,9 +290,14 @@ export class CraftedMWObject extends MWObject {
         tool?: Tool,
         supplement?: Supplement,
         quantity: number = 1,
-        highQuality: boolean = false
+        highQuality: boolean = false,
+        simpleRecipes: boolean = false,
     ): Promise<MWRecipe> {
         if(artisan === undefined && tool === undefined && supplement === undefined) {
+            if(simpleRecipes) {
+                let simpleRecipe = await this.getOptimalSimpleRecipe(highQuality === undefined? false : highQuality);
+                return simpleRecipe.multiply(quantity);
+            }
             let optimalRecipe = await this.getOptimalRecipe(highQuality === undefined? false : highQuality);
             return optimalRecipe.multiply(quantity);
         }
@@ -244,7 +348,8 @@ export class CraftedMWObject extends MWObject {
                 undefined,
                 undefined,
                 recipeEntryQuantity * quantityMultiplier,
-                false
+                false,
+                simpleRecipes
             )
             output.absorb(thisOutput);
             // Clear the supplement materials. They are summed up fresh at the end
