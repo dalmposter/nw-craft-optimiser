@@ -93,13 +93,15 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                 <Grid.Column width={7}>
                     <h4>Total Supplements Consumed:</h4>
                     {
-                        props.recipe.supplements.map(value => 
-                            <ItemAvatar
-                                quantity={round(value[0], 2)}
-                                item={findMwObject(value[1])}
-                                onClick={props.onItemClick}
-                            />
-                        )
+                        props.recipe.supplements
+                            .sort(([quantityA, supplementA], [quantityB, supplementB]) => quantityB - quantityA)
+                            .map(value => 
+                                <ItemAvatar
+                                    quantity={round(value[0], 2)}
+                                    item={findMwObject(value[1])}
+                                    onClick={props.onItemClick}
+                                />
+                            )
                     }
                 </Grid.Column>
             </Grid.Row>
@@ -108,25 +110,29 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                 <Grid.Column width={7}>
                     <h4>Resources Needed to Craft All Ingredients:</h4>
                     {
-                        props.recipe.materials.map(value => 
-                            <ItemAvatar
-                                quantity={round(value[0], 2)}
-                                item={findMwObject(value[1])}
-                                onClick={props.onItemClick}
-                            />
-                        )
+                        props.recipe.materials
+                            .sort(([quantityA, _A], [quantityB, _B]) => quantityB - quantityA)
+                            .map(value => 
+                                <ItemAvatar
+                                    quantity={round(value[0], 2)}
+                                    item={findMwObject(value[1])}
+                                    onClick={props.onItemClick}
+                                />
+                            )
                     }
                 </Grid.Column>
                 <Grid.Column width={7}>
                     <h4>Resources Needed to Craft All Supplements:</h4>
                     {
-                        props.recipe.supplementMaterials.map(value => 
-                            <ItemAvatar
-                                quantity={round(value[0], 2)}
-                                item={findMwObject(value[1])}
-                                onClick={props.onItemClick}
-                            />
-                        )
+                        props.recipe.supplementMaterials
+                            .sort(([quantityA, _A], [quantityB, _B]) => quantityB - quantityA)
+                            .map(value => 
+                                <ItemAvatar
+                                    quantity={round(value[0], 2)}
+                                    item={findMwObject(value[1])}
+                                    onClick={props.onItemClick}
+                                />
+                            )
                     }
                 </Grid.Column>
             </Grid.Row>

@@ -55,6 +55,7 @@ export class CraftedMWObject extends MWObject {
 
     constructor(data: CraftedMWObjectType) {
         let name = data.name;
+        //console.debug(`Loading ${data.name}`);
         super(name);
         this.type = "unknown";
         this.quantity = Number(data.quantity);
