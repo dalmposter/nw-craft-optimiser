@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nw-craft-optimiser/static/css/main.7775127d.css",
-    "main.js": "/nw-craft-optimiser/static/js/main.8dc04c54.js",
+    "main.js": "/nw-craft-optimiser/static/js/main.13518b40.js",
     "static/js/787.6c57dc1d.chunk.js": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js",
     "static/media/brand-icons.svg": "/nw-craft-optimiser/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/nw-craft-optimiser/static/media/icons.62d9dae4e0040e81c980.svg",
@@ -49,21 +49,29 @@
     "static/media/olin-diamondeye.png": "/nw-craft-optimiser/static/media/olin-diamondeye.d5b2673d3d0ffa888db9.png",
     "static/media/letotto-falthad.png": "/nw-craft-optimiser/static/media/letotto-falthad.831246d42959594f9627.png",
     "static/media/karmela-valeri.png": "/nw-craft-optimiser/static/media/karmela-valeri.768a0b30253733b9c5bf.png",
+    "static/media/sey-mapleway.png": "/nw-craft-optimiser/static/media/sey-mapleway.93720ee75b04f06b3e2f.png",
     "static/media/outline-icons.woff2": "/nw-craft-optimiser/static/media/outline-icons.687a4990ea22bb1a49d4.woff2",
+    "static/media/serin-hartport.png": "/nw-craft-optimiser/static/media/serin-hartport.3f17b1557347cbb6388d.png",
     "static/media/stella-everstream.png": "/nw-craft-optimiser/static/media/stella-everstream.30498823841b25d71669.png",
     "static/media/minda-breskhild.png": "/nw-craft-optimiser/static/media/minda-breskhild.ab5786255ce4f45e8c2b.png",
     "static/media/gohrr-kuldin.png": "/nw-craft-optimiser/static/media/gohrr-kuldin.fe87000e48232714df12.png",
     "static/media/krassyk.png": "/nw-craft-optimiser/static/media/krassyk.70dd6ad54473cc10f898.png",
     "static/media/kilij-harran.png": "/nw-craft-optimiser/static/media/kilij-harran.8813f117535dde0beec8.png",
+    "static/media/dorne-fluben.png": "/nw-craft-optimiser/static/media/dorne-fluben.e159cf3a038ede0b504b.png",
+    "static/media/bree-underleaf.png": "/nw-craft-optimiser/static/media/bree-underleaf.29c96fa20ea24f8ae747.png",
     "static/media/adloquium.png": "/nw-craft-optimiser/static/media/adloquium.d89bfbfbe20864b4f5e8.png",
+    "static/media/haie-xilomne.png": "/nw-craft-optimiser/static/media/haie-xilomne.4db52f41bce8a5eb65fd.png",
     "static/media/mavi-jubbani.png": "/nw-craft-optimiser/static/media/mavi-jubbani.6f4d0188330e3b90a8c0.png",
+    "static/media/jaqueyn-locel.png": "/nw-craft-optimiser/static/media/jaqueyn-locel.ea526bb7e69cfa179de8.png",
+    "static/media/patime-hoshur.png": "/nw-craft-optimiser/static/media/patime-hoshur.1dee03311cf848250116.png",
+    "static/media/unkra-forend.png": "/nw-craft-optimiser/static/media/unkra-forend.49d6bf3563c10f3c153a.png",
     "index.html": "/nw-craft-optimiser/index.html",
     "main.7775127d.css.map": "/nw-craft-optimiser/static/css/main.7775127d.css.map",
-    "main.8dc04c54.js.map": "/nw-craft-optimiser/static/js/main.8dc04c54.js.map",
+    "main.13518b40.js.map": "/nw-craft-optimiser/static/js/main.13518b40.js.map",
     "787.6c57dc1d.chunk.js.map": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7775127d.css",
-    "static/js/main.8dc04c54.js"
+    "static/js/main.13518b40.js"
   ]
 }
