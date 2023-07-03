@@ -49,11 +49,13 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
     changeItem = (value: string) => {
         try {
             console.debug(`Changed input to ${value} from user click.`)
+            let item = value !== ""? findMwItem(value) : undefined
+            console.debug(`Found item ${item!.name}`)
             this.setState(
                 {
                     ...this.state,
                     input: value,
-                    activeItem: value !== ""? findMwItem(value) : undefined
+                    activeItem: item
                 },
                 () => this.craft(this.state.activeItem, this.state.isHighQuality)
             )

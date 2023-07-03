@@ -174,7 +174,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
             <Grid.Column width={12}>
                 {
                     props.activeItem && props.activeItem.recipe.map(
-                        (value) => <ItemAvatar
+                        (value) => value && <ItemAvatar
                             key={`iAvatar-${value[1]}-${value[0]}`}
                             item={findMwObject(value[1])}
                             quantity={value[0]}

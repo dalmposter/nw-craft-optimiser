@@ -17,6 +17,7 @@ interface RecipeComboAvatarPros {
 }
 
 export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
+    console.debug(`Supplements:`, props.recipe.supplements)
     let item = props.recipe.result as MWItem;
     let artisan = props.recipe.artisan!;
     let tool = props.recipe.tool!;
@@ -95,11 +96,13 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                     {
                         props.recipe.supplements
                             .sort(([quantityA, supplementA], [quantityB, supplementB]) => quantityB - quantityA)
-                            .map(value => 
+                            .map((value, index) => 
                                 <ItemAvatar
+                                    highQuality={value[1].split("+1").length > 1}
                                     quantity={round(value[0], 2)}
                                     item={findMwObject(value[1])}
                                     onClick={props.onItemClick}
+                                    key={`item-avatar-${value}-${index}`}
                                 />
                             )
                     }
@@ -114,6 +117,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
                             .sort(([quantityA, _A], [quantityB, _B]) => quantityB - quantityA)
                             .map(value => 
                                 <ItemAvatar
+                                    highQuality={value[1].split("+1").length > 1}
                                     quantity={round(value[0], 2)}
                                     item={findMwObject(value[1])}
                                     onClick={props.onItemClick}

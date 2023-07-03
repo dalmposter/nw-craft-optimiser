@@ -8,6 +8,7 @@ import "./ItemAvatar.scss"
 interface ItemAvatarProps {
     quantity?: number;
     item: CraftedMWObject | MWResource;
+    highQuality?: boolean;
     itemIcon?: any;
     onClick?: (name: string) => void;
 }
@@ -39,14 +40,14 @@ export function ItemAvatar (props: ItemAvatarProps) {
                 <p
                     style={{height: "fit-content"}}
                 >
-                    {props.item.name}
+                    {props.item.name}{props.highQuality? " +1" : ""}
                 </p>
                 :
                 <p
                     style={{height: "fit-content", cursor: "pointer"}}
                     onClick={props.onClick? () => props.onClick!(props.item.name) : undefined}
                 >
-                    {props.item.name}
+                    {props.item.name}{props.highQuality? " +1" : ""}
                 </p>
             }
         </Grid.Column>

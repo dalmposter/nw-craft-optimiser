@@ -1,11 +1,17 @@
-.ItemIcon > p, .ResourceIcon > p
+.ItemIconPopup > p, .ResourceIconPopup > p
 {
     margin-bottom: 8px;
     margin-top: 0;
 }
 
-.ItemIcon > h4, .ResourceIcon > h4
+.ItemIconPopup > h4, .ResourceIconPopup > h4
 {
     margin-bottom: 16px;
     margin-top: 0;
+}
+
+.ResourceIcon > div, .ItemIcon > div
+{
+    height: 38px;
+    width: 38px;
 }

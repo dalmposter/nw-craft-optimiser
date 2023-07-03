@@ -239,18 +239,22 @@ export class CraftedMWObject extends MWObject {
         output.supplements = [[expectedAttempts, supplement.name]];
         // Go through all the items in the recipe and add up their costs
         for(var recipeEntry of this.recipe) {
-            let recipeEntryName = recipeEntry[1]
-            let recipeEntryQuantity = recipeEntry[0]
-            let thisOutput = await findMwObject(recipeEntryName).craft(
-                undefined,
-                undefined,
-                undefined,
-                recipeEntryQuantity * quantityMultiplier,
-                false
-            )
-            output.absorb(thisOutput);
-            // Clear the supplement materials. They are summed up fresh at the end
-            output.supplementMaterials = [];
+            try {
+                let recipeEntryName = recipeEntry[1]
+                let recipeEntryQuantity = recipeEntry[0]
+                let thisOutput = await findMwObject(recipeEntryName).craft(
+                    undefined,
+                    undefined,
+                    undefined,
+                    recipeEntryQuantity * quantityMultiplier,
+                    false
+                )
+                output.absorb(thisOutput);
+                // Clear the supplement materials. They are summed up fresh at the end
+                output.supplementMaterials = [];
+            } catch (e) {
+                console.warn(`Caught error ${e} trying to craft ${this.name} with recipe`, this.recipe);
+            }
         }
 
         // Go through all the supplements and sum up their costs

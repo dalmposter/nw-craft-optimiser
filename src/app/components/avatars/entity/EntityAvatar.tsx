@@ -26,7 +26,7 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
     if(props.entity) {
         let fileName = getFileName(props.entity.name);
         let itemIcon = images.get(fileName);
-        let highQualityFlair = images.get("high-quality-flair.png")
+        let highQualityFlair = images.get("high-quality-flair.png");
         
         return (
         <div className="EntityAvatar">
