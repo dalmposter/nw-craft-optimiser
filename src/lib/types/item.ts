@@ -204,6 +204,7 @@ export class CraftedMWObject extends MWObject {
         let output = new MWRecipe(this, quantity, artisan, tool, supplement, highQuality)
 
         let successChance = (artisan.proficiency + tool.proficiency + supplement.proficiency)/this.proficiency;
+        successChance = Math.min(successChance, 1) // Don't let success chance go over 100%
         let focusDifferential = this.focus - artisan.focus - tool.focus - supplement.focus;
         let highQualityChance = Math.max(
             1 - (FOCUS_MULTIPLIER * focusDifferential),
