@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { CraftCalcProps, CraftCalcState } from "./CraftCalc.types";
 import { MWRecipe } from "../../lib/types/recipe";
-import { CraftedMWObject } from "../../lib/types/item";
+import { CraftedMWObject, MWItem } from "../../lib/types/item";
 import { findMwItem } from "../../lib/types/util";
 import { RecipeAvatar } from "../components/avatars/recipe/RecipeAvatar";
 import { RecipeRanking } from "../components/avatars/recipe/RecipeRanking";
@@ -50,7 +50,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         try {
             console.debug(`Changed input to ${value} from user click.`)
             let item = value !== ""? findMwItem(value) : undefined
-            console.debug(`Found item ${item!.name}`)
+            //console.debug(`Found item ${item!.name}`)
             this.setState(
                 {
                     ...this.state,

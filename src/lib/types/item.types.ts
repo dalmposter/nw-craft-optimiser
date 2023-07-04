@@ -15,6 +15,7 @@ export interface MWItemType extends CraftedMWObjectType {
     type: string;
     class: string;
     slot: string;
+    equipBonus: string;
 }
 
 export interface MWResourceType {

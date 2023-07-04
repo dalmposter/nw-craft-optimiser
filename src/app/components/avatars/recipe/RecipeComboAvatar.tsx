@@ -17,7 +17,6 @@ interface RecipeComboAvatarPros {
 }
 
 export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
-    console.debug(`Supplements:`, props.recipe.supplements)
     let item = props.recipe.result as MWItem;
     let artisan = props.recipe.artisan!;
     let tool = props.recipe.tool!;

@@ -346,6 +346,7 @@ export class MWItem extends CraftedMWObject {
     itemType: string;
     requiredClasses: string[];
     itemSlot: string;
+    equipBonus: string;
 
     constructor(data: MWItemType) {
         super(data)
@@ -353,6 +354,7 @@ export class MWItem extends CraftedMWObject {
         this.itemType = data.type;
         this.requiredClasses = data.class.split(", ");
         this.itemSlot = data.slot;
+        this.equipBonus = data.equipBonus;
     }
     
     static loadCsv(csvString: string) {

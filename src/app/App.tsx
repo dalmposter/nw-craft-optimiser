@@ -6,7 +6,8 @@ import Footer from './components/footer/Footer';
 import SettingsPage from './settingsPage/SettingsPage';
 import { MWResource, MWItem, CommissionItem, CraftedMWObject } from '../lib/types/item';
 import { MWMaterial } from '../lib/types/material';
-import { Artisan, Tool, Supplement } from '../lib/types/recipe';
+import { Artisan, Tool, Supplement, MWRecipe } from '../lib/types/recipe';
+import { Button } from 'semantic-ui-react';
 
 interface AppProps {
 
@@ -97,6 +98,40 @@ export class App extends React.Component<AppProps, AppState> {
             .then(() => true);
     }
 
+    async craftAllWeapons() {
+        let weapons = [...MWItem.OBJECTS.values()].filter(
+            (item) => item.equipBonus === "Set: MWVIII Weapons"
+        )
+        console.debug("Crafting", weapons);
+        let weaponRecipes: MWRecipe[] = [];
+        await Promise.all(weapons.map((item) => item.craft().then(recipe => weaponRecipes.push(recipe))));
+        console.debug("Generated recipes", weaponRecipes);
+        let allRecipes = weaponRecipes.reduce((prevValue, currValue) => {
+            let newValue = prevValue.multiply(1);
+            newValue.absorb(currValue);
+            return newValue;
+        });
+        allRecipes.materials.sort((a, b) => b[0] - a[0]);
+        console.debug("Combined into", allRecipes);
+    }
+
+    async craftAllGear() {
+        let weapons = [...MWItem.OBJECTS.values()].filter(
+            (item) => item.itemType === "Gear" && item.mwCategory === "Menzoberranzan Masterwork"
+        )
+        console.debug("Crafting", weapons);
+        let gearRecipes: MWRecipe[] = [];
+        await Promise.all(weapons.map((item) => item.craft().then(recipe => gearRecipes.push(recipe))));
+        console.debug("Generated recipes", gearRecipes);
+        let allRecipes = gearRecipes.reduce((prevValue, currValue) => {
+            let newValue = prevValue.multiply(1);
+            newValue.absorb(currValue);
+            return newValue;
+        });
+        allRecipes.materials.sort((a, b) => b[0] - a[0]);
+        console.debug("Combined into", allRecipes);
+    }
+
 	componentDidMount() {
         if(this.fetchPromise) {
             return;
@@ -130,7 +165,11 @@ export class App extends React.Component<AppProps, AppState> {
                             setUnlocked={(unlocked: boolean) => this.setState({...this.state, unlocked: unlocked})}
                         />
 					}
-					<Footer setPage={(page: string) => this.setState({...this.state, page: page})} />
+                    {/*
+                        <Button onClick={() => this.craftAllWeapons()}>Craft Weapons</Button>
+                        <Button onClick={() => this.craftAllGear()}>Craft Gear</Button>
+                    */}
+                    <Footer setPage={(page: string) => this.setState({...this.state, page: page})} />
 				</div>
 			</div>
 		</div>

@@ -33,9 +33,12 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
             ) {
                 return false
             }
-            if(props.itemFilter.type
-                    && props.itemFilter.type.length > 0
-                    && !props.itemFilter.type.some((value) => value === item.type)
+            if(props.itemFilter.type && (
+                    !(item instanceof MWItem) || (
+                        props.itemFilter.type.length > 0
+                        && !props.itemFilter.type.some((value) => value === item.itemType)
+                    )
+                )
             ) {
                 return false
             }

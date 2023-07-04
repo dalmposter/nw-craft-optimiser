@@ -44,7 +44,7 @@ export const findMwObject = (name: string, assumeResource: boolean = true): Craf
      * @raises Error if no material or item matches given name,
      */
 export const findMwItem =(name: string): CraftedMWObject => {
-    console.debug(`Finding MW item ${name}`)
+    //console.debug(`Finding MW item ${name}`)
     if(name.slice(-3) === " +1") {
         name = name.slice(0, -3)
     }
