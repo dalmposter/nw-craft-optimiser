@@ -10,6 +10,13 @@ export default class Roadmap extends Component {
                 All is subject to change at my whim, and progress could be delayed for
                 any reason. This is just a pet project for me.
             </p>
+            <p>This page is now deprecated. I will be tracking features and progress on trello.
+                <a
+                    href="https://trello.com/b/wfj8Dy3C/nw-craft-optimiser-development"
+                    target="_blank"
+                    rel="noreferrer"
+                > Click here to check it out</a>
+            </p>
             <h3>Done :)</h3>
             <ul>
                 <li><s>Ability to view resource prices used by the calculator</s></li>
