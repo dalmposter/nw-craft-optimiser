@@ -42,7 +42,7 @@
     max-width: $panelMaxWidth;
     min-width: $panelMinWidth;
     margin: auto;
-    min-height: 80%;
+    min-height: $panelHeight;
 }
 
 .Panel h1

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.scss";
+import { VERSION_NUMBER } from "../../constants";
 
 interface FooterProps {
     setPage: (page: string) => void;
@@ -21,7 +22,7 @@ export default function Footer(props: FooterProps)
         </div>
         <div>
             <p>
-                {"Neverwinter Craft Calculator created by dalmposter"}
+                {`Neverwinter Craft Calculator ${VERSION_NUMBER} created by dalmposter`}
                 { /* <a href="https://github.com/dalmposter">@github/dalmposter</a> */ }
             </p>
         </div>

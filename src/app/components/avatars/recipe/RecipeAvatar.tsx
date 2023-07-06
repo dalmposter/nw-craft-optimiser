@@ -138,7 +138,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
         <Grid>
             <Grid.Column width={7}>
                 <Dropdown
-                    placeholder='Select An Item'
+                    placeholder="Select an item to see it's recipe"
                     fluid
                     search
                     selection

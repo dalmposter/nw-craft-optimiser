@@ -153,6 +153,7 @@ export class App extends React.Component<AppProps, AppState> {
 						<CraftCalc
                             availableItems={this.state.availableItems}
                             unlocked={this.state.unlocked}
+                            resetCalculations={() => this.resetCalculations()}
                         />
 					}
 					{ this.state.page === "roadmap" &&
@@ -161,8 +162,7 @@ export class App extends React.Component<AppProps, AppState> {
 					{ this.state.page === "settings" &&
 						<SettingsPage
                             unlocked={this.state.unlocked}
-                            resetCalculations={this.resetCalculations}
-                            setUnlocked={(unlocked: boolean) => this.setState({...this.state, unlocked: unlocked})}
+                            resetCalculations={() => this.resetCalculations()}
                         />
 					}
                     {/*

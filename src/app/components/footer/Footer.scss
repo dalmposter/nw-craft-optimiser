@@ -1,12 +1,13 @@
 @import "../../constants.scss";
 
 .Footer {
-    padding-top: $footerTopPadding;
-    padding-bottom: $footerBottomPadding;
     height: $footerHeight;
     box-sizing: unset;
     width: 100%;
     text-align: center;
     background-color:whitesmoke;
-    background-color: $backgroundColor;
+}
+
+.Footer > :first-child {
+    padding-top: $footerTopPadding;
 }

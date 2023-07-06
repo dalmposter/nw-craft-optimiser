@@ -8,7 +8,6 @@ import "./settings.scss";
 interface SettingsPageProps {
     unlocked: boolean;
     resetCalculations: () => void;
-    setUnlocked: (unlocked: boolean) => void;
 }
 
 interface SettingsPageState {
@@ -49,13 +48,6 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                     General Settings
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 0}>
-                    <div>
-                        <Checkbox
-                            label="Enable speculative recipes"
-                            onChange={(e, data) => this.props.setUnlocked(!!data.checked)}
-                            checked={this.props.unlocked}
-                        />
-                    </div>
                 </Accordion.Content>
                 <Accordion.Title
                     active={this.state.activeIndex === 1}
@@ -80,9 +72,9 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                                     this.setState({...this.state, renders: this.state.renders+1})
                                     this.props.resetCalculations()
                                 }}
+                                label={`${resource.name}`}
+                                labelPosition="right"
                             />
-                            <p style={{margin: "2px"}}>AD:</p>
-                            <p style={{margin: "2px", marginLeft: "16px"}}>{resource.name}</p>
                         </div>
                     )}
                 </Accordion.Content>

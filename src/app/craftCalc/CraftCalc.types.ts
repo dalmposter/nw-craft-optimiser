@@ -5,6 +5,7 @@ import { MWRecipe } from "../../lib/types/recipe";
 export interface CraftCalcProps {
     availableItems: CraftedMWObject[];
     unlocked: boolean;
+    resetCalculations: () => void;
 }
 
 export type MWCategory = "Menzoberranzan Masterwork" | "Sharandar Masterwork" | "Chultan Masterwork"
