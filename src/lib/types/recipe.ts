@@ -178,6 +178,22 @@ export class Supplement {
             out = out.multiply(quantity);
             return out
         }
+        if(this.name === "Dreamer's Incense") {
+            let out = new MWRecipe(this.object, 1);
+            out.supplementMaterials = [];
+            out.materials = [[10.0, "Mushroom Log"], [4.5, "Faerzress Rock"], [4.5, "Menzoberranzan Faerzress Crystal"], [1.15, "Drider Leg"], [0.85, "Mushroom Droplet"]];
+            out.highQuality = false;
+            out = out.multiply(quantity);
+            return out
+        }
+        if(this.name === "Dreamer's Incense +1") {
+            let out = new MWRecipe(this.object, 1);
+            out.supplementMaterials = [];
+            out.materials = [[22.0, "Mushroom Log"], [10, "Faerzress Rock"], [10, "Menzoberranzan Faerzress Crystal"], [2.5, "Drider Leg"], [1.85, "Mushroom Droplet"]];
+            out.highQuality = false;
+            out = out.multiply(quantity);
+            return out
+        }
         // TODO: do we want to use wintergreen tea +1? balm?
         if(this.supplementRecipe === undefined) {
             this.supplementRecipe = await this.object.craft(

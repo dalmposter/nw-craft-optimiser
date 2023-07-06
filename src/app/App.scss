@@ -5,7 +5,7 @@
     height: 100%;
     position: relative;
     color: $textColor;
-    font-size: 20px;
+    //font-size: 20px;
 }
 
 #page-wrapper {
@@ -37,7 +37,7 @@
 .Panel {
     // The panel should take up a decent amount of the page, but have a nice border
     // Min and max widths for consistent behaviour
-    width: 85%;
+    width: 75%;
     text-align: left;
     max-width: $panelMaxWidth;
     min-width: $panelMinWidth;
@@ -102,4 +102,9 @@
 .Icon
 {
     border-radius: 12%;
+}
+
+.min-width-content
+{
+    min-width: fit-content;
 }

@@ -57,7 +57,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
             </div>
         </Grid.Column>
         <Grid.Column width={2}>
-            <Button basic color="black" style={{fontSize: "0.8rem"}}
+            <Button basic color="black" style={{fontSize: "1rem"}}
                     className="centered-element"
                     onClick={() => props.onExpand(!props.expanded)}
             >
