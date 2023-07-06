@@ -21,6 +21,7 @@ export interface MWItemType extends CraftedMWObjectType {
 export interface MWResourceType {
     price: string;
     name: string;
+    mwTier: string;
     source: string;
 }
 

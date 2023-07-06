@@ -8,6 +8,7 @@ import { RecipeAvatar } from "../components/avatars/recipe/RecipeAvatar";
 import { RecipeRanking } from "../components/avatars/recipe/RecipeRanking";
 
 import "./CraftCalc.scss"
+import Banner from "../components/banner/Banner";
 
 export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState> {
     fetchPromise?: Promise<boolean>;
@@ -33,7 +34,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         }
         let result = item.getOptimalRecipes(highQuality);
         return result.then((output) => {
-            console.log(MWRecipe.prettyPrintList(output));
+            //console.log(MWRecipe.prettyPrintList(output));
             this.setState({
                 ...this.state,
                 output: MWRecipe.prettyPrintList(output),
@@ -69,14 +70,7 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
         <>
         <div className={`Panel`} id="craft-calc">
             <h1 style={{padding: "16px"}}>Neverwinter Masterwork Calculator</h1>
-            { this.props.unlocked &&
-                <p style={{fontSize: "80%", color: "darkred", marginBottom: 0}}>
-                    Please be aware that although I present the Menzoberranzan recipes, they are
-                    not yet finalised. Also, the prices are only shown for illustration purposes
-                    (and because this app would be confused by all items costing 0). The items
-                    are not available yet so there is no market price.
-                </p>
-            }
+            <Banner/>
             <div className="flexbox">
                 <div className="panel-content">
                     <RecipeAvatar

@@ -1,19 +1,19 @@
-name|price|source
-Faerzress Rock|4000|Explorer Chart: Narbondellyn District
-Luminescent Darklake Water|22000|Explorer Chart: Narbondellyn District
-Mushroom Log|18000|Explorer Chart: Menzoberranzan
-Flourescent Fauna|12000|Explorer Chart: Menzoberranzan
-Shroomsap Spores|5000|Abyssal Hunts (x10 with Itty Bitty)
-Umber Hulk Mandible|1000|Abyssal Hunts (x10 with Itty Bitty)
-Fungal Moss|8000|Abyssal Hunts (x10 with Itty Bitty)
-Drider Leg|3000|Abyssal Hunts (x10 with Itty Bitty)
-Mushroom Droplet|20000|Abyssal Hunts (x2 with Tricky Reversal)
-Druegarsteel Scrap|40000|Abyssal Hunts (x2 with Tricky Reversal)
-Menzoberranzan Faerzress Crystal|20000|Abyssal Hunts (x2 with Tricky Reversal)
-Perfect Marilith Hair|100000|Demonweb Pits (Master)
-Abyssal Crystal|20000|Demonweb Pits (Master)
-Fallen God's Ore|100000|Demonweb Pits (Master)
-Calcified Webbing|45000|M26 Dungeon and/or Driders (pure speculation)
-Marilith Hair|1000|Demonweb Pits (Advanced)
-Demonweb Faerzress Crystal|10000|Demonweb Pits (Advanced)
-Goristro Hide|55000|Demonweb Pits (Advanced)
+name|price|mwTier|source
+Faerzress Rock|4000|Menzoberranzan|Explorer Chart: Narbondellyn District
+Luminescent Darklake Water|22000|Menzoberranzan|Explorer Chart: Narbondellyn District
+Mushroom Log|18000|Menzoberranzan|Explorer Chart: Menzoberranzan
+Flourescent Fauna|12000|Menzoberranzan|Explorer Chart: Menzoberranzan
+Shroomsap Spores|5000|Menzoberranzan|Abyssal Hunts (x10 with Itty Bitty)
+Umber Hulk Mandible|1000|Menzoberranzan|Abyssal Hunts (x10 with Itty Bitty)
+Fungal Moss|8000|Menzoberranzan|Abyssal Hunts (x10 with Itty Bitty)
+Drider Leg|3000|Menzoberranzan|Abyssal Hunts (x10 with Itty Bitty)
+Mushroom Droplet|20000|Menzoberranzan|Abyssal Hunts (x2 with Tricky Reversal)
+Druegarsteel Scrap|40000|Menzoberranzan|Abyssal Hunts (x2 with Tricky Reversal)
+Menzoberranzan Faerzress Crystal|20000|Menzoberranzan|Abyssal Hunts (x2 with Tricky Reversal)
+Perfect Marilith Hair|100000|Menzoberranzan|Demonweb Pits (Master)
+Abyssal Crystal|20000|Menzoberranzan|Demonweb Pits (Master)
+Fallen God's Ore|100000|Menzoberranzan|Demonweb Pits (Master)
+Calcified Webbing|45000|Menzoberranzan|M26 Dungeon and/or Driders (pure speculation)
+Marilith Hair|1000|Menzoberranzan|Demonweb Pits (Advanced)
+Demonweb Faerzress Crystal|10000|Menzoberranzan|Demonweb Pits (Advanced)
+Goristro Hide|55000|Menzoberranzan|Demonweb Pits (Advanced)

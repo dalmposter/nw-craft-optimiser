@@ -1,10 +1,12 @@
-import { Popup } from "semantic-ui-react";
-import { MWItem, MWResource } from "../../../../lib/types/item";
 import React from "react";
+import { Popup } from "semantic-ui-react";
 
+import { MWItem, MWResource } from "../../../../lib/types/item";
 import emptyIcon from "../../../../images/EmptyIcon.png"
-import "./ItemIcon.scss"
 import { getFileName, images } from "../icon";
+import { getPrice, shouldShowPrice } from "../../../constants";
+
+import "./ItemIcon.scss"
 
 export interface ItemIconProps {
     item: MWItem;
@@ -27,7 +29,9 @@ export class ItemIcon extends React.Component<ItemIconProps, ItemIconState> {
 
     componentDidMount() {
         this.props.item.getPrice().then(price => this.setState({
-            price: Math.round(price).toLocaleString("en-US")
+            price: shouldShowPrice(this.props.item)
+                    ? `${Math.round(price).toLocaleString("en-US")} AD`
+                    : "--- ---"
         }))
     }
 
@@ -77,7 +81,7 @@ export class ItemIcon extends React.Component<ItemIconProps, ItemIconState> {
             >
                 <h4>{this.props.item.name} [Material]</h4>
                 <p>Source: {this.props.item.unlock}</p>
-                <p>Cost to craft: {this.state.price} AD</p>
+                <p>Cost to craft: {this.state.price}</p>
             </Popup>
         </div>
         )
@@ -127,7 +131,7 @@ export function ResourceIcon (props: ResourceIconProps) {
         >
             <h4>{props.item.name} [Resource]</h4>
             <p>Source: {props.item.source}</p>
-            <p>AH Price: {props.item.price}</p>
+            <p>AH Price: {getPrice(props.item)}</p>
         </Popup>
     </div>
     )

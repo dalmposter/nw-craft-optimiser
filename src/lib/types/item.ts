@@ -295,11 +295,13 @@ export class MWResource extends MWObject {
 
     price: number;
     source: string;
+    mwTier: string;
 
     constructor(data?: MWResourceType, name?: string) {
         super("N/A");
         this.price = 0;
         this.source = "-";
+        this.mwTier = "N/A";
         if(name !== undefined) {
             this.name = name;
         }
@@ -307,6 +309,7 @@ export class MWResource extends MWObject {
             this.name = data.name;
             this.price = Number(data.price);
             this.source = data.source
+            this.mwTier = data.mwTier
         }
     }
 

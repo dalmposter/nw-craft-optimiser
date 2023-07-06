@@ -6,6 +6,7 @@ import { EntityAvatar } from "../entity/EntityAvatar";
 import { MWItem } from "../../../../lib/types/item";
 import { findMwObject, round } from "../../../../lib/types/util";
 import { ItemAvatar } from "../entity/ItemAvatar";
+import { shouldShowPrice } from "../../../constants";
 
 interface RecipeComboAvatarPros {
     rank: number;
@@ -25,7 +26,9 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
     let totalProficiency = artisan.proficiency + tool.proficiency + supplement.proficiency;
     let totalFocus = artisan.focus + tool.focus + supplement.focus;
 
-    let formattedCost = Math.round(props.cost).toLocaleString("en-US");
+    let formattedCost = shouldShowPrice(props.recipe.result)
+                            ? `${Math.round(props.cost).toLocaleString("en-US")} AD`
+                            : "--- ---";
 
     return (
     <Grid className="RecipeComboAvatar">
@@ -53,7 +56,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
         <Grid.Column width={2}>
             <div className="centered-element" style={{width: "100%", textAlign: "center"}}>
                 <p>Overall Cost:</p>
-                <p>{`${formattedCost} AD`}</p>
+                <p>{formattedCost}</p>
             </div>
         </Grid.Column>
         <Grid.Column width={2}>
@@ -165,7 +168,7 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
             <Grid.Row className="no-top-padding">
                 <Grid.Column width={1} />
                 <Grid.Column width={14}>
-                    <p style={{marginBottom: "32px"}}><b>Total Cost: {formattedCost} AD</b></p>
+                    <p style={{marginBottom: "32px"}}><b>Total Cost: {formattedCost}</b></p>
                 </Grid.Column>
             </Grid.Row>
         </>
