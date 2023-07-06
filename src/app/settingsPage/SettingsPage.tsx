@@ -4,6 +4,7 @@ import { findMwObject } from "../../lib/types/util";
 import { Accordion, AccordionTitleProps, Checkbox, Icon, Input } from "semantic-ui-react";
 
 import "./settings.scss";
+import { shouldShowPrice } from "../constants";
 
 interface SettingsPageProps {
     unlocked: boolean;
@@ -58,7 +59,11 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                     Customise Resource Prices
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 1}>
-                    {[...MWResource.OBJECTS.values()].map(resource =>
+                    <p>
+                        I do apologise for this awful settings page.
+                        For now I recommend using ctrl+f to locate specific resources
+                    </p>
+                    {[...MWResource.OBJECTS.values()].filter(resource => shouldShowPrice(resource)).map(resource =>
                         <div style={{display: "flex", marginBottom: "12px"}}>
                             <Input
                                 className="setting"
