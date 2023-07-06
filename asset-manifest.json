@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nw-craft-optimiser/static/css/main.814a381c.css",
-    "main.js": "/nw-craft-optimiser/static/js/main.2131b325.js",
+    "main.js": "/nw-craft-optimiser/static/js/main.55e4e644.js",
     "static/js/787.6c57dc1d.chunk.js": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js",
     "static/media/brand-icons.svg": "/nw-craft-optimiser/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/nw-craft-optimiser/static/media/icons.62d9dae4e0040e81c980.svg",
@@ -79,11 +79,11 @@
     "static/media/unkra-forend.png": "/nw-craft-optimiser/static/media/unkra-forend.49d6bf3563c10f3c153a.png",
     "index.html": "/nw-craft-optimiser/index.html",
     "main.814a381c.css.map": "/nw-craft-optimiser/static/css/main.814a381c.css.map",
-    "main.2131b325.js.map": "/nw-craft-optimiser/static/js/main.2131b325.js.map",
+    "main.55e4e644.js.map": "/nw-craft-optimiser/static/js/main.55e4e644.js.map",
     "787.6c57dc1d.chunk.js.map": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.814a381c.css",
-    "static/js/main.2131b325.js"
+    "static/js/main.55e4e644.js"
   ]
 }
