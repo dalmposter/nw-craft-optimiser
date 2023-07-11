@@ -48,13 +48,13 @@ export function RecipeComboAvatar (props: RecipeComboAvatarPros) {
             <EntityAvatar size={"medium"} entity={props.recipe.supplement} />
         </Grid.Column>
         <Grid.Column width={2}>
-            <div className="centered-element" style={{width: "100%", textAlign: "center"}}>
+            <div className="centered-element" style={{width: "100%", textAlign: "center", fontSize: "90%"}}>
                 <p>{`+1: ${Math.round(props.recipe.highQualityResults * 100) / 100}`}</p>
                 <p>{`Normal: ${Math.round(props.recipe.normalResults * 100) / 100}`}</p>
             </div>
         </Grid.Column>
         <Grid.Column width={2}>
-            <div className="centered-element" style={{width: "100%", textAlign: "center"}}>
+            <div className="centered-element" style={{width: "100%", textAlign: "center", fontSize: "90%"}}>
                 <p>Overall Cost:</p>
                 <p>{formattedCost}</p>
             </div>
