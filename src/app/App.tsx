@@ -7,7 +7,8 @@ import SettingsPage from './settingsPage/SettingsPage';
 import { MWResource, MWItem, CommissionItem, CraftedMWObject } from '../lib/types/item';
 import { MWMaterial } from '../lib/types/material';
 import { Artisan, Tool, Supplement, MWRecipe } from '../lib/types/recipe';
-import { Button } from 'semantic-ui-react';
+import { getCookies, setCookie } from 'typescript-cookie';
+import { priceCookieStarter } from './constants';
 
 interface AppProps {
 
@@ -18,6 +19,29 @@ interface AppState {
 	availableItemNames: string[];
     availableItems: CraftedMWObject[];
     unlocked: boolean;
+}
+
+const loadCookies = () => {
+    let cookies = getCookies();
+    console.debug("All cookies: ", cookies);
+    Object.entries(cookies)
+        .filter(([cookieName, value]) => cookieName.startsWith(priceCookieStarter))
+        .forEach(([cookieName, value]) => {
+            let cookiePrice = Number(value)
+            if(isNaN(cookiePrice)) {
+                console.warn(`Malformed price cookie detected:`, cookieName, value)
+                return
+            }
+
+            let resourceName = cookieName.split(priceCookieStarter)[1]
+            let resource = MWResource.OBJECTS.get(resourceName)
+            if(resource === undefined) {
+                console.warn(`Read price cookie for non-existent resource`, cookieName, value)
+                return
+            }
+
+            resource.price = cookiePrice
+        });
 }
 
 export class App extends React.Component<AppProps, AppState> {
@@ -84,6 +108,7 @@ export class App extends React.Component<AppProps, AppState> {
                     .then(stringData => {
                         CommissionItem.loadCsv(stringData)
                     })
+            .then(loadCookies)
             .then(() => {
                 this.setState({
                     ...this.state,

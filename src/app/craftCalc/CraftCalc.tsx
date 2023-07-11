@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { CraftCalcProps, CraftCalcState } from "./CraftCalc.types";
 import { MWRecipe } from "../../lib/types/recipe";
-import { CraftedMWObject, MWItem } from "../../lib/types/item";
+import { CraftedMWObject } from "../../lib/types/item";
 import { findMwItem } from "../../lib/types/util";
 import { RecipeAvatar } from "../components/avatars/recipe/RecipeAvatar";
 import { RecipeRanking } from "../components/avatars/recipe/RecipeRanking";

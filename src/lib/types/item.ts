@@ -1,9 +1,11 @@
+import { removeCookie } from "typescript-cookie";
 import { Lock } from "../util/lock";
 import { Recipe, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constants";
 import { CommissionItemType, CraftedMWObjectType, MWItemType, MWResourceType } from "./item.types";
 import { Artisan, Tool, Supplement, MWRecipe } from "./recipe";
 import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
 import { parse } from "csv-parse/browser/esm";
+import { priceCookieName } from "../../app/constants";
 
 /**
  * A generic Masterwork object.
@@ -294,12 +296,14 @@ export class MWResource extends MWObject {
     static OBJECTS: Map<string, MWResource> = new Map<string, MWResource>();
 
     price: number;
+    originalPrice: number; // The original price for this resource provided by the server
     source: string;
     mwTier: string;
 
     constructor(data?: MWResourceType, name?: string) {
         super("N/A");
         this.price = 0;
+        this.originalPrice = 0;
         this.source = "-";
         this.mwTier = "N/A";
         if(name !== undefined) {
@@ -308,6 +312,7 @@ export class MWResource extends MWObject {
         if(data !== undefined) {
             this.name = data.name;
             this.price = Number(data.price);
+            this.originalPrice = this.price;
             this.source = data.source
             this.mwTier = data.mwTier
         }
@@ -339,6 +344,11 @@ export class MWResource extends MWObject {
         // Resources are only gathered. They cannot be failed, dabbed or recycled.
         output.materials = [[quantity, this.name]];
         return output;
+    }
+
+    resetPrice() {
+        this.price = this.originalPrice;
+        removeCookie(priceCookieName(this.name))
     }
 }
 

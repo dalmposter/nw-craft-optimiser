@@ -15,3 +15,7 @@ export const shouldShowPrice = (item: MWObject) : boolean => {
 }
 
 export const VERSION_NUMBER: string = "v0.0.1";
+
+export const priceCookieStarter = "Price_"
+
+export const priceCookieName = (resourceName: string) => `${priceCookieStarter}${resourceName}`;
