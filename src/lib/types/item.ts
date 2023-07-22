@@ -225,23 +225,17 @@ export class CraftedMWObject extends MWObject {
             expectedAttempts = expectedAttempts / (1+dabHandChance);
         }
 
-        let quantityMultiplier = expectedAttempts;
-
         if(highQuality) {
-            // If we're crafting +1 version, divide multiplier by +1 chance.
-            // This must be done after calculating quantity multiplier because you can
-            // only recycle actual failures, not just unwanted normal results.
-            quantityMultiplier = quantityMultiplier / highQualityChance;
+            // If we're crafting +1 version, divide expected attempts by +1 chance.
             expectedAttempts = expectedAttempts / highQualityChance;
         }
         // Adjust multiplier based on quantity to craft and quantity output by the recipe
-        quantityMultiplier = (quantityMultiplier * quantity) / this.quantity;
         expectedAttempts = (expectedAttempts * quantity) / this.quantity;
 
-        // Discount for recycle
+        // Calculate quantity multiplier (how many crafts we have to pay resources for)
         let failures = expectedAttempts * (1-successChance);
         let recycles = failures * recycleChance;
-        quantityMultiplier = quantityMultiplier - ((quantityMultiplier / expectedAttempts) * recycles);
+        let quantityMultiplier = expectedAttempts - recycles;
 
         // Start with the supplements needed for final craft
         output.supplements = [[expectedAttempts, supplement.name]];
