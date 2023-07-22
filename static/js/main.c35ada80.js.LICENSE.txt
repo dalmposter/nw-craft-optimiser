@@ -17,6 +17,8 @@
 
 /*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
+/*! typescript-cookie v1.0.6 | MIT */
+
 /**
  * @license React
  * react-dom.production.min.js
