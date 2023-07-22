@@ -6,10 +6,10 @@ export const getPrice = (item: MWObject): string => {
 
 export const shouldShowPrice = (item: MWObject) : boolean => {
     if(item instanceof MWResource && item.mwTier === "Menzoberranzan") {
-        return false;
+        //return false;
     }
     if(item instanceof CraftedMWObject && item.mwCategory === "Menzoberranzan Masterwork") {
-        return false;
+        //return false;
     }
     return true;
 }

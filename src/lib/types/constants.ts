@@ -19,6 +19,7 @@ export const ARTISAN_TYPES: Map<string, string> = new Map<string, string>([
 ])
 
 export const FOCUS_MULTIPLIER: number = 1/430
+export const FOCUS_BREAKPOINT: number = 970
 
 // A list of objects and the quantity required
 export type Recipe = Array<[number, string]>

@@ -1,6 +1,6 @@
 import { removeCookie } from "typescript-cookie";
 import { Lock } from "../util/lock";
-import { Recipe, ARTISAN_TYPES, FOCUS_MULTIPLIER } from "./constants";
+import { Recipe, ARTISAN_TYPES, FOCUS_MULTIPLIER, FOCUS_BREAKPOINT } from "./constants";
 import { CommissionItemType, CraftedMWObjectType, MWItemType, MWResourceType } from "./item.types";
 import { Artisan, Tool, Supplement, MWRecipe } from "./recipe";
 import { findMwObject, aggregateTupleLists, findMwItem } from "./util";
@@ -209,8 +209,9 @@ export class CraftedMWObject extends MWObject {
         let successChance = (artisan.proficiency + tool.proficiency + supplement.proficiency)/this.proficiency;
         successChance = Math.min(successChance, 1) // Don't let success chance go over 100%
         let focusDifferential = this.focus - artisan.focus - tool.focus - supplement.focus;
+        let focusMultiplier = 1/(this.focus - FOCUS_BREAKPOINT);
         let highQualityChance = Math.max(
-            1 - (FOCUS_MULTIPLIER * focusDifferential),
+            1 - (focusMultiplier * focusDifferential),
             0.0000001
         );
         let recycleChance = 1 - ((1-artisan.recycleChance) * (1-supplement.recycleChance) * (1-tool.recycleChance));
@@ -224,7 +225,7 @@ export class CraftedMWObject extends MWObject {
             expectedAttempts = expectedAttempts / (1+dabHandChance);
         }
 
-        let quantityMultiplier = (1 + ((expectedAttempts - 1) * (1 - recycleChance)));
+        let quantityMultiplier = expectedAttempts;
 
         if(highQuality) {
             // If we're crafting +1 version, divide multiplier by +1 chance.
@@ -236,6 +237,11 @@ export class CraftedMWObject extends MWObject {
         // Adjust multiplier based on quantity to craft and quantity output by the recipe
         quantityMultiplier = (quantityMultiplier * quantity) / this.quantity;
         expectedAttempts = (expectedAttempts * quantity) / this.quantity;
+
+        // Discount for recycle
+        let failures = expectedAttempts * (1-successChance);
+        let recycles = failures * recycleChance;
+        quantityMultiplier = quantityMultiplier - ((quantityMultiplier / expectedAttempts) * recycles);
 
         // Start with the supplements needed for final craft
         output.supplements = [[expectedAttempts, supplement.name]];
