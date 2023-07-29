@@ -33,7 +33,7 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
             ) {
                 return false
             }
-            if(props.itemFilter.type && (
+            if(props.itemFilter.type && props.itemFilter.type.length > 0 && (
                     !(item instanceof MWItem) || (
                         props.itemFilter.type.length > 0
                         && !props.itemFilter.type.some((value) => value === item.itemType)
@@ -42,23 +42,21 @@ export function RecipeAvatar (props: RecipeAvatarProps) {
             ) {
                 return false
             }
-            if(props.itemFilter.class) {
+            if(props.itemFilter.class && props.itemFilter.class.length > 0) {
                 if(!(item instanceof MWItem)) {
                     return false
                 }
-                else if(props.itemFilter.class.length > 0
-                        && !item.requiredClasses.some((value) => props.itemFilter!.class!.includes(value))
+                else if(
+                    !item.requiredClasses.some((value) => props.itemFilter!.class!.includes(value))
                 ) {
                     return false
                 }
             }
-            if(props.itemFilter.slot) {
+            if(props.itemFilter.slot && props.itemFilter.slot.length > 0) {
                 if(!(item instanceof MWItem)) {
                     return false
                 }
-                else if(props.itemFilter.slot.length > 0
-                    && !props.itemFilter!.slot.some((value) => value === item.itemSlot)
-                ) {
+                else if(!props.itemFilter!.slot.some((value) => value === item.itemSlot)) {
                     return false
                 }
             }
