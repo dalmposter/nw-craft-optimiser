@@ -37,5 +37,11 @@
 {
     align-items: center;
     display: flex;
+
     flex-direction: column;
+}
+
+.EntityAvatar.horizontal
+{
+    flex-direction: row;
 }

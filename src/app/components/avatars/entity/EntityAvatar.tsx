@@ -5,15 +5,107 @@ import "./EntityAvatar.scss"
 import { Artisan, Supplement, Tool } from "../../../../lib/types/recipe";
 import { getFileName, images } from "../icon";
 
+export type Entity = Artisan | Tool | Supplement;
+
 interface EntityAvatarProps {
-    entity?: Artisan | Tool | Supplement;
-    size: "small" | "medium" | "large";
+    entity?: Entity;
+    size: "small" | "medium" | "large" | "horizontal";
+}
+
+function EntityAvatarHover (props: {entity: Entity, skillName: string, skillChance: number}) {
+    return (
+        <div>
+            <h4>
+                {props.entity.name}
+                {props.entity instanceof Artisan ? ` [${props.entity.rarity}]` : ""}
+            </h4>
+            {props.entity.proficiency > 0 &&
+                <p>+{props.entity.proficiency} proficiency</p>
+            }
+            {props.entity.focus > 0 &&
+                <p>+{props.entity.focus} focus</p>
+            }
+            {props.entity instanceof Artisan &&
+            <>
+                <p>
+                    {props.entity.speedModifier >= 0? "+" : ""}
+                    {props.entity.speedModifier * 100}% speed
+                </p>
+                <p>
+                    {props.entity.commissionModifier >= 0? "+" : ""}
+                    {props.entity.commissionModifier * 100}% comission
+                </p>
+            </>
+            }
+            {props.skillName !== "None" &&
+                <p>Special Skill: {props.skillName} ({props.skillChance * 100}%)</p>
+            }
+        </div>
+    )
 }
 
 export function EntityAvatar (props: EntityAvatarProps) {
     if (props.size === "large") return EntityAvatarLarge(props);
     if (props.size === "medium") return EntityAvatarMedium(props);
+    if (props.size === "horizontal") return EntityAvatarHorizontal(props);
     else return EntityAvatarMedium(props)
+}
+
+export function EntityAvatarHorizontal (props: EntityAvatarProps) {
+    let skillName = "None";
+    let skillChance = 0;
+    if(props.entity) {
+        [skillName, skillChance] = props.entity?.getSkill();
+    }
+
+    if(props.entity) {
+        let fileName = getFileName(props.entity.name);
+        let itemIcon = images.get(fileName);
+        let highQualityFlair = images.get("high-quality-flair.png");
+        
+        return (
+        <div className="EntityAvatar horizontal">
+            <Popup
+                className="EntityIcon"
+                trigger={
+                    <div style={{width: "fit-content", position: "relative"}}>
+                        { props.entity.name.split("+1").length > 1 &&
+                            <img style={
+                                    {
+                                        width: "25%",
+                                        height: "25%",
+                                        position: "absolute",
+                                        left: "12.5%",
+                                        top: "12.5%"
+                                    }
+                                }
+                                src={highQualityFlair? highQualityFlair : emptyIcon}
+                                alt="+1 Flair"
+                            />
+                        }
+                        <img
+                            className="Icon"
+                            src={itemIcon? itemIcon : emptyIcon}
+                            alt={`${props.entity.name} Icon`}
+                        />
+                    </div>
+                }
+                flowing hoverable
+            >
+                <EntityAvatarHover
+                    entity={props.entity}
+                    skillChance={skillChance}
+                    skillName={skillName}
+                />
+            </Popup>
+            <div className="EntityAvatar" style={{textAlign: "center"}}>
+                <p>{props.entity.name}</p>
+            </div>
+        </div>
+        )
+    } else {
+        return <img className="Icon" src={emptyIcon} alt="unknown item" />
+    }
 }
 
 export function EntityAvatarMedium (props: EntityAvatarProps) {
@@ -57,33 +149,11 @@ export function EntityAvatarMedium (props: EntityAvatarProps) {
                 }
                 flowing hoverable
             >
-                <div>
-                    <h4>
-                        {props.entity.name}
-                        {props.entity instanceof Artisan ? ` [${props.entity.rarity}]` : ""}
-                    </h4>
-                    {props.entity.proficiency > 0 &&
-                        <p>+{props.entity.proficiency} proficiency</p>
-                    }
-                    {props.entity.focus > 0 &&
-                        <p>+{props.entity.focus} focus</p>
-                    }
-                    {props.entity instanceof Artisan &&
-                    <>
-                        <p>
-                            {props.entity.speedModifier >= 0? "+" : ""}
-                            {props.entity.speedModifier * 100}% speed
-                        </p>
-                        <p>
-                            {props.entity.commissionModifier >= 0? "+" : ""}
-                            {props.entity.commissionModifier * 100}% comission
-                        </p>
-                    </>
-                    }
-                    {skillName !== "None" &&
-                        <p>Special Skill: {skillName} ({skillChance * 100}%)</p>
-                    }
-                </div>
+                <EntityAvatarHover
+                    entity={props.entity}
+                    skillChance={skillChance}
+                    skillName={skillName}
+                />
             </Popup>
             <div className="EntityAvatar" style={{textAlign: "center"}}>
                 <p>{props.entity.name}</p>

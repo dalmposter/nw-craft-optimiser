@@ -17,8 +17,10 @@ export class Tool {
     virtuosoChance: number;
     miracleWorkerChance: number;
     passionProjectChance: number;
+    available: boolean;
 
     constructor(data: ToolType) {
+        this.available = true;
         this.profession = data.profession;
         this.name = data.name;
         this.proficiency = Number(data.proficiency);
@@ -233,8 +235,10 @@ export class Artisan {
     focus: number;
     commissionModifier: number;
     speedModifier: number;
+    available: boolean;
 
     constructor(data: ArtisanType) {
+        this.available = true;
         this.profession = data.profession;
         this.name = data.name;
         this.rarity = data.rarity;

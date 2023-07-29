@@ -8,7 +8,7 @@ import { MWResource, MWItem, CommissionItem, CraftedMWObject } from '../lib/type
 import { MWMaterial } from '../lib/types/material';
 import { Artisan, Tool, Supplement, MWRecipe } from '../lib/types/recipe';
 import { getCookies, setCookie } from 'typescript-cookie';
-import { priceCookieStarter } from './constants';
+import { artisanAvailableCookieStarter, priceCookieStarter, toolAvailableCookieStarter } from './constants';
 
 interface AppProps {
 
@@ -41,6 +41,43 @@ const loadCookies = () => {
             }
 
             resource.price = cookiePrice
+        });
+    
+    Object.entries(cookies)
+        .filter(([cookieName, value]) => cookieName.startsWith(artisanAvailableCookieStarter))
+        .forEach(([cookieName, value]) => {
+
+            try {
+                let artisanName = cookieName.split(artisanAvailableCookieStarter)[1].split("_")[1];
+                let professionName = cookieName.split(artisanAvailableCookieStarter)[1].split("_")[0];
+                let artisan = Artisan.OBJECTS.get(professionName)!.find(
+                    (artisan) => artisan.name === artisanName
+                );
+                if(artisan === undefined) {
+                    console.warn(`Read availability cookie for non-existent artisan`, cookieName, value)
+                    return
+                }
+                artisan.available = false;
+            } catch (e) {
+                console.error(`Failed to process cookie`, cookieName, value, e);
+            }
+        });
+    
+    Object.entries(cookies)
+        .filter(([cookieName, value]) => cookieName.startsWith(toolAvailableCookieStarter))
+        .forEach(([cookieName, value]) => {
+
+            try {
+                let toolName = cookieName.split(toolAvailableCookieStarter)[1];
+                let artisan = Tool.OBJECTS.get(toolName);
+                if(artisan === undefined) {
+                    console.warn(`Read availability cookie for non-existent tool`, cookieName, value)
+                    return
+                }
+                artisan.available = false;
+            } catch (e) {
+                console.error(`Failed to process cookie`, cookieName, value, e);
+            }
         });
 }
 

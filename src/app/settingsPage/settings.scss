@@ -8,3 +8,20 @@
 {
     text-align: right;
 }
+
+.Artisan.Selector
+{
+    outline-color: black;
+    outline-width: 2px;
+    outline-style: solid;
+    max-width: 250px;
+}
+
+.Selector
+{
+    display: flex;
+    margin-bottom: 12px;
+    margin-left: 12px;
+    flex: 1 1 0px;
+
+}

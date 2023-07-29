@@ -19,3 +19,15 @@ export const VERSION_NUMBER: string = "v0.0.3";
 export const priceCookieStarter = "Price_"
 
 export const priceCookieName = (resourceName: string) => `${priceCookieStarter}${resourceName}`;
+
+export const artisanAvailableCookieStarter = "ArtisanUnavailable_"
+
+export const artisanAvailableCookieName = (artisanName: string, profession: string) => {
+    return `${artisanAvailableCookieStarter}${profession}_${artisanName}`;
+}
+
+export const toolAvailableCookieStarter = "ToolUnavailable_"
+
+export const toolAvailableCookieName = (toolName: string) => {
+    return `${toolAvailableCookieStarter}${toolName}`;
+}

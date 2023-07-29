@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { MWResource } from "../../lib/types/item";
 import { findMwObject } from "../../lib/types/util";
-import { Accordion, AccordionTitleProps, Button, Icon, Input } from "semantic-ui-react";
+import { Accordion, AccordionTitleProps, Button, Checkbox, Icon, Input } from "semantic-ui-react";
 import { setCookie, getCookies, removeCookie } from "typescript-cookie";
 
 import "./settings.scss";
-import { priceCookieName, shouldShowPrice } from "../constants";
+import { artisanAvailableCookieName, priceCookieName, shouldShowPrice, toolAvailableCookieName } from "../constants";
+import { Artisan, Tool } from "../../lib/types/recipe";
+import { EntityAvatar } from "../components/avatars/entity/EntityAvatar";
 
 interface SettingsPageProps {
     unlocked: boolean;
@@ -22,7 +24,7 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
     constructor(props: SettingsPageProps) {
         super(props)
         this.state = {
-            activeIndex: 1,
+            activeIndex: 3,
             renders: 0
         }
     }
@@ -56,21 +58,115 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 0}>
                 </Accordion.Content>
+
                 <Accordion.Title
                     active={this.state.activeIndex === 1}
                     index={1}
                     onClick={(e, titleProps) => this.onAccordionClick(titleProps)}
                 >
                     <Icon name='dropdown' />
-                    Customise Resource Prices
+                    Available Artisans
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 1}>
+                    <p>
+                        I do apologise for this awful settings page.
+                        For now I recommend using ctrl+f to locate specific artisans
+                    </p>
+                    {[...Artisan.OBJECTS.entries()].map(([profession, artisans]) => <>
+                    
+                        <h2>{profession}</h2>
+                        <div
+                            style={{marginBottom: "24px", display: "flex", flexWrap: "wrap"}}
+                            key={`artisan-selectors-${profession}`}
+                        >
+                            {artisans.sort((a, b) => {
+                                let rarityMap = new Map(Object.entries({ "Epic": 3, "Rare": 2, "Common": 1 }));
+                                const getN = (rarity: string) => rarityMap.has(rarity) ? rarityMap.get(rarity)! : 0;
+                                return getN(b.rarity) - getN(a.rarity);
+                            }).map((artisan: Artisan) => 
+                                <div
+                                    key={`artisan-selector-${artisan.name}`}
+                                    className="Artisan Selector"
+                                >
+                                    <div style={{position: "relative", marginRight: "12px", marginLeft: "12px"}}>
+                                        <Checkbox
+                                            className="centered-element"
+                                            checked={artisan.available}
+                                            onChange={(event, data) => {
+                                                artisan.available = !!data.checked;
+                                                if(!artisan.available) {
+                                                    setCookie(
+                                                        artisanAvailableCookieName(artisan.name, profession),
+                                                        false
+                                                    )
+                                                } else {
+                                                    removeCookie(artisanAvailableCookieName(artisan.name, profession))
+                                                }
+                                                this.rerender()
+                                                this.props.resetCalculations()
+                                            }}
+                                        />
+                                    </div>
+                                    <EntityAvatar size="horizontal" entity={artisan} />
+                                </div>
+                            )}
+                        </div>
+                        </>
+                    )}
+                </Accordion.Content>
+
+                <Accordion.Title
+                    active={this.state.activeIndex === 2}
+                    index={2}
+                    onClick={(e, titleProps) => this.onAccordionClick(titleProps)}
+                >
+                    <Icon name='dropdown' />
+                    Available Tools
+                </Accordion.Title>
+                <Accordion.Content active={this.state.activeIndex === 2}>
+                    {[...Tool.OBJECTS.values()].map((tool) =>
+                        <div
+                            key={`tool-selector-${tool.name}`}
+                            className="Selector"
+                        >
+                            <div style={{position: "relative", marginRight: "12px", marginLeft: "12px"}}>
+                                <Checkbox
+                                    className="centered-element"
+                                    checked={tool.available}
+                                    onChange={(event, data) => {
+                                        tool.available = !!data.checked;
+                                        if(!tool.available) {
+                                            setCookie(
+                                                toolAvailableCookieName(tool.name),
+                                                false
+                                            )
+                                        } else {
+                                            removeCookie(toolAvailableCookieName(tool.name))
+                                        }
+                                        this.rerender()
+                                        this.props.resetCalculations()
+                                    }}
+                                />
+                            </div>
+                            <EntityAvatar size="horizontal" entity={tool} />
+                        </div>
+                    )}
+                </Accordion.Content>
+
+                <Accordion.Title
+                    active={this.state.activeIndex === 3}
+                    index={3}
+                    onClick={(e, titleProps) => this.onAccordionClick(titleProps)}
+                >
+                    <Icon name='dropdown' />
+                    Customise Resource Prices
+                </Accordion.Title>
+                <Accordion.Content active={this.state.activeIndex === 3}>
                     <p>
                         I do apologise for this awful settings page.
                         For now I recommend using ctrl+f to locate specific resources
                     </p>
                     <Button onClick={() => {
-                        let currentCookies = getCookies()
                         for(let resource of MWResource.OBJECTS.values()) {
                             resource.resetPrice()
                         }
@@ -102,7 +198,7 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                                     }
                                     console.log(`Set price of ${resource.name} to ${newPrice}`)
                                     findMwObject(resource.name).price = newPrice
-                                    setCookie(`Price_${resource.name}`, newPrice)
+                                    setCookie(priceCookieName(resource.name), newPrice)
                                     this.rerender()
                                     this.props.resetCalculations()
                                 }}

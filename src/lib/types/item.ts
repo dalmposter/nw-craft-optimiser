@@ -140,7 +140,13 @@ export class CraftedMWObject extends MWObject {
                     .then((value: MWRecipe) =>[value, value.getCost()])
 
             for(var artisan of artisans) {
+                if(!artisan.available) {
+                    continue;
+                }
                 for(var [toolKey, tool] of Tool.OBJECTS) {
+                    if(!tool.available) {
+                        continue;
+                    }
                     for(var [supKey, supplement] of Supplement.OBJECTS) {
                         if(supplement.name === this.name) {
                             continue;
