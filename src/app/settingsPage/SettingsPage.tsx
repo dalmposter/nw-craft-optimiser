@@ -5,7 +5,7 @@ import { Accordion, AccordionTitleProps, Button, Checkbox, Icon, Input } from "s
 import { setCookie, getCookies, removeCookie } from "typescript-cookie";
 
 import "./settings.scss";
-import { artisanAvailableCookieName, priceCookieName, shouldShowPrice, toolAvailableCookieName } from "../constants";
+import { artisanAvailableCookieName, priceCookieName, shouldShowPrice, toolAvailableCookieName, updateArtisanCookie, updateToolCookie } from "../constants";
 import { Artisan, Tool } from "../../lib/types/recipe";
 import { EntityAvatar } from "../components/avatars/entity/EntityAvatar";
 
@@ -24,9 +24,42 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
     constructor(props: SettingsPageProps) {
         super(props)
         this.state = {
-            activeIndex: 3,
+            activeIndex: 0,
             renders: 0
         }
+    }
+
+    disableAllArtisan = (enable?: boolean, profession?: string, rarity?: string) => {
+        if(profession === undefined) {
+            [...Artisan.OBJECTS.entries()].forEach(
+                ([profession, artisans]) => artisans.forEach(
+                    artisan => {
+                        if(rarity === undefined || artisan.rarity === rarity) {
+                            artisan.available = !!enable
+                            updateArtisanCookie(artisan, profession)
+                        }
+                    }
+                )
+            );
+        } else {
+            Artisan.OBJECTS.get(profession)?.forEach(
+                artisan => {
+                    if(rarity === undefined || artisan.rarity === rarity) {
+                        artisan.available = !!enable
+                        updateArtisanCookie(artisan, profession)
+                    }
+                }
+            )
+        }
+        this.rerender()
+    }
+
+    disableAllTool = (enable?: boolean) => {
+        [...Tool.OBJECTS.values()].forEach(tool => {
+            tool.available = !!enable;
+            updateToolCookie(tool);
+        });
+        this.rerender()
     }
 
     onAccordionClick(titleProps: AccordionTitleProps) {
@@ -57,6 +90,7 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                     General Settings
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 0}>
+                    <p>There are currently no general settings. Please see the other tabs.</p>
                 </Accordion.Content>
 
                 <Accordion.Title
@@ -70,11 +104,33 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                 <Accordion.Content active={this.state.activeIndex === 1}>
                     <p>
                         I do apologise for this awful settings page.
-                        For now I recommend using ctrl+f to locate specific artisans
+                        For now I recommend using ctrl+f to locate specific artisans.
                     </p>
+                    <p>
+                        Use this page to disable artisans you do not own, so they will not
+                        be suggested for you to use.
+                    </p>
+                    <Button onClick={() => this.disableAllArtisan()}>
+                        Disable all artisans
+                    </Button>
+                    <Button onClick={() => this.disableAllArtisan(true)}>
+                        Enable all artisans
+                    </Button>
+                    <Button
+                        onClick={() => this.disableAllArtisan(false, undefined, "Epic")}
+                        style={{marginLeft: "24px"}}
+                    >
+                        Disable all epic artisans
+                    </Button>
+                    <Button onClick={() => this.disableAllArtisan(false, undefined, "Rare")}>
+                        Disable all rare artisans
+                    </Button>
+                    <Button onClick={() => this.disableAllArtisan(false, undefined, "Common")}>
+                        Disable all common artisans
+                    </Button>
                     {[...Artisan.OBJECTS.entries()].map(([profession, artisans]) => <>
                     
-                        <h2>{profession}</h2>
+                        <h2>{profession}s</h2>
                         <div
                             style={{marginBottom: "24px", display: "flex", flexWrap: "wrap"}}
                             key={`artisan-selectors-${profession}`}
@@ -94,14 +150,7 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                                             checked={artisan.available}
                                             onChange={(event, data) => {
                                                 artisan.available = !!data.checked;
-                                                if(!artisan.available) {
-                                                    setCookie(
-                                                        artisanAvailableCookieName(artisan.name, profession),
-                                                        false
-                                                    )
-                                                } else {
-                                                    removeCookie(artisanAvailableCookieName(artisan.name, profession))
-                                                }
+                                                updateArtisanCookie(artisan, profession);
                                                 this.rerender()
                                                 this.props.resetCalculations()
                                             }}
@@ -124,6 +173,17 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                     Available Tools
                 </Accordion.Title>
                 <Accordion.Content active={this.state.activeIndex === 2}>
+                    <p>
+                        Use this page to disable tools you do not own, so they will not
+                        be suggested for you to use.
+                    </p>
+                    <Button onClick={() => this.disableAllTool()}>
+                        Disable all tools
+                    </Button>
+                    <Button onClick={() => this.disableAllTool(true)}>
+                        Enable all tools
+                    </Button>
+                    <h2>Tools</h2>
                     {[...Tool.OBJECTS.values()].map((tool) =>
                         <div
                             key={`tool-selector-${tool.name}`}
@@ -135,14 +195,7 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                                     checked={tool.available}
                                     onChange={(event, data) => {
                                         tool.available = !!data.checked;
-                                        if(!tool.available) {
-                                            setCookie(
-                                                toolAvailableCookieName(tool.name),
-                                                false
-                                            )
-                                        } else {
-                                            removeCookie(toolAvailableCookieName(tool.name))
-                                        }
+                                        updateToolCookie(tool)
                                         this.rerender()
                                         this.props.resetCalculations()
                                     }}
