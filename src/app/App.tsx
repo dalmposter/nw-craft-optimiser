@@ -69,12 +69,12 @@ const loadCookies = () => {
 
             try {
                 let toolName = cookieName.split(toolAvailableCookieStarter)[1];
-                let artisan = Tool.OBJECTS.get(toolName);
-                if(artisan === undefined) {
+                let tool = Tool.OBJECTS.get(toolName);
+                if(tool === undefined) {
                     console.warn(`Read availability cookie for non-existent tool`, cookieName, value)
                     return
                 }
-                artisan.available = false;
+                tool.available = value === "true";
             } catch (e) {
                 console.error(`Failed to process cookie`, cookieName, value, e);
             }

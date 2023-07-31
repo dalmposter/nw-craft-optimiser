@@ -8,10 +8,10 @@ export const getPrice = (item: MWObject): string => {
 
 export const shouldShowPrice = (item: MWObject) : boolean => {
     if(item instanceof MWResource && item.mwTier === "Menzoberranzan") {
-        return false;
+        //return false;
     }
     if(item instanceof CraftedMWObject && item.mwCategory === "Menzoberranzan Masterwork") {
-        return false;
+        //return false;
     }
     return true;
 }
@@ -22,7 +22,7 @@ export const priceCookieStarter = "Price_"
 
 export const priceCookieName = (resourceName: string) => `${priceCookieStarter}${resourceName}`;
 
-export const artisanAvailableCookieStarter = "ArtisanUnavailable_"
+export const artisanAvailableCookieStarter = "ArtisanAvailable_"
 
 export const artisanAvailableCookieName = (artisanName: string, profession: string) => {
     return `${artisanAvailableCookieStarter}${profession}_${artisanName}`;
@@ -39,19 +39,18 @@ export const updateArtisanCookie = (artisan: Artisan, profession: string) => {
     }
 }
 
-export const toolAvailableCookieStarter = "ToolUnavailable_"
+export const toolAvailableCookieStarter = "ToolAvailable_"
 
 export const toolAvailableCookieName = (toolName: string) => {
     return `${toolAvailableCookieStarter}${toolName}`;
 }
 
 export const updateToolCookie = (tool: Tool) => {
-    if(!tool.available) {
-        setCookie(
-            toolAvailableCookieName(tool.name),
-            false
-        )
-    } else {
-        removeCookie(toolAvailableCookieName(tool.name))
+    if(tool.available === tool.defaultAvailable) {
+        removeCookie(toolAvailableCookieName(tool.name));
     }
+    setCookie(
+        toolAvailableCookieName(tool.name),
+        tool.available
+    )
 }

@@ -8,6 +8,7 @@ export interface ToolType {
     virtuosoChance: string;
     miracleWorkerChance: string;
     passionProjectChance: string;
+    defaultAvailable: boolean;
 }
 
 export interface SupplementType {

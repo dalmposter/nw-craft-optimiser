@@ -18,9 +18,11 @@ export class Tool {
     miracleWorkerChance: number;
     passionProjectChance: number;
     available: boolean;
+    defaultAvailable: boolean;
 
     constructor(data: ToolType) {
-        this.available = true;
+        this.defaultAvailable = data.defaultAvailable;
+        this.available = this.defaultAvailable;
         this.profession = data.profession;
         this.name = data.name;
         this.proficiency = Number(data.proficiency);
