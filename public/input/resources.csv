@@ -6,8 +6,8 @@ Aberrant Sinew|0.0|N/A|Gathering
 Adamantine Ore|0.0|N/A|Gathering
 Adder|0.0|N/A|Gathering
 Aegwyrt|0.0|N/A|Gathering
-Alkali|4000.0|N/A|GH Vendor
-Allosaur Fang|3500.0|Chultan|Allosaurs in Chult
+Alkali|5300.0|N/A|GH Vendor
+Allosaur Fang|2000.0|Chultan|Allosaurs in Chult
 Animal Bone|0.0|N/A|Gathering
 Animal Hide|0.0|N/A|Gathering
 Animal Sinew|0.0|N/A|Gathering
@@ -16,7 +16,7 @@ Ash Log|0.0|N/A|Gathering
 Azurite|1000.0|Chultan|GH Vendor
 Basilisk Bone|0.0|N/A|Gathering
 Basilisk Hide|0.0|N/A|Gathering
-Batiri Prism|850.0|Chultan|Batiris in Chult
+Batiri Prism|800.0|Chultan|Batiris in Chult
 Bear Hide|0.0|N/A|Gathering
 Bear Sinew|0.0|N/A|Gathering
 Bearberry|0.0|N/A|Gathering
@@ -29,14 +29,14 @@ Blackiron Ore|0.0|N/A|Gathering
 Blacklip Oyster|0.0|N/A|Gathering
 Brimstone|0.0|N/A|Gathering
 Brilliant Pinion|380.0|Chultan|Explorer Chart: Omu
-Bronzewood Log|225.0|Chultan|Explorer Chart: Soshenstar
+Bronzewood Log|180.0|Chultan|Explorer Chart: Soshenstar
 Brown Scorpion|0.0|N/A|Gathering
 Calf Skin|1000.0|Legacy|Mysterious Merchant
 Chalk|0.0|N/A|Gathering
 Chamomile|0.0|N/A|Gathering
 Chestnut Log|0.0|N/A|Gathering
-Chultan Spring Water|700.0|Chultan|Explorer Chart: Omu
-Chultan Tea Leaves|2200.0|Chultan|Explorer Chart: Soshenstar
+Chultan Spring Water|3000.0|Chultan|Explorer Chart: Omu
+Chultan Tea Leaves|2000.0|Chultan|Explorer Chart: Soshenstar
 Chultan Wootz Ore|100.0|Chultan|Explorer Chart: Omu
 Cinnabar|0.0|N/A|Gathering
 Cobalt Ore|0.0|N/A|Gathering
@@ -58,21 +58,21 @@ Deer Skin|0.0|N/A|Gathering
 Demon's Trumpet|0.0|N/A|Gathering
 Deva's Trumpet|0.0|N/A|Gathering
 Devil Bone|0.0|N/A|Gathering
-Dinosaur Hide|0.0|Chultan|Chultan Dinosaurs
-Displacer Beast's Whisker|42000.0|Sharandar|Vault of Stars
+Dinosaur Hide|100.0|Chultan|Chultan Dinosaurs
+Displacer Beast's Whisker|38000.0|Sharandar|Vault of Stars
 Dragon Turtle Scales|0.0|Legacy|Fangbreaker Island
 Drake Hide|0.0|N/A|Gathering
 Drake Horn|0.0|N/A|Gathering
 Drake Sinew|0.0|N/A|Gathering
 Dream Moss|0.0|Undermountain|Explorer Chart: Twisted Caverns
-Dryad Hair|5000.0|Sharandar|Explorer Chart: The Grove
+Dryad Hair|2200.0|Sharandar|Explorer Chart: The Grove
 Dubbin|0.0|Legacy|Sea of Moving Ice Treasure Maps
 Dyer's Broom|2000.0|Legacy|GH Vendor
 Electrum Ore|0.0|N/A|Gathering
 Electrum Sand|0.0|N/A|Gathering
 Elm Log|0.0|N/A|Gathering
 Fartouched Residuum|0.0|Legacy|Master Spellplague Caverns
-Feywood Log|1100.0|Sharandar|Explorer Chart: The Grove
+Feywood Log|1200.0|Sharandar|Explorer Chart: The Grove
 Fieldstone|2500.0|Legacy|GH Vendor
 Fish Bones|0.0|N/A|Gathering
 Flax|0.0|N/A|Gathering
@@ -80,19 +80,19 @@ Fleece|0.0|N/A|Gathering
 Foraged Cocoon|0.0|N/A|Gathering
 Fowl Feather|0.0|N/A|Gathering
 Gold Sand|0.0|N/A|Gathering
-Hardened Blight Bark|600.0|Sharandar|Explorer Chart: The Grove
+Hardened Blight Bark|1800.0|Sharandar|Explorer Chart: The Grove
 Iron Ore|0.0|N/A|Gathering
 Iron Rust|2200.0|Chultan|GH Vendor
 Iron Sand|0.0|N/A|Gathering
 Jute|0.0|Legacy|Mysterious Merchant
-Lakh Resin|3000.0|Chultan|Explorer Chart: Soshenstar
+Lakh Resin|2000.0|Chultan|Explorer Chart: Soshenstar
 Lichstone|400.0|Chultan|Tomb of the Nine Gods
 Limestone|0.0|N/A|Gathering
-Lion Hide|5000.0|Chultan|Lions in Chult
+Lion Hide|4250.0|Chultan|Lions in Chult
 Livewood Sap|0.0|Legacy|Sea of Moving Ice Treasure Maps
 Madder Root|2000.0|Chultan|GH Vendor
 Mainspring|0.0|Legacy|Mysterious Merchant
-Maker's Bounty|1800.0|N/A|Lockbox
+Maker's Bounty|2000.0|N/A|Lockbox
 Maker's Calm|0.0|N/A|Lockbox
 Maker's Focus|0.0|N/A|Lockbox
 Maker's Haste|0.0|N/A|Lockbox
@@ -107,7 +107,7 @@ Menga Leaves|0.0|Chultan|Chultan Blue Plant nodes
 Mica|0.0|N/A|Gathering
 Mithral Ore|0.0|N/A|Gathering
 Mithral Sand|0.0|N/A|Gathering
-Mote of Soulfire|80000.0|Chultan|Tomb of the Nine Gods
+Mote of Soulfire|18000.0|Chultan|Tomb of the Nine Gods
 Mudstone|0.0|N/A|Gathering
 Myrrh Branch|0.0|N/A|Gathering
 Mysterious Bone|0.0|Undermountain|Explorer Chart: Twisted Caverns
@@ -129,11 +129,11 @@ Philosopher's Keep|2600.0|N/A|Lockbox
 Philosopher's Quick|0.0|N/A|Lockbox
 Pine Log|0.0|N/A|Gathering
 Polar Bear Skin|3500.0|Chultan|GH Vendor
-Potash|6800.0|Chultan|GH Vendor
+Potash|7000.0|Chultan|GH Vendor
 Propolis|0.0|Chultan|Chultan Skill Nodes
 Purple Beauty|0.0|N/A|Gathering
 Putnisite|0.0|Undermountain|Explorer Chart: Twisted Caverns
-Questionable Piece of Leather|6500.0|Sharandar|Festering Ranger NPC in the Mire
+Questionable Piece of Leather|5000.0|Sharandar|Festering Ranger NPC in the Mire
 Raw Amethyst|0.0|N/A|Gathering
 Raw Aquamarine|0.0|N/A|Gathering
 Raw Black Opal|0.0|N/A|Gathering
@@ -152,9 +152,9 @@ Salt-Marsh Crystal|5000.0|Sharandar|GH Vendor
 Samarachan Jute|500.0|Chultan|Explorer Chart: Omu
 Sandstone|0.0|N/A|Gathering
 Senna Leaves|0.0|Chultan|Profession Flowers Soshenstar
-Shade Leaves|40.0|Sharandar|Explorer Chart: The Mires
-Shadowdemon's Eyes|900.0|Sharandar|Explorer Chart: The Mires
-Shard of Dawn's Light|80000.0|Sharandar|Vault of Stars
+Shade Leaves|200.0|Sharandar|Explorer Chart: The Mires
+Shadowdemon's Eyes|800.0|Sharandar|Explorer Chart: The Mires
+Shard of Dawn's Light|40000.0|Sharandar|Vault of Stars
 Shark Oil|440.0|Legacy|Mysterious Merchant
 Shattered Snowflakes|1000.0|Sharandar|Vault of Stars
 Shimmerweed|0.0|N/A|Gathering
@@ -163,21 +163,21 @@ Silkworm Cocoon|150.0|Chultan|Explorer Chart: Soshenstar
 Siltstone|0.0|N/A|Gathering
 Silver Ore|0.0|N/A|Gathering
 Silver Sand|0.0|N/A|Gathering
-Silvertongue Moss|2000.0|Sharandar|Explorer Chart: The Ruins
+Silvertongue Moss|1000.0|Sharandar|Explorer Chart: The Ruins
 Slate|0.0|N/A|Gathering
 Soot|0.0|N/A|Gathering
-Soulfire Flies|340.0|Sharandar|Explorer Chart: The Ruins
+Soulfire Flies|200.0|Sharandar|Explorer Chart: The Ruins
 Spider Silk|100.0|Chultan|Spiders in Chult
 Spring Water|0.0|N/A|Gathering
 Sugar Beet|0.0|N/A|Gathering
 Sweetgale|0.0|N/A|Gathering
 Sword Coast Tea Leaves|0.0|N/A|Gathering
 Sword Flax|0.0|N/A|Gathering
-Tanner's Liquor|6000.0|Chultan|GH Vendor
+Tanner's Liquor|5500.0|Chultan|GH Vendor
 Tarantula|0.0|N/A|Gathering
 Teak|0.0|Chultan|Undead in Soshenstar
 Tear of Ubtao|14000.0|Chultan|Tomb of the Nine Gods
-Terebinth|3000.0|N/A|GH Vendor
+Terebinth|2200.0|N/A|GH Vendor
 Tin Ingot|0.0|Legacy|Mysterious Merchant
 Tin Ore|0.0|N/A|Gathering
 Tincal|4200.0|Chultan|GH Vendor
@@ -189,11 +189,11 @@ Tinker's Keep|0.0|N/A|Lockbox
 Tinker's Quick|0.0|N/A|Lockbox
 Titania|7000.0|Chultan|GH Vendor
 Toadstool|0.0|N/A|Gathering
-Troll's Earwax Resin|2700.0|Sharandar|Explorer Chart: The Ruins
+Troll's Earwax Resin|1400.0|Sharandar|Explorer Chart: The Ruins
 Twisted Toadstool|0.0|Undermountain|Explorer Chart: Twisted Caverns
 Volcanic Salt|0.0|N/A|Gathering
 Walnut Log|0.0|N/A|Gathering
-Weeping Willow's Tears|4000.0|Sharandar|Explorer Chart: The Mires
+Weeping Willow's Tears|3800.0|Sharandar|Explorer Chart: The Mires
 Well Water|0.0|N/A|Gathering
 Whitelip Oyster|0.0|N/A|Gathering
 Wild Mint|0.0|N/A|Gathering
