@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nw-craft-optimiser/static/css/main.52f4a22e.css",
-    "main.js": "/nw-craft-optimiser/static/js/main.5707228d.js",
+    "main.js": "/nw-craft-optimiser/static/js/main.6ff009f9.js",
     "static/js/787.6c57dc1d.chunk.js": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js",
     "static/media/brand-icons.svg": "/nw-craft-optimiser/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/icons.svg": "/nw-craft-optimiser/static/media/icons.62d9dae4e0040e81c980.svg",
@@ -72,21 +72,23 @@
     "static/media/bree-underleaf.png": "/nw-craft-optimiser/static/media/bree-underleaf.29c96fa20ea24f8ae747.png",
     "static/media/adloquium.png": "/nw-craft-optimiser/static/media/adloquium.d89bfbfbe20864b4f5e8.png",
     "static/media/haie-xilomne.png": "/nw-craft-optimiser/static/media/haie-xilomne.4db52f41bce8a5eb65fd.png",
+    "static/media/mayrunn-bronzefinger.png": "/nw-craft-optimiser/static/media/mayrunn-bronzefinger.86c6daca0ac92aa22d2f.png",
     "static/media/saveed-althabt.png": "/nw-craft-optimiser/static/media/saveed-althabt.27197d0f91d374acfd49.png",
     "static/media/storbek-ironfoot.png": "/nw-craft-optimiser/static/media/storbek-ironfoot.a059ca34320222a4b78d.png",
     "static/media/janid-stolshore.png": "/nw-craft-optimiser/static/media/janid-stolshore.b27df471a19fbb38669f.png",
     "static/media/mavi-jubbani.png": "/nw-craft-optimiser/static/media/mavi-jubbani.6f4d0188330e3b90a8c0.png",
+    "static/media/corriel-ourman.png": "/nw-craft-optimiser/static/media/corriel-ourman.2f9c8dfa8fa022b8b461.png",
     "static/media/duginn-steepmountain.png": "/nw-craft-optimiser/static/media/duginn-steepmountain.554e1ca3c0a3bf51b350.png",
     "static/media/jaqueyn-locel.png": "/nw-craft-optimiser/static/media/jaqueyn-locel.ea526bb7e69cfa179de8.png",
     "static/media/patime-hoshur.png": "/nw-craft-optimiser/static/media/patime-hoshur.1dee03311cf848250116.png",
     "static/media/unkra-forend.png": "/nw-craft-optimiser/static/media/unkra-forend.49d6bf3563c10f3c153a.png",
     "index.html": "/nw-craft-optimiser/index.html",
     "main.52f4a22e.css.map": "/nw-craft-optimiser/static/css/main.52f4a22e.css.map",
-    "main.5707228d.js.map": "/nw-craft-optimiser/static/js/main.5707228d.js.map",
+    "main.6ff009f9.js.map": "/nw-craft-optimiser/static/js/main.6ff009f9.js.map",
     "787.6c57dc1d.chunk.js.map": "/nw-craft-optimiser/static/js/787.6c57dc1d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.52f4a22e.css",
-    "static/js/main.5707228d.js"
+    "static/js/main.6ff009f9.js"
   ]
 }
