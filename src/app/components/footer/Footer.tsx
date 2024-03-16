@@ -16,8 +16,6 @@ export default function Footer(props: FooterProps)
         <div>
             <a onClick={() => props.setPage("calculator")} style={{cursor: "pointer"}}>Home</a>
             {" . "}
-            <a onClick={() => props.setPage("roadmap")} style={{cursor: "pointer"}}>Roadmap</a>
-            {" . "}
             <a onClick={() => props.setPage("settings")} style={{cursor: "pointer"}}>Settings</a>
         </div>
         <div>

@@ -1,18 +1,12 @@
 import { removeCookie, setCookie } from "typescript-cookie";
-import { CraftedMWObject, MWObject, MWResource } from "../lib/types/item"
+import { MWObject } from "../lib/types/item"
 import { Artisan, Tool } from "../lib/types/recipe";
 
 export const getPrice = (item: MWObject): string => {
     return shouldShowPrice(item) && item.price? `${item.price.toLocaleString("en-US")} AD` : "--- ---";
 }
 
-export const shouldShowPrice = (item: MWObject) : boolean => {
-    if(item instanceof MWResource && item.mwTier === "Menzoberranzan") {
-        //return false;
-    }
-    if(item instanceof CraftedMWObject && item.mwCategory === "Menzoberranzan Masterwork") {
-        //return false;
-    }
+export const shouldShowPrice = (item: MWObject): boolean => {
     return true;
 }
 

@@ -120,6 +120,15 @@ export default class CraftCalc extends Component<CraftCalcProps, CraftCalcState>
                         />
                     </>
                     }
+                    { !this.state.activeItem && <>
+                        <p style={{margin: "0 10% 0 10%", color: "darkgray"}}>
+                            Select a masterwork item from the dropdown to see the best ways to craft it and the overall
+                            cost. Make it easier to find the item you're looking for by using the smaller dropdowns to
+                            filter based on: masterwork era; the classes that can use the item; the items category; or
+                            the slot the item can be equipped in.
+                        </p>
+                    </>
+                    }
                     { this.state.activeItem && !this.arePricesViewable(this.state.activeItem) &&
                         <h3>
                             Prices and intermediate recipes for Menzoberranzan MW are currently unknown.

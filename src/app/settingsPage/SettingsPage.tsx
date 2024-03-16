@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { MWResource } from "../../lib/types/item";
 import { findMwObject } from "../../lib/types/util";
 import { Accordion, AccordionTitleProps, Button, Checkbox, Icon, Input } from "semantic-ui-react";
-import { setCookie, getCookies, removeCookie } from "typescript-cookie";
+import { setCookie } from "typescript-cookie";
 
 import "./settings.scss";
-import { artisanAvailableCookieName, priceCookieName, shouldShowPrice, toolAvailableCookieName, updateArtisanCookie, updateToolCookie } from "../constants";
+import { priceCookieName, shouldShowPrice, updateArtisanCookie, updateToolCookie } from "../constants";
 import { Artisan, Tool } from "../../lib/types/recipe";
 import { EntityAvatar } from "../components/avatars/entity/EntityAvatar";
 
@@ -17,6 +17,7 @@ interface SettingsPageProps {
 interface SettingsPageState {
     activeIndex: number;
     renders: number;
+    showZeroCostResources: boolean;
 }
 
 export default class SettingsPage extends Component<SettingsPageProps, SettingsPageState> {
@@ -25,7 +26,8 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
         super(props)
         this.state = {
             activeIndex: 0,
-            renders: 0
+            renders: 0,
+            showZeroCostResources: false
         }
     }
 
@@ -219,22 +221,33 @@ export default class SettingsPage extends Component<SettingsPageProps, SettingsP
                         I do apologise for this awful settings page.
                         For now I recommend using ctrl+f to locate specific resources
                     </p>
-                    <Button onClick={() => {
-                        for(let resource of MWResource.OBJECTS.values()) {
-                            resource.resetPrice()
-                        }
-                        this.rerender()
-                        this.props.resetCalculations();
-                    }}>
+                    <Checkbox
+                        label="Show resources with price 0"
+                        onClick={() => this.setState({ showZeroCostResources: !this.state.showZeroCostResources})}
+                    />
+                    <br />
+                    <br />
+                    <Button
+                        onClick={() => {
+                            for(let resource of MWResource.OBJECTS.values()) {
+                                resource.resetPrice()
+                            }
+                            this.rerender()
+                            this.props.resetCalculations();
+                        }}
+                    >
                         Reset all prices
                     </Button>
                     <p>
                         Please be aware that modifying the prices will save the changes to a Cookie.
-                        To reset any prices back to those I provide, you will need to clear all
-                        custom prices using the above button. (this functionality is still being
-                        refined).
+                        To reset any prices back to those I provide, you will need to either reset
+                        individual resources or clear all custom prices using the above button. (this
+                        functionality is still being refined).
                     </p>
-                    {[...MWResource.OBJECTS.values()].filter(resource => shouldShowPrice(resource)).map(resource =>
+                    {[...MWResource.OBJECTS.values()]
+                    .filter(resource => shouldShowPrice(resource))
+                    .filter(resource => this.state.showZeroCostResources || resource.price > 0)
+                    .map(resource =>
                         <div
                             style={{display: "flex", marginBottom: "12px"}}
                             key={`price-input-${resource.name}`}

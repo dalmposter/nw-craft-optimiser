@@ -1,8 +1,9 @@
 export default function Banner() {
     return (
         <p style={{color: "darkred", marginBottom: 0}}>
-            Please note that I have hidden the Menzoberranzan prices to avoid
-            presenting inaccurate information, because they are likely to be highly volatile.
+            Please be aware I am no longer actively updating the resource pricing. If prices look
+            off, go to the settings and enter the costs of resources manually. They will be saved
+            as cookies for your future use.
         </p>
     )
 }
