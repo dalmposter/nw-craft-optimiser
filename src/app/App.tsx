@@ -9,6 +9,7 @@ import { MWMaterial } from '../lib/types/material';
 import { Artisan, Tool, Supplement, MWRecipe } from '../lib/types/recipe';
 import { getCookies, setCookie } from 'typescript-cookie';
 import { artisanAvailableCookieStarter, priceCookieStarter, toolAvailableCookieStarter } from './constants';
+import UserGuidePage from './userGuide/UserGuide';
 
 interface AppProps {
 
@@ -221,6 +222,9 @@ export class App extends React.Component<AppProps, AppState> {
 					{ this.state.page === "roadmap" &&
 						<Roadmap />
 					}
+                    { this.state.page === "user-guide" &&
+                        <UserGuidePage />
+                    }
 					{ this.state.page === "settings" &&
 						<SettingsPage
                             unlocked={this.state.unlocked}
